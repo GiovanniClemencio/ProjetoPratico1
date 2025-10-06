@@ -8,6 +8,14 @@ package Classes;
  *
  * @author Portu
  */
-public class Dinheiro_EduardoGiovanniLuan {
-    
+public class Dinheiro_EduardoGiovanniLuan extends Pagamento_EduardoGiovanniLuan {    
+
+    public Dinheiro_EduardoGiovanniLuan() {
+        super("Dinheiro");
+    }
+
+    @Override
+    public String toString() {
+        return "Dinheiro_EduardoGiovanniLuan{" + "tipoPagamento" + getTipoPagamento() + '}';
+    }
 }
