@@ -1,0 +1,23 @@
+Usarei as cores da pokedex de Kanto para a GUI (fiz ouvindo um torneio de pokemon VGC)
+
+Vermelho base: #dc0a2d (220, 10, 45)
+Vermelho sombra: #89061c (137, 6, 28)
+Vermelho luz: #e9667c (233, 102, 124)
+
+Branco base: #dedede (222, 222, 222)
+Branco sombra: #787979 (120, 121, 121)
+
+Preto base: #232323 (35, 35, 35)
+Preto sombra: #010608 (1, 6, 8)
+
+Azul base: #28aafd (40, 170, 253)
+Azul sombra: #196a9e (25, 106, 158)
+Azul luz: #a1dafe (161, 218, 254)
+ 
+Verde base: #4ba258 (75, 162, 88)
+Verde sombra: #316c3a (49, 108, 58)
+Verde luz: #a1d4a9 (161, 212, 169)
+
+Amarelo base: #fcde1e (252, 222, 30)
+Amarelo sombra: #a08c0f (160, 140, 15)
+Amarelo luz: #fff5b7 (255, 245, 183)
