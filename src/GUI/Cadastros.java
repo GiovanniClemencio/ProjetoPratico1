@@ -150,7 +150,10 @@ public class Cadastros extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void cadastroCorretorButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastroCorretorButtonActionPerformed
-        // TODO add your handling code here:
+
+        CadastroCorretor dialog = new CadastroCorretor(this, true);
+        dialog.setLocationRelativeTo(this);
+        dialog.setVisible(true);
     }//GEN-LAST:event_cadastroCorretorButtonActionPerformed
 
     /**
