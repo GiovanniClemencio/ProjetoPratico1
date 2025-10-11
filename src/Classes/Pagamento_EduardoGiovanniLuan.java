@@ -4,11 +4,13 @@
  */
 package Classes;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Portu
  */
-public abstract class Pagamento_EduardoGiovanniLuan {
+public abstract class Pagamento_EduardoGiovanniLuan implements Serializable {
     private String tipoPagamento;
 
     public Pagamento_EduardoGiovanniLuan(String tipoPagamento) {

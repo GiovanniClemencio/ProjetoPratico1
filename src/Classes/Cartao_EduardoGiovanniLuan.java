@@ -4,6 +4,7 @@
  */
 package Classes;
 
+
 /**
  *
  * @author Portu
@@ -48,8 +49,17 @@ public class Cartao_EduardoGiovanniLuan extends Pagamento_EduardoGiovanniLuan {
         this.numero = numero;
     }
 
+    // Ajustando para o armazenamento em arquivo
     @Override
     public String toString() {
-        return "Cartao_EduardoGiovanniLuan{" + "tipoPagamento" + getTipoPagamento() + "nome=" + nome + ", bandeira=" + bandeira + ", numero=" + numero + '}';
+        return new StringBuffer("Tipo de pagamento: ")
+                .append(getTipoPagamento())
+                .append("\nNome: ")
+                .append(this.nome)
+                .append("\nBandeira: ")
+                .append(this.bandeira)
+                .append("\nNumero: ")
+                .append(this.numero)
+                .toString();
     }  
 }

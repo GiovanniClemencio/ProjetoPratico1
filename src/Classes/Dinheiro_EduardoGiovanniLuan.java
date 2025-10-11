@@ -4,6 +4,7 @@
  */
 package Classes;
 
+
 /**
  *
  * @author Portu
@@ -16,6 +17,8 @@ public class Dinheiro_EduardoGiovanniLuan extends Pagamento_EduardoGiovanniLuan 
 
     @Override
     public String toString() {
-        return "Dinheiro_EduardoGiovanniLuan{" + "tipoPagamento" + getTipoPagamento() + '}';
+        return new StringBuffer("Tipo de pagamento: ")
+                .append(getTipoPagamento())
+                .toString();
     }
 }
