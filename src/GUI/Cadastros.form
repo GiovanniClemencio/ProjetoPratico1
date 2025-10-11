@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JDialogFormInfo">
   <Properties>
-    <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="defaultCloseOperation" type="int" value="2"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -24,7 +24,7 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Component id="jPanel3" max="32767" attributes="0"/>
-          <Component id="jPanel1" alignment="0" max="32767" attributes="0"/>
+          <Component id="jPanel1" alignment="1" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -49,7 +49,7 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
                   <Component id="jLabel1" min="-2" pref="305" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
@@ -78,16 +78,13 @@
               <Color blue="fd" green="aa" red="28" type="rgb"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
-            <Property name="text" type="java.lang.String" value="SISTEMA IMOBILI&#xc1;RIO"/>
+            <Property name="text" type="java.lang.String" value="CADASTROS"/>
             <Property name="alignmentX" type="float" value="0.5"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
               <Color id="Default Cursor"/>
             </Property>
             <Property name="horizontalTextPosition" type="int" value="0"/>
           </Properties>
-          <AccessibilityProperties>
-            <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value=""/>
-          </AccessibilityProperties>
         </Component>
       </SubComponents>
     </Container>
@@ -101,19 +98,21 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
+              <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
-                          <Component id="CadastrosButton" min="-2" pref="106" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="VendasAluguelButton" min="-2" pref="130" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="relatoriosButton" min="-2" pref="106" max="-2" attributes="0"/>
-                          <EmptySpace min="0" pref="17" max="32767" attributes="0"/>
-                      </Group>
                       <Component id="jLabel2" max="32767" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Component id="cadastroClienteButton" min="-2" pref="374" max="-2" attributes="0"/>
+                              <Component id="cadastroCorretorButton" min="-2" pref="374" max="-2" attributes="0"/>
+                              <Component id="cadastroCasaButton" alignment="1" min="-2" pref="374" max="-2" attributes="0"/>
+                              <Component id="cadastroPredioButton" alignment="1" min="-2" pref="374" max="-2" attributes="0"/>
+                              <Component id="cadastroComercialButton" alignment="1" min="-2" pref="374" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="0" pref="8" max="32767" attributes="0"/>
+                      </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -122,15 +121,19 @@
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="jLabel2" pref="34" max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="cadastroCorretorButton" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="cadastroClienteButton" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="cadastroCasaButton" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="cadastroPredioButton" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="cadastroComercialButton" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
-                  <Component id="jLabel2" min="-2" pref="45" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="CadastrosButton" alignment="3" min="-2" pref="43" max="-2" attributes="0"/>
-                      <Component id="VendasAluguelButton" alignment="3" min="-2" pref="43" max="-2" attributes="0"/>
-                      <Component id="relatoriosButton" alignment="3" min="-2" pref="43" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace pref="66" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -142,38 +145,51 @@
               <Font name="Segoe UI" size="14" style="1"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
-            <Property name="text" type="java.lang.String" value="Selecione uma das opera&#xe7;&#xf5;es:"/>
+            <Property name="text" type="java.lang.String" value="Selecione o tipo de cadastro:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="CadastrosButton">
+        <Component class="javax.swing.JButton" name="cadastroCorretorButton">
           <Properties>
-            <Property name="text" type="java.lang.String" value="CADASTROS"/>
+            <Property name="text" type="java.lang.String" value="Cadastro de Corretor"/>
           </Properties>
           <AccessibilityProperties>
-            <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="CADASTROS-button"/>
+            <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="Cadastro de Corretor-button"/>
           </AccessibilityProperties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CadastrosButtonActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cadastroCorretorButtonActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="VendasAluguelButton">
+        <Component class="javax.swing.JButton" name="cadastroClienteButton">
           <Properties>
-            <Property name="text" type="java.lang.String" value="VENDA / ALUGU&#xc9;L"/>
+            <Property name="text" type="java.lang.String" value="Cadastro de Cliente"/>
           </Properties>
           <AccessibilityProperties>
-            <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="VENDA / ALUGU&#xc9;L-button"/>
+            <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="Cadastro de Cliente-button"/>
           </AccessibilityProperties>
         </Component>
-        <Component class="javax.swing.JButton" name="relatoriosButton">
+        <Component class="javax.swing.JButton" name="cadastroCasaButton">
           <Properties>
-            <Property name="text" type="java.lang.String" value="RELAT&#xd3;RIOS"/>
+            <Property name="text" type="java.lang.String" value="Cadastro de Casa Residencial"/>
           </Properties>
           <AccessibilityProperties>
-            <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="RELAT&#xd3;RIOS-button"/>
+            <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="Cadastro de Casa Residencial-button"/>
           </AccessibilityProperties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="relatoriosButtonActionPerformed"/>
-          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="cadastroPredioButton">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Cadastro de Pr&#xe9;dio Residencial"/>
+          </Properties>
+          <AccessibilityProperties>
+            <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="Cadastro de Pr&#xe9;dio Residencial-button"/>
+          </AccessibilityProperties>
+        </Component>
+        <Component class="javax.swing.JButton" name="cadastroComercialButton">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Cadastro de Im&#xf3;vel Comercial"/>
+          </Properties>
+          <AccessibilityProperties>
+            <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="Cadastro de Im&#xf3;vel Comercial-button"/>
+          </AccessibilityProperties>
         </Component>
       </SubComponents>
     </Container>
