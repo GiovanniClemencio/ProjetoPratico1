@@ -8,12 +8,12 @@ package GUI;
  *
  * @author Portu
  */
-public class Cadastros extends javax.swing.JDialog {
+public class Relatorios extends javax.swing.JDialog {
 
     /**
-     * Creates new form Cadastros
+     * Creates new form Relatorios
      */
-    public Cadastros(java.awt.Frame parent, boolean modal) {
+    public Relatorios(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
     }
@@ -31,12 +31,9 @@ public class Cadastros extends javax.swing.JDialog {
         jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        cadastroCorretorButton = new javax.swing.JButton();
-        cadastroClienteButton = new javax.swing.JButton();
-        cadastroCasaButton = new javax.swing.JButton();
-        cadastroPredioButton = new javax.swing.JButton();
-        cadastroComercialButton = new javax.swing.JButton();
-        cadastroSeguro = new javax.swing.JButton();
+        RelatorioImoveisButton = new javax.swing.JButton();
+        RelatorioAdmButton = new javax.swing.JButton();
+        RelatorioUsuarioButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -46,7 +43,7 @@ public class Cadastros extends javax.swing.JDialog {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(40, 170, 253));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("CADASTROS");
+        jLabel1.setText("Relatórios");
         jLabel1.setAlignmentX(0.5F);
         jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -72,27 +69,26 @@ public class Cadastros extends javax.swing.JDialog {
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Selecione o tipo de cadastro:");
+        jLabel2.setText("Selecione uma das categorias:");
 
-        cadastroCorretorButton.setText("Cadastro de Corretor");
-        cadastroCorretorButton.addActionListener(new java.awt.event.ActionListener() {
+        RelatorioImoveisButton.setText("Relatórios de imóveis");
+        RelatorioImoveisButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cadastroCorretorButtonActionPerformed(evt);
+                RelatorioImoveisButtonActionPerformed(evt);
             }
         });
 
-        cadastroClienteButton.setText("Cadastro de Cliente");
-
-        cadastroCasaButton.setText("Cadastro de Casa Residencial");
-
-        cadastroPredioButton.setText("Cadastro de Prédio Residencial");
-
-        cadastroComercialButton.setText("Cadastro de Imóvel Comercial");
-
-        cadastroSeguro.setText("Cadastro de Pacote de Seguro");
-        cadastroSeguro.addActionListener(new java.awt.event.ActionListener() {
+        RelatorioAdmButton.setText("Relatórios administrativos");
+        RelatorioAdmButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cadastroSeguroActionPerformed(evt);
+                RelatorioAdmButtonActionPerformed(evt);
+            }
+        });
+
+        RelatorioUsuarioButton.setText("Relatórios de usuários");
+        RelatorioUsuarioButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RelatorioUsuarioButtonActionPerformed(evt);
             }
         });
 
@@ -103,44 +99,30 @@ public class Cadastros extends javax.swing.JDialog {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE)
+                        .addContainerGap())
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(6, 6, 6)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(cadastroClienteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 374, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cadastroCorretorButton, javax.swing.GroupLayout.PREFERRED_SIZE, 374, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cadastroCasaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 374, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cadastroPredioButton, javax.swing.GroupLayout.PREFERRED_SIZE, 374, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cadastroComercialButton, javax.swing.GroupLayout.PREFERRED_SIZE, 374, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cadastroSeguro, javax.swing.GroupLayout.PREFERRED_SIZE, 374, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 8, Short.MAX_VALUE)))
-                .addContainerGap())
+                            .addComponent(RelatorioAdmButton, javax.swing.GroupLayout.PREFERRED_SIZE, 374, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(RelatorioImoveisButton, javax.swing.GroupLayout.PREFERRED_SIZE, 374, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(RelatorioUsuarioButton, javax.swing.GroupLayout.PREFERRED_SIZE, 374, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cadastroCorretorButton)
+                .addComponent(RelatorioImoveisButton, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cadastroClienteButton)
+                .addComponent(RelatorioAdmButton, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cadastroCasaButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cadastroPredioButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cadastroComercialButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cadastroSeguro)
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addComponent(RelatorioUsuarioButton, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(14, Short.MAX_VALUE))
         );
-
-        cadastroCorretorButton.getAccessibleContext().setAccessibleName("Cadastro de Corretor-button");
-        cadastroClienteButton.getAccessibleContext().setAccessibleName("Cadastro de Cliente-button");
-        cadastroCasaButton.getAccessibleContext().setAccessibleName("Cadastro de Casa Residencial-button");
-        cadastroPredioButton.getAccessibleContext().setAccessibleName("Cadastro de Prédio Residencial-button");
-        cadastroComercialButton.getAccessibleContext().setAccessibleName("Cadastro de Imóvel Comercial-button");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -160,18 +142,19 @@ public class Cadastros extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void cadastroCorretorButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastroCorretorButtonActionPerformed
+    private void RelatorioImoveisButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RelatorioImoveisButtonActionPerformed
 
-        CadastroCorretor dialog = new CadastroCorretor(this, true);
+    }//GEN-LAST:event_RelatorioImoveisButtonActionPerformed
+
+    private void RelatorioAdmButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RelatorioAdmButtonActionPerformed
+        RelatoriosAdm dialog = new RelatoriosAdm(this, true);
         dialog.setLocationRelativeTo(this);
         dialog.setVisible(true);
-    }//GEN-LAST:event_cadastroCorretorButtonActionPerformed
+    }//GEN-LAST:event_RelatorioAdmButtonActionPerformed
 
-    private void cadastroSeguroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastroSeguroActionPerformed
-        CadastroSeguro dialog = new CadastroSeguro(this, true);
-        dialog.setLocationRelativeTo(this);
-        dialog.setVisible(true);
-    }//GEN-LAST:event_cadastroSeguroActionPerformed
+    private void RelatorioUsuarioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RelatorioUsuarioButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_RelatorioUsuarioButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -190,20 +173,20 @@ public class Cadastros extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Cadastros.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Relatorios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Cadastros.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Relatorios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Cadastros.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Relatorios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Cadastros.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Relatorios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                Cadastros dialog = new Cadastros(new javax.swing.JFrame(), true);
+                Relatorios dialog = new Relatorios(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -216,12 +199,9 @@ public class Cadastros extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton cadastroCasaButton;
-    private javax.swing.JButton cadastroClienteButton;
-    private javax.swing.JButton cadastroComercialButton;
-    private javax.swing.JButton cadastroCorretorButton;
-    private javax.swing.JButton cadastroPredioButton;
-    private javax.swing.JButton cadastroSeguro;
+    private javax.swing.JButton RelatorioAdmButton;
+    private javax.swing.JButton RelatorioImoveisButton;
+    private javax.swing.JButton RelatorioUsuarioButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;

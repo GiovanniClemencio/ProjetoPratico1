@@ -68,7 +68,18 @@ public class Seguro_EduardoGiovanniLuan {
 
     @Override
     public String toString() {
-        return "Seguro_EduardoGiovanniLuan{" + "codigoSeguro=" + codigoSeguro + ", nomeSeguradora=" + nomeSeguradora + ", tipo=" + tipo + ", descricao=" + descricao + ", valor=" + valor + '}';
+        
+        return new StringBuffer("Tipo de seguro: ")
+                .append(this.tipo)
+                .append("\nCodigo: ")
+                .append(this.codigoSeguro)
+                .append("\nSeguradora: ")
+                .append(this.nomeSeguradora)
+                .append("\nDescricao: ")
+                .append(this.descricao)
+                .append("\nValor do pacote: ")
+                .append(this.valor)
+                .toString();
     }
     
 }
