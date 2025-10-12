@@ -11,6 +11,7 @@ package Classes;
 public class Contadores_EduardoGiovanniLuan {
     private int codigoUsuario;
     private static int codigoSeguro = 0;
+    private static int codigoAluguel = 0;
 
     public int getCodigoUsuario() {
         return codigoUsuario;
