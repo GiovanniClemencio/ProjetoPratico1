@@ -44,7 +44,7 @@ public class RelatoriosAdm extends javax.swing.JDialog {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(40, 170, 253));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Relatórios");
+        jLabel1.setText("Relatórios administrativos");
         jLabel1.setAlignmentX(0.5F);
         jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -70,7 +70,7 @@ public class RelatoriosAdm extends javax.swing.JDialog {
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel2.setText("Selecione umtipo de relatório:");
+        jLabel2.setText("Selecione um tipo de relatório:");
 
         jComboBoxRelatorios.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Imoveis com atraso em aluguel", "Imoveis alugados por um mesmo cliente", "Imoveis comprados por um mesmo cliente", "Clientes com atraso no aluguel", "Alugueis finalizados", "Alugueis ativos", "Historico de vendas", "Analise mensal", "Pacotes de seguros disponiveis" }));
         jComboBoxRelatorios.addActionListener(new java.awt.event.ActionListener() {
@@ -91,19 +91,16 @@ public class RelatoriosAdm extends javax.swing.JDialog {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(12, 12, 12)
+                .addComponent(jComboBoxRelatorios, javax.swing.GroupLayout.PREFERRED_SIZE, 378, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(10, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(jComboBoxRelatorios, javax.swing.GroupLayout.PREFERRED_SIZE, 378, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE)
-                        .addContainerGap())))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(146, 146, 146)
-                .addComponent(ButtonDeEscolha, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 384, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(ButtonDeEscolha, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(147, 147, 147))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -139,10 +136,50 @@ public class RelatoriosAdm extends javax.swing.JDialog {
         String opcaoSelecionada = (String) jComboBoxRelatorios.getSelectedItem();
         //JOptionPane.showMessageDialog(this, opcaoSelecionada); Usado para DEBUG
         switch(opcaoSelecionada){
-            case "Pacotes de seguros disponiveis":
+            case "Imoveis com atraso em aluguel":
                 RelatorioSeguro dialog = new RelatorioSeguro(this, true);
                 dialog.setLocationRelativeTo(this);
                 dialog.setVisible(true);
+                break;
+            case "Imoveis alugados por um mesmo cliente":
+                RelatorioSeguro dialog1 = new RelatorioSeguro(this, true);
+                dialog1.setLocationRelativeTo(this);
+                dialog1.setVisible(true);
+                break;
+            case "Imoveis comprados por um mesmo cliente":
+                RelatorioSeguro dialog2 = new RelatorioSeguro(this, true);
+                dialog2.setLocationRelativeTo(this);
+                dialog2.setVisible(true);
+                break;
+            case "Clientes com atraso no aluguel":
+                RelatorioSeguro dialog3 = new RelatorioSeguro(this, true);
+                dialog3.setLocationRelativeTo(this);
+                dialog3.setVisible(true);
+                break;
+            case "Alugueis finalizados":
+                RelatorioSeguro dialog4 = new RelatorioSeguro(this, true);
+                dialog4.setLocationRelativeTo(this);
+                dialog4.setVisible(true);
+                break;
+            case "Alugueis ativos":
+                RelatorioSeguro dialog5 = new RelatorioSeguro(this, true);
+                dialog5.setLocationRelativeTo(this);
+                dialog5.setVisible(true);
+                break;
+            case "Historico de vendas":
+                RelatorioSeguro dialog6 = new RelatorioSeguro(this, true);
+                dialog6.setLocationRelativeTo(this);
+                dialog6.setVisible(true);
+                break;
+            case "Analise mensal":
+                RelatorioSeguro dialog7 = new RelatorioSeguro(this, true);
+                dialog7.setLocationRelativeTo(this);
+                dialog7.setVisible(true);
+                break;
+            case "Pacotes de seguros disponiveis":
+                RelatorioSeguro dialog8 = new RelatorioSeguro(this, true);
+                dialog8.setLocationRelativeTo(this);
+                dialog8.setVisible(true);
                 break;
                
             default:
@@ -150,7 +187,7 @@ public class RelatoriosAdm extends javax.swing.JDialog {
         }
         
     }//GEN-LAST:event_ButtonDeEscolhaActionPerformed
-
+    
     private void jComboBoxRelatoriosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxRelatoriosActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBoxRelatoriosActionPerformed

@@ -4,16 +4,18 @@
  */
 package GUI;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Portu
  */
-public class Relatorios extends javax.swing.JDialog {
+public class RelatoriosImovel extends javax.swing.JDialog {
 
     /**
-     * Creates new form Relatorios
+     * Creates new form RelatoriosImovel
      */
-    public Relatorios(java.awt.Frame parent, boolean modal) {
+    public RelatoriosImovel(java.awt.Dialog parent, boolean modal) {
         super(parent, modal);
         initComponents();
     }
@@ -31,9 +33,8 @@ public class Relatorios extends javax.swing.JDialog {
         jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        RelatorioImoveisButton = new javax.swing.JButton();
-        RelatorioAdmButton = new javax.swing.JButton();
-        RelatorioUsuarioButton = new javax.swing.JButton();
+        jComboBoxRelatorios = new javax.swing.JComboBox<>();
+        ButtonDeEscolha = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -43,7 +44,7 @@ public class Relatorios extends javax.swing.JDialog {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(40, 170, 253));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Relatórios");
+        jLabel1.setText("Relatórios de Imóveis");
         jLabel1.setAlignmentX(0.5F);
         jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -68,27 +69,20 @@ public class Relatorios extends javax.swing.JDialog {
         jPanel1.setBackground(new java.awt.Color(222, 222, 222));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Selecione uma das categorias:");
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel2.setText("Selecione um tipo de relatório:");
 
-        RelatorioImoveisButton.setText("Relatórios de imóveis");
-        RelatorioImoveisButton.addActionListener(new java.awt.event.ActionListener() {
+        jComboBoxRelatorios.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todos Imoveis", "Predios Residenciais", "Imoveis Comerciais", "Imoveis disponiveis para locacao", "Imoveis alugados", "Imoveis disponiveis para venda", "Imoveis vendidos" }));
+        jComboBoxRelatorios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                RelatorioImoveisButtonActionPerformed(evt);
+                jComboBoxRelatoriosActionPerformed(evt);
             }
         });
 
-        RelatorioAdmButton.setText("Relatórios administrativos");
-        RelatorioAdmButton.addActionListener(new java.awt.event.ActionListener() {
+        ButtonDeEscolha.setText("ABRIR");
+        ButtonDeEscolha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                RelatorioAdmButtonActionPerformed(evt);
-            }
-        });
-
-        RelatorioUsuarioButton.setText("Relatórios de usuários");
-        RelatorioUsuarioButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                RelatorioUsuarioButtonActionPerformed(evt);
+                ButtonDeEscolhaActionPerformed(evt);
             }
         });
 
@@ -97,31 +91,27 @@ public class Relatorios extends javax.swing.JDialog {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(12, 12, 12)
+                .addComponent(jComboBoxRelatorios, javax.swing.GroupLayout.PREFERRED_SIZE, 378, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(10, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE)
-                        .addContainerGap())
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(RelatorioAdmButton, javax.swing.GroupLayout.PREFERRED_SIZE, 374, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(RelatorioImoveisButton, javax.swing.GroupLayout.PREFERRED_SIZE, 374, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(RelatorioUsuarioButton, javax.swing.GroupLayout.PREFERRED_SIZE, 374, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 384, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(ButtonDeEscolha, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(146, 146, 146))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(RelatorioImoveisButton, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(RelatorioAdmButton, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(RelatorioUsuarioButton, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addComponent(jComboBoxRelatorios, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(ButtonDeEscolha, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -142,24 +132,55 @@ public class Relatorios extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void RelatorioImoveisButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RelatorioImoveisButtonActionPerformed
-        RelatoriosImovel dialog = new RelatoriosImovel(this, true);
-        dialog.setLocationRelativeTo(this);
-        dialog.setVisible(true);
-    }//GEN-LAST:event_RelatorioImoveisButtonActionPerformed
+    private void jComboBoxRelatoriosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxRelatoriosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBoxRelatoriosActionPerformed
 
-    private void RelatorioAdmButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RelatorioAdmButtonActionPerformed
-        RelatoriosAdm dialog = new RelatoriosAdm(this, true);
-        dialog.setLocationRelativeTo(this);
-        dialog.setVisible(true);
-    }//GEN-LAST:event_RelatorioAdmButtonActionPerformed
+    private void ButtonDeEscolhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonDeEscolhaActionPerformed
+        String opcaoSelecionada = (String) jComboBoxRelatorios.getSelectedItem();
+        //JOptionPane.showMessageDialog(this, opcaoSelecionada); Usado para DEBUG
+        switch(opcaoSelecionada){
+            case "Todos Imoveis":
+                RelatorioTodosImoveis dialog = new RelatorioTodosImoveis(this, true);
+                dialog.setLocationRelativeTo(this);
+                dialog.setVisible(true);
+                break;
+            case "Predios Residenciais":
+                RelatorioPredioResidencial dialog1 = new RelatorioPredioResidencial(this, true);
+                dialog1.setLocationRelativeTo(this);
+                dialog1.setVisible(true);
+                break;
+            case "Imoveis Comerciais":
+                RelatorioComercial dialog2 = new RelatorioComercial(this, true);
+                dialog2.setLocationRelativeTo(this);
+                dialog2.setVisible(true);
+                break;
+            case "Imoveis disponiveis para locacao":
+                RelatorioImoveisLocacao dialog3 = new RelatorioImoveisLocacao(this, true);
+                dialog3.setLocationRelativeTo(this);
+                dialog3.setVisible(true);
+                break;
+            case "Imoveis alugados":
+                RelatorioImoveisAlugados dialog4 = new RelatorioImoveisAlugados(this, true);
+                dialog4.setLocationRelativeTo(this);
+                dialog4.setVisible(true);
+                break;
+            case "Imoveis disponiveis para venda":
+                RelatorioImoveisParaVenda dialog5 = new RelatorioImoveisParaVenda(this, true);
+                dialog5.setLocationRelativeTo(this);
+                dialog5.setVisible(true);
+                break;
+            case "Imoveis vendidos":
+                RelatorioImoveisVendidos dialog6 = new RelatorioImoveisVendidos(this, true);
+                dialog6.setLocationRelativeTo(this);
+                dialog6.setVisible(true);
+                break;
+            default:
+            JOptionPane.showMessageDialog(this, "Opcao nao implementada");
+        }
 
-    private void RelatorioUsuarioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RelatorioUsuarioButtonActionPerformed
-        RelatoriosUsuario dialog = new RelatoriosUsuario(this, true);
-        dialog.setLocationRelativeTo(this);
-        dialog.setVisible(true);
-    }//GEN-LAST:event_RelatorioUsuarioButtonActionPerformed
-
+    }//GEN-LAST:event_ButtonDeEscolhaActionPerformed
+    
     /**
      * @param args the command line arguments
      */
@@ -177,20 +198,20 @@ public class Relatorios extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Relatorios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RelatoriosImovel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Relatorios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RelatoriosImovel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Relatorios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RelatoriosImovel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Relatorios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RelatoriosImovel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                Relatorios dialog = new Relatorios(new javax.swing.JFrame(), true);
+                RelatoriosImovel dialog = new RelatoriosImovel(new javax.swing.JDialog(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -203,9 +224,8 @@ public class Relatorios extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton RelatorioAdmButton;
-    private javax.swing.JButton RelatorioImoveisButton;
-    private javax.swing.JButton RelatorioUsuarioButton;
+    private javax.swing.JButton ButtonDeEscolha;
+    private javax.swing.JComboBox<String> jComboBoxRelatorios;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
