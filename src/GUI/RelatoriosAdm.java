@@ -137,42 +137,42 @@ public class RelatoriosAdm extends javax.swing.JDialog {
         //JOptionPane.showMessageDialog(this, opcaoSelecionada); Usado para DEBUG
         switch(opcaoSelecionada){
             case "Imoveis com atraso em aluguel":
-                RelatorioSeguro dialog = new RelatorioSeguro(this, true);
+                RelatorioImovelAluguelAtrasado dialog = new RelatorioImovelAluguelAtrasado(this, true);
                 dialog.setLocationRelativeTo(this);
                 dialog.setVisible(true);
                 break;
             case "Imoveis alugados por um mesmo cliente":
-                RelatorioSeguro dialog1 = new RelatorioSeguro(this, true);
+                RelatorioAluguelMesmoCliente dialog1 = new RelatorioAluguelMesmoCliente(this, true);
                 dialog1.setLocationRelativeTo(this);
                 dialog1.setVisible(true);
                 break;
             case "Imoveis comprados por um mesmo cliente":
-                RelatorioSeguro dialog2 = new RelatorioSeguro(this, true);
+                RelatorioCompradoMesmoCliente dialog2 = new RelatorioCompradoMesmoCliente(this, true);
                 dialog2.setLocationRelativeTo(this);
                 dialog2.setVisible(true);
                 break;
             case "Clientes com atraso no aluguel":
-                RelatorioSeguro dialog3 = new RelatorioSeguro(this, true);
+                RelatorioClienteAluguelAtrasado dialog3 = new RelatorioClienteAluguelAtrasado(this, true);
                 dialog3.setLocationRelativeTo(this);
                 dialog3.setVisible(true);
                 break;
             case "Alugueis finalizados":
-                RelatorioSeguro dialog4 = new RelatorioSeguro(this, true);
+                RelatorioAluguelFinalizado dialog4 = new RelatorioAluguelFinalizado(this, true);
                 dialog4.setLocationRelativeTo(this);
                 dialog4.setVisible(true);
                 break;
             case "Alugueis ativos":
-                RelatorioSeguro dialog5 = new RelatorioSeguro(this, true);
+                RelatorioAluguelAtivo dialog5 = new RelatorioAluguelAtivo(this, true);
                 dialog5.setLocationRelativeTo(this);
                 dialog5.setVisible(true);
                 break;
             case "Historico de vendas":
-                RelatorioSeguro dialog6 = new RelatorioSeguro(this, true);
+                RelatorioHistoricoVendas dialog6 = new RelatorioHistoricoVendas(this, true);
                 dialog6.setLocationRelativeTo(this);
                 dialog6.setVisible(true);
                 break;
             case "Analise mensal":
-                RelatorioSeguro dialog7 = new RelatorioSeguro(this, true);
+                RelatorioAnaliseMensal dialog7 = new RelatorioAnaliseMensal(this, true);
                 dialog7.setLocationRelativeTo(this);
                 dialog7.setVisible(true);
                 break;
