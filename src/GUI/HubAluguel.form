@@ -78,7 +78,7 @@
               <Color blue="fd" green="aa" red="28" type="rgb"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
-            <Property name="text" type="java.lang.String" value="Opera&#xe7;&#xf5;es"/>
+            <Property name="text" type="java.lang.String" value="Opera&#xe7;&#xf5;es de alugu&#xe9;l"/>
             <Property name="alignmentX" type="float" value="0.5"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
               <Color id="Default Cursor"/>
@@ -98,17 +98,15 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
+              <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jLabel2" pref="388" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="jLabel2" pref="388" max="32767" attributes="0"/>
+                      <Component id="buttonNovoAluguel" max="32767" attributes="0"/>
+                      <Component id="buttonFinalizarAluguel" alignment="0" max="32767" attributes="0"/>
+                      <Component id="buttonPagamentoAluguel" alignment="0" max="32767" attributes="0"/>
+                  </Group>
                   <EmptySpace max="-2" attributes="0"/>
-              </Group>
-              <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace max="32767" attributes="0"/>
-                  <Component id="buttonCompra" min="-2" pref="125" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
-                  <Component id="buttonAluguel" min="-2" pref="125" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -118,11 +116,12 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jLabel2" min="-2" pref="50" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="buttonAluguel" alignment="3" min="-2" pref="45" max="-2" attributes="0"/>
-                      <Component id="buttonCompra" alignment="3" min="-2" pref="45" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace pref="40" max="32767" attributes="0"/>
+                  <Component id="buttonNovoAluguel" min="-2" pref="37" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="buttonFinalizarAluguel" min="-2" pref="37" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="buttonPagamentoAluguel" min="-2" pref="37" max="-2" attributes="0"/>
+                  <EmptySpace pref="29" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -137,26 +136,28 @@
             <Property name="text" type="java.lang.String" value="Selecione uma das opera&#xe7;&#xf5;es:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="buttonAluguel">
+        <Component class="javax.swing.JButton" name="buttonNovoAluguel">
           <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Segoe UI" size="14" style="0"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Alugu&#xe9;l"/>
+            <Property name="text" type="java.lang.String" value="Novo contrato"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonAluguelActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonNovoAluguelActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="buttonCompra">
+        <Component class="javax.swing.JButton" name="buttonFinalizarAluguel">
           <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Segoe UI" size="14" style="0"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Compra"/>
+            <Property name="text" type="java.lang.String" value="Finalizar Alugu&#xe9;l"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonCompraActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonFinalizarAluguelActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="buttonPagamentoAluguel">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Atualizar pagamento de Alugu&#xe9;l"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonPagamentoAluguelActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>

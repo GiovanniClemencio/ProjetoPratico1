@@ -8,12 +8,12 @@ package GUI;
  *
  * @author Portu
  */
-public class Operacoes extends javax.swing.JDialog {
+public class HubAluguel extends javax.swing.JDialog {
 
     /**
-     * Creates new form Operacoes
+     * Creates new form HubAluguel
      */
-    public Operacoes(java.awt.Frame parent, boolean modal) {
+    public HubAluguel(java.awt.Dialog parent, boolean modal) {
         super(parent, modal);
         initComponents();
     }
@@ -31,8 +31,9 @@ public class Operacoes extends javax.swing.JDialog {
         jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        buttonAluguel = new javax.swing.JButton();
-        buttonCompra = new javax.swing.JButton();
+        buttonNovoAluguel = new javax.swing.JButton();
+        buttonFinalizarAluguel = new javax.swing.JButton();
+        buttonPagamentoAluguel = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -42,7 +43,7 @@ public class Operacoes extends javax.swing.JDialog {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(40, 170, 253));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Operações");
+        jLabel1.setText("Operações de aluguél");
         jLabel1.setAlignmentX(0.5F);
         jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -70,19 +71,24 @@ public class Operacoes extends javax.swing.JDialog {
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Selecione uma das operações:");
 
-        buttonAluguel.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        buttonAluguel.setText("Aluguél");
-        buttonAluguel.addActionListener(new java.awt.event.ActionListener() {
+        buttonNovoAluguel.setText("Novo contrato");
+        buttonNovoAluguel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonAluguelActionPerformed(evt);
+                buttonNovoAluguelActionPerformed(evt);
             }
         });
 
-        buttonCompra.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        buttonCompra.setText("Compra");
-        buttonCompra.addActionListener(new java.awt.event.ActionListener() {
+        buttonFinalizarAluguel.setText("Finalizar Aluguél");
+        buttonFinalizarAluguel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonCompraActionPerformed(evt);
+                buttonFinalizarAluguelActionPerformed(evt);
+            }
+        });
+
+        buttonPagamentoAluguel.setText("Atualizar pagamento de Aluguél");
+        buttonPagamentoAluguel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonPagamentoAluguelActionPerformed(evt);
             }
         });
 
@@ -92,14 +98,12 @@ public class Operacoes extends javax.swing.JDialog {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE)
+                    .addComponent(buttonNovoAluguel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(buttonFinalizarAluguel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(buttonPagamentoAluguel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(buttonCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
-                .addComponent(buttonAluguel, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(58, 58, 58))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -107,10 +111,12 @@ public class Operacoes extends javax.swing.JDialog {
                 .addContainerGap()
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(buttonAluguel, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(buttonCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(40, Short.MAX_VALUE))
+                .addComponent(buttonNovoAluguel, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(buttonFinalizarAluguel, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(buttonPagamentoAluguel, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(29, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -131,17 +137,23 @@ public class Operacoes extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void buttonCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCompraActionPerformed
-        Compra dialog = new Compra(this, true);
+    private void buttonNovoAluguelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonNovoAluguelActionPerformed
+        RealizarAluguel dialog = new RealizarAluguel(this, true);
         dialog.setLocationRelativeTo(this);
         dialog.setVisible(true);
-    }//GEN-LAST:event_buttonCompraActionPerformed
+    }//GEN-LAST:event_buttonNovoAluguelActionPerformed
 
-    private void buttonAluguelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAluguelActionPerformed
-        HubAluguel dialog = new HubAluguel(this, true);
+    private void buttonFinalizarAluguelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonFinalizarAluguelActionPerformed
+        FinalizarAluguel dialog = new FinalizarAluguel(this, true);
         dialog.setLocationRelativeTo(this);
         dialog.setVisible(true);
-    }//GEN-LAST:event_buttonAluguelActionPerformed
+    }//GEN-LAST:event_buttonFinalizarAluguelActionPerformed
+
+    private void buttonPagamentoAluguelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonPagamentoAluguelActionPerformed
+        StatusPagamento dialog = new StatusPagamento(this, true);
+        dialog.setLocationRelativeTo(this);
+        dialog.setVisible(true);
+    }//GEN-LAST:event_buttonPagamentoAluguelActionPerformed
 
     /**
      * @param args the command line arguments
@@ -160,20 +172,20 @@ public class Operacoes extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Operacoes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(HubAluguel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Operacoes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(HubAluguel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Operacoes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(HubAluguel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Operacoes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(HubAluguel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                Operacoes dialog = new Operacoes(new javax.swing.JFrame(), true);
+                HubAluguel dialog = new HubAluguel(new javax.swing.JDialog(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -186,8 +198,9 @@ public class Operacoes extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton buttonAluguel;
-    private javax.swing.JButton buttonCompra;
+    private javax.swing.JButton buttonFinalizarAluguel;
+    private javax.swing.JButton buttonNovoAluguel;
+    private javax.swing.JButton buttonPagamentoAluguel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
