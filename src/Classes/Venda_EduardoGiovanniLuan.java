@@ -12,22 +12,22 @@ import java.time.LocalDate;
  */
 public class Venda_EduardoGiovanniLuan {
     private int codigoVenda;
-    private Cliente cliente;
-    private Corretor corretor;
+    private Cliente_EduardoGiovanniLuan cliente;
+    private Corretor_EduardoGiovanniLuan corretor;
     private Imovel_EduardoGiovanniLuan imovel;
     private LocalDate dataVenda;
     private float valorTotalVenda;
     private Pagamento_EduardoGiovanniLuan formaPagamento;
     private Boolean finalizada;
 
-    public Venda_EduardoGiovanniLuan(int codigoVenda, Cliente cliente, Corretor corretor, Imovel_EduardoGiovanniLuan imovel, LocalDate dataVenda, float valorTotalVenda, Pagamento_EduardoGiovanniLuan formaPagamento, Boolean finalizada) {
+    public Venda_EduardoGiovanniLuan(int codigoVenda, Cliente_EduardoGiovanniLuan cliente, Corretor_EduardoGiovanniLuan corretor, Imovel_EduardoGiovanniLuan imovel, LocalDate dataVenda, float valorTotalVenda, Pagamento_EduardoGiovanniLuan formaPagamento, Boolean finalizada) {
         this.codigoVenda = codigoVenda;
         this.cliente = cliente;
         this.corretor = corretor;
         this.imovel = imovel;
         this.dataVenda = dataVenda;
         this.valorTotalVenda = valorTotalVenda;
-        this.formaPagamento = formaPagamento
+        this.formaPagamento = formaPagamento;
         this.finalizada = false;
     }
 
@@ -39,19 +39,19 @@ public class Venda_EduardoGiovanniLuan {
         this.codigoVenda = codigoVenda;
     }
 
-    public Cliente getCliente() {
+    public Cliente_EduardoGiovanniLuan getCliente() {
         return cliente;
     }
 
-    public void setCliente(Cliente cliente) {
+    public void setCliente(Cliente_EduardoGiovanniLuan cliente) {
         this.cliente = cliente;
     }
 
-    public Corretor getCorretor() {
+    public Corretor_EduardoGiovanniLuan getCorretor() {
         return corretor;
     }
 
-    public void setCorretor(Corretor corretor) {
+    public void setCorretor(Corretor_EduardoGiovanniLuan corretor) {
         this.corretor = corretor;
     }
 

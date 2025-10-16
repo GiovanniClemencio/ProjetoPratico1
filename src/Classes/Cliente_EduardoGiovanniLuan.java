@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package trabalhopooii_eduardo;
+package Classes;
 
 /**
  *
@@ -26,9 +26,9 @@ public class Cliente_EduardoGiovanniLuan extends Usuario_EduardoGiovanniLuan
     @Override
     public String toString()
     {
-        return super.toString() + "\nCliente {" +
-                "Data de Cadastro: " + dataCadastro +
-                '}';
+        return new StringBuffer("\nCliente {")
+                .append("\nData de Cadastro: ")
+                .append(this.dataCadastro).toString();
     }
 }
 

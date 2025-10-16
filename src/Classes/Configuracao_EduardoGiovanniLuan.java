@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package trabalhopooii_eduardo;
+package Classes;
 
 /**
  *
@@ -48,14 +48,20 @@ public class Configuracao_EduardoGiovanniLuan
     @Override
     public String toString()
     {
-        return "Configuração {" +
-                "Arquivo Aluguéis: " + arquivoAlugueis +
-                ", Arquivo Vendas: " + arquivoVendas +
-                ", Arquivo Imóveis: " + arquivoImoveis +
-                ", Arquivo Clientes: " + arquivoClientes +
-                ", Arquivo Corretores: " + arquivoCorretores +
-                ", Arquivo Seguros: " + arquivoSeguros +
-                '}';
+        return new StringBuffer("\nConfiguração")
+                .append("\nAlugueis")
+                .append(this.arquivoAlugueis)
+                .append("\nVendas")
+                .append(this.arquivoVendas)
+                .append("\nImoveis")
+                .append(this.arquivoImoveis)
+                .append("\nClientes")
+                .append(this.arquivoClientes)
+                .append("\nCorretores")
+                .append(this.arquivoCorretores)
+                .append("\nSeguros")
+                .append(this.arquivoSeguros)
+                .toString();
     }
 }
 

@@ -13,8 +13,8 @@ import java.util.ArrayList;
 public class Aluguel_EduardoGiovanniLuan {
 
     private int codigoAluguel;
-    private Cliente cliente;
-    private Corretor corretor;
+    private Cliente_EduardoGiovanniLuan cliente;
+    private Corretor_EduardoGiovanniLuan corretor;
     private Imovel_EduardoGiovanniLuan imovel;
     private LocalDate dataAluguel;
     private LocalDate dataDevolucao;
@@ -25,7 +25,7 @@ public class Aluguel_EduardoGiovanniLuan {
     private Boolean finalizado;
     private Boolean pago;
 
-    public Aluguel_EduardoGiovanniLuan(int codigoAluguel, Cliente cliente, Corretor corretor, Imovel_EduardoGiovanniLuan imovel, LocalDate dataAluguel, LocalDate dataDevolucao, LocalDate dataPagamentoMensal, float valorTotalAluguel, Pagamento_EduardoGiovanniLuan formaPagamento, ArrayList<Seguro_EduardoGiovanniLuan> segurosContratados, Boolean finalizado, Boolean pago) {
+    public Aluguel_EduardoGiovanniLuan(int codigoAluguel, Cliente_EduardoGiovanniLuan cliente, Corretor_EduardoGiovanniLuan corretor, Imovel_EduardoGiovanniLuan imovel, LocalDate dataAluguel, LocalDate dataDevolucao, LocalDate dataPagamentoMensal, float valorTotalAluguel, Pagamento_EduardoGiovanniLuan formaPagamento, ArrayList<Seguro_EduardoGiovanniLuan> segurosContratados, Boolean finalizado, Boolean pago) {
         this.codigoAluguel = codigoAluguel;
         this.cliente = cliente;
         this.corretor = corretor;

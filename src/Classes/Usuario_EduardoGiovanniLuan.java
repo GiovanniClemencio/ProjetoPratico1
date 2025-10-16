@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package trabalhopooii_eduardo;
+package Classes;
 
 /**
  *
@@ -65,17 +65,24 @@ public class Usuario_EduardoGiovanniLuan
     @Override
     public String toString()
     {
-        return "Usuário {" +
-                "Código: " + codigoUsuario +
-                ", Nome: " + nome +
-                ", CPF: " + cpf +
-                ", RG: " + rg +
-                ", Data de Nascimento: " + dataNascimento +
-                ", Endereço: " + endereco +
-                ", CEP: " + cep +
-                ", Telefone: " + telefone +
-                ", Email: " + email +
-                '}';
+        return new StringBuffer("Usuário {").append("Código: ")
+                .append(codigoUsuario)
+                .append(", Nome: ")
+                .append(nome)
+                .append(", CPF: ")
+                .append(cpf)
+                .append(", RG: ")
+                .append(rg)
+                .append(", Data de Nascimento: ")
+                .append(dataNascimento)
+                .append(", Endereço: ")
+                .append(endereco)
+                .append(", CEP: ")
+                .append(cep)
+                .append(", Telefone: ")
+                .append(telefone)
+                .append(", Email: ")
+                .append(email).toString();
     }
 }
 

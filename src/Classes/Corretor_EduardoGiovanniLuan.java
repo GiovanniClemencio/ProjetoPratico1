@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package trabalhopooii_eduardo;
+package Classes;
 
 /**
  *
@@ -41,12 +41,14 @@ public class Corretor_EduardoGiovanniLuan extends Usuario_EduardoGiovanniLuan
     @Override
     public String toString()
     {
-        return super.toString() + "\nCorretor {" +
-                "CRECI: " + creci +
-                ", Salário: " + salario +
-                ", PIS: " + pis +
-                ", Data de Admissão: " + dataAdmissao +
-                '}';
+        return new StringBuffer("\nCorretor {").append("CRECI: ")
+                .append(creci)
+                .append(", Salário: ")
+                .append(salario)
+                .append(", PIS: ")
+                .append(pis)
+                .append(", Data de Admissão: ")
+                .append(dataAdmissao).toString();
     }
 }
 
