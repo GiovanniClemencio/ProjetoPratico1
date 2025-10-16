@@ -22,16 +22,16 @@ public class Imobiliaria_EduardoGiovanniLuan
     private ArrayList<Seguro_EduardoGiovanniLuan> seguros;
     private Configuracao_EduardoGiovanniLuan configuracoes;
 
-    public Imobiliaria_EduardoGiovanniLuan(String nome, String endereco, ArrayList<Aluguel_EduardoGiovanniLuan> alugueis, ArrayList<Venda_EduardoGiovanniLuan> vendas, ArrayList<Imovel_EduardoGiovanniLuan> imoveis, ArrayList<Usuario_EduardoGiovanniLuan> clientes, ArrayList<Usuario_EduardoGiovanniLuan> corretores, ArrayList<Seguro_EduardoGiovanniLuan> seguros, Configuracao_EduardoGiovanniLuan configuracoes)
+    public Imobiliaria_EduardoGiovanniLuan(String nome, String endereco,Configuracao_EduardoGiovanniLuan configuracoes)
     {
         this.nome = nome;
         this.endereco = endereco;
-        this.alugueis = alugueis;
-        this.vendas = vendas;
-        this.imoveis = imoveis;
-        this.clientes = clientes;
-        this.corretores = corretores;
-        this.seguros = seguros;
+        this.alugueis = new ArrayList<>();
+        this.vendas = new ArrayList<>();
+        this.imoveis = new ArrayList<>();
+        this.clientes = new ArrayList<>();
+        this.corretores = new ArrayList<>();
+        this.seguros = new ArrayList<>();
         this.configuracoes = configuracoes;
     }
 

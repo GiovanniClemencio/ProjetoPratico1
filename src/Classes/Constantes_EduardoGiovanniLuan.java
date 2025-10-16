@@ -14,5 +14,7 @@ public final class Constantes_EduardoGiovanniLuan {
     
     public static final String nomeImobiliaria = "Imobiliaria Virtual";
     
+    public static final String EndImobiliaria = "Rua Barramento, 10, Placa Mae";
+    
     
 }

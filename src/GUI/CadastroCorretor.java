@@ -4,6 +4,10 @@
  */
 package GUI;
 
+import static Classes.Contadores_EduardoGiovanniLuan.getCodigoUsuario;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import javax.swing.JOptionPane;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
@@ -12,14 +16,14 @@ import javax.swing.event.DocumentListener;
  * @author Portu
  */
 public class CadastroCorretor extends javax.swing.JDialog {
-    
+
     /**
      * Creates new form CadastroCorretor
      */
     public CadastroCorretor(java.awt.Dialog parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        
+
         buttonEnviar.setEnabled(false);
         addTextFieldListeners();
         verificarCampos();
@@ -477,49 +481,80 @@ public class CadastroCorretor extends javax.swing.JDialog {
         inputCRECI.setText("");
         inputPIS.setText("");
         inputSalario.setText("");
-        
+
         buttonEnviar.setEnabled(false);
     }//GEN-LAST:event_buttonResetarActionPerformed
 
     private void buttonEnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEnviarActionPerformed
-        // TODO add your handling code here:
+        int codigoUsuario = getCodigoUsuario();
+        String nome = inputNome.getText();
+        String cpf = inputCPF.getText();
+        String rg = inputRG.getText();
+        LocalDate dataNascimento;
+        try {
+            String texto = inputDataNascimento.getText();
+            DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+            dataNascimento = LocalDate.parse(texto, formato);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null,
+                    "Formato de data inválido! Use o formato dd/MM/yyyy.",
+                    "Erro",
+                    JOptionPane.ERROR_MESSAGE);
+        }
+        String rua = inputRua.getText();
+        String numero = inputNumero.getText();
+        String bairro = inputBairro.getText();
+        String cidade = inputCidade.getText();
+        String endereco = rua + ", numero " + numero + ", "+ bairro + ", " + cidade;
+        String cep = inputCEP.getText();
+        String telefone = inputTelefone.getText();
+        String email = inputEmail.getText();
+        String creci = inputCRECI.getText();
+        float salario = Float.parseFloat(inputSalario.getText());
+        String pis = inputPIS.getText();
+        LocalDate dataAdmissao = LocalDate.now();
+        
+        
+
     }//GEN-LAST:event_buttonEnviarActionPerformed
-    
-    private void verificarCampos(){
-        boolean todosPreenchidos =
-                !inputNome.getText().trim().isEmpty() && 
-                !inputCPF.getText().trim().isEmpty() && 
-                !inputRG.getText().trim().isEmpty() && 
-                !inputCEP.getText().trim().isEmpty() && 
-                !inputRua.getText().trim().isEmpty() && 
-                !inputNumero.getText().trim().isEmpty() && 
-                !inputBairro.getText().trim().isEmpty() && 
-                !inputDataNascimento.getText().trim().isEmpty() && 
-                !inputEmail.getText().trim().isEmpty() && 
-                !inputTelefone.getText().trim().isEmpty() && 
-                !inputCidade.getText().trim().isEmpty() && 
-                !inputCRECI.getText().trim().isEmpty() && 
-                !inputPIS.getText().trim().isEmpty() && 
-                !inputSalario.getText().trim().isEmpty();
+
+    private void verificarCampos() {
+        boolean todosPreenchidos
+                = !inputNome.getText().trim().isEmpty()
+                && !inputCPF.getText().trim().isEmpty()
+                && !inputRG.getText().trim().isEmpty()
+                && !inputCEP.getText().trim().isEmpty()
+                && !inputRua.getText().trim().isEmpty()
+                && !inputNumero.getText().trim().isEmpty()
+                && !inputBairro.getText().trim().isEmpty()
+                && !inputDataNascimento.getText().trim().isEmpty()
+                && !inputEmail.getText().trim().isEmpty()
+                && !inputTelefone.getText().trim().isEmpty()
+                && !inputCidade.getText().trim().isEmpty()
+                && !inputCRECI.getText().trim().isEmpty()
+                && !inputPIS.getText().trim().isEmpty()
+                && !inputSalario.getText().trim().isEmpty();
         buttonEnviar.setEnabled(todosPreenchidos);
     }
-    
-    private void addTextFieldListeners(){
-        DocumentListener listener = new DocumentListener(){
+
+    private void addTextFieldListeners() {
+        DocumentListener listener = new DocumentListener() {
             @Override
             public void insertUpdate(DocumentEvent e) {
                 verificarCampos();
             }
+
             @Override
             public void removeUpdate(DocumentEvent e) {
                 verificarCampos();
             }
+
             @Override
             public void changedUpdate(DocumentEvent e) {
                 verificarCampos();
             }
         };
-        
+
         inputNome.getDocument().addDocumentListener(listener);
         inputCPF.getDocument().addDocumentListener(listener);
         inputRG.getDocument().addDocumentListener(listener);
@@ -535,6 +570,7 @@ public class CadastroCorretor extends javax.swing.JDialog {
         inputPIS.getDocument().addDocumentListener(listener);
         inputSalario.getDocument().addDocumentListener(listener);
     }
+
     /**
      * @param args the command line arguments
      */

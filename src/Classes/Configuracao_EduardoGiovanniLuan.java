@@ -17,14 +17,14 @@ public class Configuracao_EduardoGiovanniLuan
     private String arquivoCorretores;
     private String arquivoSeguros;
 
-    public Configuracao_EduardoGiovanniLuan(String arquivoAlugueis, String arquivoVendas, String arquivoImoveis, String arquivoClientes, String arquivoCorretores, String arquivoSeguros)
+    public Configuracao_EduardoGiovanniLuan()
     {
-        this.arquivoAlugueis = arquivoAlugueis;
-        this.arquivoVendas = arquivoVendas;
-        this.arquivoImoveis = arquivoImoveis;
-        this.arquivoClientes = arquivoClientes;
-        this.arquivoCorretores = arquivoCorretores;
-        this.arquivoSeguros = arquivoSeguros;
+        this.arquivoAlugueis = "../armazenamento/arquivoAluguel.dat";
+        this.arquivoVendas = "../armazenamento/arquivoVendas.dat";
+        this.arquivoImoveis = "../armazenamento/arquivoImoveis.dat";
+        this.arquivoClientes = "../armazenamento/arquivoClientes.dat";
+        this.arquivoCorretores = "../armazenamento/arquivoCorretores.dat";
+        this.arquivoSeguros = "../armazenamento/arquivoSeguros.dat";
     }
 
     public String getArquivoAlugueis() { return arquivoAlugueis; }
