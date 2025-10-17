@@ -4,6 +4,10 @@
  */
 package GUI;
 
+import Classes.Corretor_EduardoGiovanniLuan;
+import Classes.Usuario_EduardoGiovanniLuan;
+import static GUI.Principal.nossaImobiliaria;
+
 /**
  *
  * @author Portu
@@ -16,6 +20,8 @@ public class RelatorioCorretor extends javax.swing.JDialog {
     public RelatorioCorretor(java.awt.Dialog parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        
+        preencherRelatorio();
     }
 
     /**
@@ -154,7 +160,24 @@ public class RelatorioCorretor extends javax.swing.JDialog {
             }
         });
     }
-
+    
+    private void preencherRelatorio(){
+        StringBuilder texto = new StringBuilder();
+        
+        for(Usuario_EduardoGiovanniLuan usuario : nossaImobiliaria.getCorretores()){
+            if(usuario instanceof Corretor_EduardoGiovanniLuan){
+                texto.append(usuario.toString());
+                texto.append("\n -=-=-=-=-=- \n");
+            }
+        }
+        
+        if(texto.length() == 0){
+            texto.append("Nenhum corretor cadastrado!\n");
+        }
+        
+        outputCorretor.setText(texto.toString());
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

@@ -5,6 +5,8 @@
 package GUI;
 
 import static Classes.Contadores_EduardoGiovanniLuan.getCodigoUsuario;
+import Classes.Corretor_EduardoGiovanniLuan;
+import static GUI.Principal.nossaImobiliaria;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import javax.swing.JOptionPane;
@@ -500,6 +502,7 @@ public class CadastroCorretor extends javax.swing.JDialog {
                     "Formato de data inválido! Use o formato dd/MM/yyyy.",
                     "Erro",
                     JOptionPane.ERROR_MESSAGE);
+            return;
         }
         String rua = inputRua.getText();
         String numero = inputNumero.getText();
@@ -514,8 +517,10 @@ public class CadastroCorretor extends javax.swing.JDialog {
         String pis = inputPIS.getText();
         LocalDate dataAdmissao = LocalDate.now();
         
+        Corretor_EduardoGiovanniLuan novoCorretor = new Corretor_EduardoGiovanniLuan(codigoUsuario, nome, cpf, rg, dataNascimento, endereco, cep, telefone, email, creci, salario, pis, dataAdmissao);
+        nossaImobiliaria.getCorretores().add(novoCorretor);
         
-
+        dispose();
     }//GEN-LAST:event_buttonEnviarActionPerformed
 
     private void verificarCampos() {

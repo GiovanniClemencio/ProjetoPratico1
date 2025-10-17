@@ -18,7 +18,7 @@ public class Principal {
      */
     public static Imobiliaria_EduardoGiovanniLuan nossaImobiliaria;
     
-    public void inicializar(){
+    public static void inicializar(){
         String nomeImo = "Imobiliaria Digital";
         String endereco = "Rua Barramento, 10, Parque Eletrico";
         Configuracao_EduardoGiovanniLuan caminhosArquivo = new Configuracao_EduardoGiovanniLuan();
@@ -27,6 +27,7 @@ public class Principal {
     
     public static void main(String[] args) {
         // TODO code application logic here
+        inicializar();
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 JanelaHome janela = new JanelaHome();
