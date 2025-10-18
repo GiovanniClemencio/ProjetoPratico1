@@ -9,6 +9,7 @@ import static GUI.Principal.nossaImobiliaria;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
@@ -96,6 +97,11 @@ public class StatusPagamento extends javax.swing.JDialog {
         jLabel4.setText("Contrato:");
 
         jComboBoxContratoAluguel.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "---", " " }));
+        jComboBoxContratoAluguel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxContratoAluguelActionPerformed(evt);
+            }
+        });
 
         buttonResetar.setText("RESETAR");
         buttonResetar.addActionListener(new java.awt.event.ActionListener() {
@@ -175,6 +181,12 @@ public class StatusPagamento extends javax.swing.JDialog {
                 aluguel.setPago(true);
             }
         }
+        JOptionPane.showMessageDialog(null,
+            "PAGAMENTO EFETUADO COM SUCESSO!",
+            "",
+            JOptionPane.PLAIN_MESSAGE);
+
+        dispose();
     }//GEN-LAST:event_buttonPagarActionPerformed
 
     private void buttonResetarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonResetarActionPerformed
@@ -191,7 +203,17 @@ public class StatusPagamento extends javax.swing.JDialog {
                 aluguel.setPago(false);
             }
         }
+        JOptionPane.showMessageDialog(null,
+            "ATRASO CADASTRADO COM SUCESSO!",
+            "",
+            JOptionPane.PLAIN_MESSAGE);
+
+        dispose();
     }//GEN-LAST:event_buttonAtrasoActionPerformed
+
+    private void jComboBoxContratoAluguelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxContratoAluguelActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBoxContratoAluguelActionPerformed
 
     /**
      * @param args the command line arguments

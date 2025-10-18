@@ -8,6 +8,8 @@ import Classes.Aluguel_EduardoGiovanniLuan;
 import static GUI.Principal.nossaImobiliaria;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -22,6 +24,7 @@ public class FinalizarAluguel extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         
+        preencherComboBox();
         buttonFinalizar.setEnabled(false);
         
         addComboListeners();
@@ -161,6 +164,12 @@ public class FinalizarAluguel extends javax.swing.JDialog {
         
         aluguelFinalizado.setFinalizado(true);
         aluguelFinalizado.setPago(true);
+        JOptionPane.showMessageDialog(null,
+            "CONTRATO ENCERRADO COM SUCESSO!",
+            "",
+            JOptionPane.PLAIN_MESSAGE);
+
+        dispose();
     }//GEN-LAST:event_buttonFinalizarActionPerformed
 
     private void buttonResetarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonResetarActionPerformed
@@ -231,7 +240,19 @@ public class FinalizarAluguel extends javax.swing.JDialog {
         
         jComboBoxImovel.addItemListener(comboListener);
     }
-
+    
+    private void preencherComboBox(){
+        DefaultComboBoxModel<String> modeloAluguel = new DefaultComboBoxModel<>(); // Modelo que substituirá o combobox cliente
+        modeloAluguel.addElement("---");
+        
+        for(Aluguel_EduardoGiovanniLuan aluguel : nossaImobiliaria.getAlugueis()){
+            modeloAluguel.addElement(aluguel.getImovel().getEndereco());
+        }
+        
+        jComboBoxImovel.setModel(modeloAluguel);
+        jComboBoxImovel.setSelectedIndex(0);
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonFinalizar;
     private javax.swing.JButton buttonResetar;
