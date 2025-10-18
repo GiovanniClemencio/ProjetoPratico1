@@ -10,6 +10,8 @@ import static GUI.Principal.nossaImobiliaria;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import javax.swing.JOptionPane;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 
 /**
  *
@@ -23,6 +25,10 @@ public class CadastroCliente extends javax.swing.JDialog {
     public CadastroCliente(java.awt.Dialog parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        
+        buttonEnviar.setEnabled(false);
+        addTextFieldListeners();
+        verificarCampos();
     }
 
     /**
@@ -435,6 +441,53 @@ public class CadastroCliente extends javax.swing.JDialog {
         dispose();
     }//GEN-LAST:event_buttonEnviarActionPerformed
 
+    private void verificarCampos() {
+        boolean todosPreenchidos
+                = !inputNome.getText().trim().isEmpty()
+                && !inputCPF.getText().trim().isEmpty()
+                && !inputRG.getText().trim().isEmpty()
+                && !inputCEP.getText().trim().isEmpty()
+                && !inputRua.getText().trim().isEmpty()
+                && !inputNumero.getText().trim().isEmpty()
+                && !inputBairro.getText().trim().isEmpty()
+                && !inputDataNascimento.getText().trim().isEmpty()
+                && !inputEmail.getText().trim().isEmpty()
+                && !inputTelefone.getText().trim().isEmpty()
+                && !inputCidade.getText().trim().isEmpty();
+        buttonEnviar.setEnabled(todosPreenchidos);
+    }
+
+    private void addTextFieldListeners() {
+        DocumentListener listener = new DocumentListener() {
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                verificarCampos();
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                verificarCampos();
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                verificarCampos();
+            }
+        };
+
+        inputNome.getDocument().addDocumentListener(listener);
+        inputCPF.getDocument().addDocumentListener(listener);
+        inputRG.getDocument().addDocumentListener(listener);
+        inputCEP.getDocument().addDocumentListener(listener);
+        inputRua.getDocument().addDocumentListener(listener);
+        inputNumero.getDocument().addDocumentListener(listener);
+        inputBairro.getDocument().addDocumentListener(listener);
+        inputDataNascimento.getDocument().addDocumentListener(listener);
+        inputEmail.getDocument().addDocumentListener(listener);
+        inputTelefone.getDocument().addDocumentListener(listener);
+        inputCidade.getDocument().addDocumentListener(listener);
+    }
+    
     /**
      * @param args the command line arguments
      */

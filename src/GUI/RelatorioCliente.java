@@ -164,7 +164,7 @@ public class RelatorioCliente extends javax.swing.JDialog {
     private void preencherRelatorio(){
         StringBuilder texto = new StringBuilder();
         
-        for(Usuario_EduardoGiovanniLuan usuario : nossaImobiliaria.getCorretores()){
+        for(Usuario_EduardoGiovanniLuan usuario : nossaImobiliaria.getClientes()){
             if(usuario instanceof Cliente_EduardoGiovanniLuan){
                 texto.append(usuario.toString());
                 texto.append("\n -=-=-=-=-=- \n");
