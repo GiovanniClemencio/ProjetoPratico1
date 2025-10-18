@@ -7,6 +7,7 @@ package GUI;
 import Classes.Aluguel_EduardoGiovanniLuan;
 import Classes.Imovel_EduardoGiovanniLuan;
 import static GUI.Principal.nossaImobiliaria;
+import java.util.ArrayList;
 
 /**
  *
@@ -168,6 +169,7 @@ public class RelatorioImoveisLocacao extends javax.swing.JDialog {
             for(Aluguel_EduardoGiovanniLuan aluguel: nossaImobiliaria.getAlugueis()){
                 if(aluguel.getImovel() == imovel && !aluguel.getFinalizado()){
                     // Fazer nada
+                    
                 }else{
                     if(imovel instanceof Imovel_EduardoGiovanniLuan){
                         texto.append(imovel.toString());
@@ -175,7 +177,11 @@ public class RelatorioImoveisLocacao extends javax.swing.JDialog {
                     }
                 }
             }
-            
+            ArrayList<Aluguel_EduardoGiovanniLuan> tdsAlugueis = nossaImobiliaria.getAlugueis();
+            if(tdsAlugueis.isEmpty()){
+                texto.append(imovel.toString());
+                texto.append("\n -=-=-=-=-=- \n");
+            }
         }
         
         if(texto.length() == 0){

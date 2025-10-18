@@ -7,6 +7,7 @@ package GUI;
 import Classes.Imovel_EduardoGiovanniLuan;
 import Classes.Venda_EduardoGiovanniLuan;
 import static GUI.Principal.nossaImobiliaria;
+import java.util.ArrayList;
 
 /**
  *
@@ -176,7 +177,11 @@ public class RelatorioImoveisParaVenda extends javax.swing.JDialog {
                 }
             }
             
-            
+            ArrayList<Venda_EduardoGiovanniLuan> tdsVendas = nossaImobiliaria.getVendas();
+            if(tdsVendas.isEmpty()){
+                texto.append(imovel.toString());
+                texto.append("\n -=-=-=-=-=- \n");
+            }
         }
         
         if(texto.length() == 0){
