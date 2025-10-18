@@ -29,7 +29,7 @@ public class Comercial_EduardoGiovanniLuan extends Imovel_EduardoGiovanniLuan im
 
     @Override
     public float getValorAluguel(){
-        return super.getValorAluguel()*(1+taxaImpostoFederal);
+        return super.getValorAluguel()*(1+taxaImpostoFederal/100);
     }
     
     @Override
