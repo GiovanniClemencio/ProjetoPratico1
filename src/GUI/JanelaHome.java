@@ -4,6 +4,9 @@
  */
 package GUI;
 
+import static Classes.Fechar_EduardoGiovanniLuan.salvarObjetos;
+import static GUI.Principal.nossaImobiliaria;
+
 /**
  *
  * @author Portu
@@ -33,6 +36,7 @@ public class JanelaHome extends javax.swing.JFrame {
         CadastrosButton = new javax.swing.JButton();
         VendasAluguelButton = new javax.swing.JButton();
         relatoriosButton = new javax.swing.JButton();
+        btn_Fechar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -93,6 +97,13 @@ public class JanelaHome extends javax.swing.JFrame {
             }
         });
 
+        btn_Fechar.setText("Fechar");
+        btn_Fechar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_FecharActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -110,6 +121,10 @@ public class JanelaHome extends javax.swing.JFrame {
                         .addGap(0, 17, Short.MAX_VALUE))
                     .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(158, 158, 158)
+                .addComponent(btn_Fechar)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -121,7 +136,9 @@ public class JanelaHome extends javax.swing.JFrame {
                     .addComponent(CadastrosButton, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(VendasAluguelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(relatoriosButton, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(66, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addComponent(btn_Fechar)
+                .addGap(17, 17, 17))
         );
 
         CadastrosButton.getAccessibleContext().setAccessibleName("CADASTROS-button");
@@ -164,6 +181,17 @@ public class JanelaHome extends javax.swing.JFrame {
         dialog.setVisible(true);
     }//GEN-LAST:event_VendasAluguelButtonActionPerformed
 
+    private void btn_FecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_FecharActionPerformed
+        salvarObjetos(nossaImobiliaria.getClientes(), nossaImobiliaria.getConfiguracoes().getArquivoClientes());
+        salvarObjetos(nossaImobiliaria.getCorretores(), nossaImobiliaria.getConfiguracoes().getArquivoCorretores());
+        salvarObjetos(nossaImobiliaria.getImoveis(), nossaImobiliaria.getConfiguracoes().getArquivoImoveis());
+        salvarObjetos(nossaImobiliaria.getVendas(), nossaImobiliaria.getConfiguracoes().getArquivoVendas());
+        salvarObjetos(nossaImobiliaria.getAlugueis(), nossaImobiliaria.getConfiguracoes().getArquivoAlugueis());
+        salvarObjetos(nossaImobiliaria.getSeguros(), nossaImobiliaria.getConfiguracoes().getArquivoSeguros());
+        
+        dispose();
+    }//GEN-LAST:event_btn_FecharActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -202,6 +230,7 @@ public class JanelaHome extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton CadastrosButton;
     private javax.swing.JButton VendasAluguelButton;
+    private javax.swing.JButton btn_Fechar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
