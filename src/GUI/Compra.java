@@ -525,7 +525,7 @@ public class Compra extends javax.swing.JDialog {
                 && !jComboBoxImovel.getSelectedItem().toString().equals("---");
         
         String imovelSelecionado = (String) jComboBoxImovel.getSelectedItem();
-        float valorFinal;
+        float valorFinal = 0f;
         if(imovelSelecionado.equals("---")){
             // Fazer nada
         }else{
@@ -585,7 +585,7 @@ public class Compra extends javax.swing.JDialog {
         inputNomeDoTitular.getDocument().addDocumentListener(docListener);
         inputBandeira.getDocument().addDocumentListener(docListener);
         inputNumeroCartao.getDocument().addDocumentListener(docListener);
-        inputValor.getDocument().addDocumentListener(docListener);
+        
         
         ItemListener comboListener = new ItemListener(){
             @Override
