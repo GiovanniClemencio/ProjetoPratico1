@@ -142,14 +142,15 @@
         <Component class="javax.swing.JComboBox" name="jComboBoxRelatorios">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="7">
+              <StringArray count="8">
                 <StringItem index="0" value="Todos Imoveis"/>
-                <StringItem index="1" value="Predios Residenciais"/>
-                <StringItem index="2" value="Imoveis Comerciais"/>
-                <StringItem index="3" value="Imoveis disponiveis para locacao"/>
-                <StringItem index="4" value="Imoveis alugados"/>
-                <StringItem index="5" value="Imoveis disponiveis para venda"/>
-                <StringItem index="6" value="Imoveis vendidos"/>
+                <StringItem index="1" value="Casas Residenciais"/>
+                <StringItem index="2" value="Predios Residenciais"/>
+                <StringItem index="3" value="Imoveis Comerciais"/>
+                <StringItem index="4" value="Imoveis disponiveis para locacao"/>
+                <StringItem index="5" value="Imoveis alugados"/>
+                <StringItem index="6" value="Imoveis disponiveis para venda"/>
+                <StringItem index="7" value="Imoveis vendidos"/>
               </StringArray>
             </Property>
           </Properties>

@@ -72,7 +72,7 @@ public class RelatoriosImovel extends javax.swing.JDialog {
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel2.setText("Selecione um tipo de relatório:");
 
-        jComboBoxRelatorios.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todos Imoveis", "Predios Residenciais", "Imoveis Comerciais", "Imoveis disponiveis para locacao", "Imoveis alugados", "Imoveis disponiveis para venda", "Imoveis vendidos" }));
+        jComboBoxRelatorios.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todos Imoveis", "Casas Residenciais", "Predios Residenciais", "Imoveis Comerciais", "Imoveis disponiveis para locacao", "Imoveis alugados", "Imoveis disponiveis para venda", "Imoveis vendidos" }));
         jComboBoxRelatorios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBoxRelatoriosActionPerformed(evt);
@@ -144,6 +144,11 @@ public class RelatoriosImovel extends javax.swing.JDialog {
                 RelatorioTodosImoveis dialog = new RelatorioTodosImoveis(this, true);
                 dialog.setLocationRelativeTo(this);
                 dialog.setVisible(true);
+                break;
+            case "Casas Residenciais":
+                RelatorioCasa dialog67 = new RelatorioCasa(this, true);
+                dialog67.setLocationRelativeTo(this);
+                dialog67.setVisible(true);
                 break;
             case "Predios Residenciais":
                 RelatorioPredioResidencial dialog1 = new RelatorioPredioResidencial(this, true);
