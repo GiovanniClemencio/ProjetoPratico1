@@ -3,6 +3,7 @@
  */
 package Classes;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -10,7 +11,7 @@ import java.util.ArrayList;
  *
  * @author luand
  */
-public class Aluguel_EduardoGiovanniLuan {
+public class Aluguel_EduardoGiovanniLuan implements Serializable{
 
     private int codigoAluguel;
     private Cliente_EduardoGiovanniLuan cliente;

@@ -8,9 +8,10 @@ package Classes;
  *
  * @author eduar
  */
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class Corretor_EduardoGiovanniLuan extends Usuario_EduardoGiovanniLuan
+public class Corretor_EduardoGiovanniLuan extends Usuario_EduardoGiovanniLuan implements Serializable
 {
     protected String creci;
     protected float salario;

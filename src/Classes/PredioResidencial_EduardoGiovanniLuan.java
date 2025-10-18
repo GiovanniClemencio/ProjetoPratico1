@@ -4,13 +4,14 @@
  */
 package Classes;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
 /**
  *
  * @author Luan
  */
-public class PredioResidencial_EduardoGiovanniLuan extends Imovel_EduardoGiovanniLuan{
+public class PredioResidencial_EduardoGiovanniLuan extends Imovel_EduardoGiovanniLuan implements Serializable{
     protected int andar;
     protected float valorCondominio;
 

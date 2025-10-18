@@ -4,13 +4,14 @@
  */
 package Classes;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
 /**
  *
  * @author luand
  */
-public class Venda_EduardoGiovanniLuan {
+public class Venda_EduardoGiovanniLuan implements Serializable{
     private int codigoVenda;
     private Cliente_EduardoGiovanniLuan cliente;
     private Corretor_EduardoGiovanniLuan corretor;
@@ -28,7 +29,7 @@ public class Venda_EduardoGiovanniLuan {
         this.dataVenda = dataVenda;
         this.valorTotalVenda = valorTotalVenda;
         this.formaPagamento = formaPagamento;
-        this.finalizada = false;
+        this.finalizada = finalizada;
     }
 
     public int getCodigoVenda() {

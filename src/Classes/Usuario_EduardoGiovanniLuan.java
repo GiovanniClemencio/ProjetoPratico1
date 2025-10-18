@@ -8,9 +8,10 @@ package Classes;
  *
  * @author eduar
  */
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class Usuario_EduardoGiovanniLuan
+public class Usuario_EduardoGiovanniLuan implements Serializable
 {
     protected int codigoUsuario;
     protected String nome;
@@ -34,6 +35,20 @@ public class Usuario_EduardoGiovanniLuan
         this.telefone = telefone;
         this.email = email;
     }
+    
+    public Usuario_EduardoGiovanniLuan() {
+    // Initialize fields to default values or leave them uninitialized, 
+    // depending on your class design.
+    this.codigoUsuario = 0;
+    this.nome = "";
+    this.cpf = "";
+    this.rg = "";
+    this.dataNascimento = null;
+    this.endereco = "";
+    this.cep = "";
+    this.telefone = "";
+    this.email = "";
+}
 
     public int getCodigoUsuario() { return codigoUsuario; }
     public void setCodigoUsuario(int codigoUsuario) { this.codigoUsuario = codigoUsuario; }

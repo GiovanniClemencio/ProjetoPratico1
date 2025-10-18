@@ -4,11 +4,13 @@
  */
 package Classes;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Portu
  */
-public class Seguro_EduardoGiovanniLuan {
+public class Seguro_EduardoGiovanniLuan implements Serializable{
     private int codigoSeguro;
     private String nomeSeguradora;
     private String tipo;

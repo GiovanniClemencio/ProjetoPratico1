@@ -19,12 +19,12 @@ public class Configuracao_EduardoGiovanniLuan
 
     public Configuracao_EduardoGiovanniLuan()
     {
-        this.arquivoAlugueis = "../armazenamento/arquivoAluguel.dat";
-        this.arquivoVendas = "../armazenamento/arquivoVendas.dat";
-        this.arquivoImoveis = "../armazenamento/arquivoImoveis.dat";
-        this.arquivoClientes = "../armazenamento/arquivoClientes.dat";
-        this.arquivoCorretores = "../armazenamento/arquivoCorretores.dat";
-        this.arquivoSeguros = "../armazenamento/arquivoSeguros.dat";
+        this.arquivoAlugueis = "./armazenamento/arquivoAluguel.dat";
+        this.arquivoVendas = "./armazenamento/arquivoVendas.dat";
+        this.arquivoImoveis = "./armazenamento/arquivoImoveis.dat";
+        this.arquivoClientes = "./armazenamento/arquivoClientes.dat";
+        this.arquivoCorretores = "./armazenamento/arquivoCorretores.dat";
+        this.arquivoSeguros = "./armazenamento/arquivoSeguros.dat";
     }
 
     public String getArquivoAlugueis() { return arquivoAlugueis; }

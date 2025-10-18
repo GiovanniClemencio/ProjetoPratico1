@@ -4,13 +4,14 @@
  */
 package Classes;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
 /**
  *
  * @author Luan
  */
-public class Comercial_EduardoGiovanniLuan extends Imovel_EduardoGiovanniLuan{
+public class Comercial_EduardoGiovanniLuan extends Imovel_EduardoGiovanniLuan implements Serializable{
     protected float taxaImpostoFederal;
 
     public Comercial_EduardoGiovanniLuan(float taxaImpostoFederal, int codigoImovel, String endereço, LocalDate dataConstrucao, float areaTotal, float areaConstruida, int qtdDormitorios, int qtdBanheiros, int qtdVagasGaragem, float valorIPTU, float valorVenda, float valorAluguel) {

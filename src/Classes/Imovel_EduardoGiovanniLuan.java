@@ -4,13 +4,14 @@
  */
 package Classes;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
 /**
  *
  * @author Luan
  */
-public abstract class Imovel_EduardoGiovanniLuan {
+public abstract class Imovel_EduardoGiovanniLuan implements Serializable{
 
     protected int codigoImovel;
     protected String endereço;
