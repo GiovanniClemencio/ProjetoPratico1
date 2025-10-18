@@ -15,8 +15,8 @@ public class PredioResidencial_EduardoGiovanniLuan extends Imovel_EduardoGiovann
     protected int andar;
     protected float valorCondominio;
 
-    public PredioResidencial_EduardoGiovanniLuan(int andar, float valorCondominio, int codigoImovel, String endereço, LocalDate dataConstrucao, float areaTotal, float areaConstruida, int qtdDormitorios, int qtdBanheiros, int qtdVagasGaragem, float valorIPTU, float valorVenda, float valorAluguel) {
-        super(codigoImovel, endereço, dataConstrucao, areaTotal, areaConstruida, qtdDormitorios, qtdBanheiros, qtdVagasGaragem, valorIPTU, valorVenda, valorAluguel);
+    public PredioResidencial_EduardoGiovanniLuan(int andar, float valorCondominio, int codigoImovel, String endereco, LocalDate dataConstrucao, float areaTotal, float areaConstruida, int qtdDormitorios, int qtdBanheiros, int qtdVagasGaragem, float valorIPTU, float valorVenda, float valorAluguel) {
+        super(codigoImovel, endereco, dataConstrucao, areaTotal, areaConstruida, qtdDormitorios, qtdBanheiros, qtdVagasGaragem, valorIPTU, valorVenda, valorAluguel);
         this.andar = andar;
         this.valorCondominio = valorCondominio;
     }
@@ -39,7 +39,7 @@ public class PredioResidencial_EduardoGiovanniLuan extends Imovel_EduardoGiovann
     public String toString(){
         return new StringBuilder()
             .append("Código do Imóvel: ").append(codigoImovel)
-            .append("Endereço: ").append(endereço)
+            .append("Endereço: ").append(endereco)
             .append("Data de Construção: ").append(dataConstrucao)
             .append("Área Total: ").append(areaTotal)
             .append("Área Construída: ").append(areaConstruida)

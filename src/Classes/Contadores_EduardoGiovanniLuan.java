@@ -11,7 +11,9 @@ package Classes;
 public class Contadores_EduardoGiovanniLuan {
     private static int codigoUsuario = 0;
     private static int codigoSeguro = 0;
+    private static int codigoVenda = 0;
     private static int codigoAluguel = 0;
+    private static int codigoImovel = 0;
 
     public static int getCodigoUsuario() {
         int usado = codigoUsuario;
@@ -23,8 +25,25 @@ public class Contadores_EduardoGiovanniLuan {
     public static int getCodigoSeguro() {
         int usado = codigoSeguro;
         codigoSeguro++;
-        return codigoSeguro;
+        return usado;
     }
     
+    public static int getCodigoVenda() {
+        int usado = codigoVenda;
+        codigoVenda++;
+        return usado;
+    }
+    
+    public static int getCodigoAluguel() {
+        int usado = codigoAluguel;
+        codigoAluguel++;
+        return usado;
+    }
+    
+    public static int getCodigoImovel() {
+        int usado = codigoImovel;
+        codigoImovel++;
+        return usado;
+    }
     
 }

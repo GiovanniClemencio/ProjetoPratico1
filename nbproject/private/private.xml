@@ -3,13 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Portu/Desktop/Facul/POO%202/Trabalho1/TrabalhoPratico1/src/GUI/JanelaHome.java</file>
-            <file>file:/C:/Users/Portu/Desktop/Facul/POO%202/Trabalho1/TrabalhoPratico1/src/GUI/Operacoes.java</file>
-            <file>file:/C:/Users/Portu/Desktop/Facul/POO%202/Trabalho1/TrabalhoPratico1/src/GUI/FinalizarAluguel.java</file>
+            <file>file:/C:/Users/Portu/Desktop/Facul/POO%202/Trabalho1/TrabalhoPratico1/src/GUI/CadastroCasa.java</file>
+            <file>file:/C:/Users/Portu/Desktop/Facul/POO%202/Trabalho1/TrabalhoPratico1/src/GUI/CadastroCliente.java</file>
+            <file>file:/C:/Users/Portu/Desktop/Facul/POO%202/Trabalho1/TrabalhoPratico1/src/GUI/CadastroComercial.java</file>
             <file>file:/C:/Users/Portu/Desktop/Facul/POO%202/Trabalho1/TrabalhoPratico1/src/GUI/HubAluguel.java</file>
-            <file>file:/C:/Users/Portu/Desktop/Facul/POO%202/Trabalho1/TrabalhoPratico1/src/Classes/Seguro_EduardoGiovanniLuan.java</file>
-            <file>file:/C:/Users/Portu/Desktop/Facul/POO%202/Trabalho1/TrabalhoPratico1/src/GUI/Compra.java</file>
-            <file>file:/C:/Users/Portu/Desktop/Facul/POO%202/Trabalho1/TrabalhoPratico1/src/GUI/StatusPagamento.java</file>
+            <file>file:/C:/Users/Portu/Desktop/Facul/POO%202/Trabalho1/TrabalhoPratico1/src/GUI/RelatorioAluguelFinalizado.java</file>
         </group>
     </open-files>
 </project-private>

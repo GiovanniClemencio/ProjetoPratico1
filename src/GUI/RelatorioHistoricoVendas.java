@@ -4,6 +4,9 @@
  */
 package GUI;
 
+import Classes.Venda_EduardoGiovanniLuan;
+import static GUI.Principal.nossaImobiliaria;
+
 /**
  *
  * @author Portu
@@ -16,6 +19,8 @@ public class RelatorioHistoricoVendas extends javax.swing.JDialog {
     public RelatorioHistoricoVendas(java.awt.Dialog parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        
+        preencherRelatorio();
     }
 
     /**
@@ -153,6 +158,23 @@ public class RelatorioHistoricoVendas extends javax.swing.JDialog {
                 dialog.setVisible(true);
             }
         });
+    }
+    
+    private void preencherRelatorio(){
+        StringBuilder texto = new StringBuilder();
+        
+        for(Venda_EduardoGiovanniLuan venda : nossaImobiliaria.getVendas()){
+            if(venda instanceof Venda_EduardoGiovanniLuan){
+                texto.append(venda.toString());
+                texto.append("\n -=-=-=-=-=- \n");
+            }
+        }
+        
+        if(texto.length() == 0){
+            texto.append("Nenhuma venda cadastrada!\n");
+        }
+        
+        outputHistoricoVendas.setText(texto.toString());
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -4,6 +4,9 @@
  */
 package GUI;
 
+import Classes.Seguro_EduardoGiovanniLuan;
+import static GUI.Principal.nossaImobiliaria;
+
 /**
  *
  * @author Portu
@@ -16,6 +19,8 @@ public class RelatorioSeguro extends javax.swing.JDialog {
     public RelatorioSeguro(java.awt.Dialog parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        
+        preencherRelatorio();
     }
 
     /**
@@ -153,6 +158,23 @@ public class RelatorioSeguro extends javax.swing.JDialog {
                 dialog.setVisible(true);
             }
         });
+    }
+    
+    private void preencherRelatorio(){
+        StringBuilder texto = new StringBuilder();
+        
+        for(Seguro_EduardoGiovanniLuan seguro : nossaImobiliaria.getSeguros()){
+            if(seguro instanceof Seguro_EduardoGiovanniLuan){
+                texto.append(seguro.toString());
+                texto.append("\n -=-=-=-=-=- \n");
+            }
+        }
+        
+        if(texto.length() == 0){
+            texto.append("Nenhum seguro cadastrado!\n");
+        }
+        
+        outputSeguro.setText(texto.toString());
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

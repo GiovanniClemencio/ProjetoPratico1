@@ -4,6 +4,10 @@
  */
 package GUI;
 
+import Classes.Aluguel_EduardoGiovanniLuan;
+import Classes.Imovel_EduardoGiovanniLuan;
+import static GUI.Principal.nossaImobiliaria;
+
 /**
  *
  * @author Portu
@@ -87,6 +91,11 @@ public class RelatorioAluguelMesmoCliente extends javax.swing.JDialog {
         });
 
         ButtonBuscaNomeCliente.setText("BUSCAR");
+        ButtonBuscaNomeCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonBuscaNomeClienteActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -145,6 +154,10 @@ public class RelatorioAluguelMesmoCliente extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_inputNomeDoClienteActionPerformed
 
+    private void ButtonBuscaNomeClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonBuscaNomeClienteActionPerformed
+        preencherRelatorio();
+    }//GEN-LAST:event_ButtonBuscaNomeClienteActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -185,6 +198,29 @@ public class RelatorioAluguelMesmoCliente extends javax.swing.JDialog {
                 dialog.setVisible(true);
             }
         });
+    }
+    
+    private void preencherRelatorio(){
+        StringBuilder texto = new StringBuilder();
+        Imovel_EduardoGiovanniLuan imovel;
+        for(Aluguel_EduardoGiovanniLuan aluguel : nossaImobiliaria.getAlugueis()){
+            if(aluguel.getCliente().getNome().equalsIgnoreCase(inputNomeDoCliente.getText())){
+                imovel = aluguel.getImovel();
+            }else{
+                imovel = null;
+            }
+            
+            if(imovel instanceof Imovel_EduardoGiovanniLuan){
+                texto.append(imovel.toString());
+                texto.append("\n -=-=-=-=-=- \n");
+            }
+        }
+        
+        if(texto.length() == 0){
+            texto.append("Nenhum aluguel desse cliente cadastrado!\n");
+        }
+        
+        outputAlugueisMesmoCliente.setText(texto.toString());
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

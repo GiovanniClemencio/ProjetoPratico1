@@ -7,6 +7,9 @@ package GUI;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import Classes.Contadores_EduardoGiovanniLuan;
+import Classes.Seguro_EduardoGiovanniLuan;
+import static GUI.Principal.nossaImobiliaria;
+import javax.swing.JOptionPane;
 /**
  *
  * @author Portu
@@ -255,7 +258,20 @@ public class CadastroSeguro extends javax.swing.JDialog {
     }//GEN-LAST:event_buttonResetarActionPerformed
 
     private void buttonEnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEnviarActionPerformed
-        // TODO add your handling code here:
+        int codigoSeguro = Integer.parseInt(inputCodigo.getText().replace("#",""));
+        String nomeSeguradora = inputSeguradora.getText();
+        String tipoSeguro = inputTipo.getText();
+        String descricaoSeguro = inputDescricao.getText();
+        float valorSeguro = Float.parseFloat(inputValor.getText());
+        
+        Seguro_EduardoGiovanniLuan novoSeguro = new Seguro_EduardoGiovanniLuan(codigoSeguro, nomeSeguradora, tipoSeguro, descricaoSeguro, valorSeguro);
+        nossaImobiliaria.getSeguros().add(novoSeguro);
+        JOptionPane.showMessageDialog(null,
+                    "CADASTRO EFETUADO COM SUCESSO!",
+                    "",
+                    JOptionPane.PLAIN_MESSAGE);
+        
+        dispose();
     }//GEN-LAST:event_buttonEnviarActionPerformed
     
     private void verificarCampos(){
@@ -264,7 +280,7 @@ public class CadastroSeguro extends javax.swing.JDialog {
                 !inputSeguradora.getText().trim().isEmpty() && 
                 !inputTipo.getText().trim().isEmpty() && 
                 !inputDescricao.getText().trim().isEmpty() && 
-                !inputValor.getText().trim().isEmpty(); 
+                !inputValor.getText().trim().isEmpty();
                 
         buttonEnviar.setEnabled(todosPreenchidos);
     }

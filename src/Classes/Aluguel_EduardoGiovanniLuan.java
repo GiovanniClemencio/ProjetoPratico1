@@ -41,6 +41,30 @@ public class Aluguel_EduardoGiovanniLuan implements Serializable{
         this.pago = pago;
     }
 
+    public void setFinalizado(Boolean finalizado) {
+        this.finalizado = finalizado;
+    }
+
+    public void setPago(Boolean pago) {
+        this.pago = pago;
+    }
+
+    public Imovel_EduardoGiovanniLuan getImovel() {
+        return imovel;
+    }
+
+    public Boolean getFinalizado() {
+        return finalizado;
+    }
+    
+    public Boolean getPago() {
+        return pago;
+    }
+
+    public Cliente_EduardoGiovanniLuan getCliente() {
+        return cliente;
+    }
+    
     public float calcularValorTotal() {
         float total = imovel.getValorAluguel();
 

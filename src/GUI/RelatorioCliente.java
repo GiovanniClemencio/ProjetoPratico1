@@ -4,6 +4,10 @@
  */
 package GUI;
 
+import Classes.Cliente_EduardoGiovanniLuan;
+import Classes.Usuario_EduardoGiovanniLuan;
+import static GUI.Principal.nossaImobiliaria;
+
 /**
  *
  * @author Portu
@@ -16,6 +20,8 @@ public class RelatorioCliente extends javax.swing.JDialog {
     public RelatorioCliente(java.awt.Dialog parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        
+        preencherRelatorio();
     }
 
     /**
@@ -153,6 +159,23 @@ public class RelatorioCliente extends javax.swing.JDialog {
                 dialog.setVisible(true);
             }
         });
+    }
+    
+    private void preencherRelatorio(){
+        StringBuilder texto = new StringBuilder();
+        
+        for(Usuario_EduardoGiovanniLuan usuario : nossaImobiliaria.getCorretores()){
+            if(usuario instanceof Cliente_EduardoGiovanniLuan){
+                texto.append(usuario.toString());
+                texto.append("\n -=-=-=-=-=- \n");
+            }
+        }
+        
+        if(texto.length() == 0){
+            texto.append("Nenhum cliente cadastrado!\n");
+        }
+        
+        outputCliente.setText(texto.toString());
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

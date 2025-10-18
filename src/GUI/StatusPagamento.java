@@ -4,8 +4,11 @@
  */
 package GUI;
 
+import Classes.Aluguel_EduardoGiovanniLuan;
+import static GUI.Principal.nossaImobiliaria;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
@@ -22,6 +25,7 @@ public class StatusPagamento extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         
+        preencherComboBox();
         buttonPagar.setEnabled(false);
         buttonAtraso.setEnabled(false);
         
@@ -165,7 +169,12 @@ public class StatusPagamento extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonPagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonPagarActionPerformed
-        // TODO add your handling code here:
+        String EndAluguel = (String) jComboBoxContratoAluguel.getSelectedItem();
+        for(Aluguel_EduardoGiovanniLuan aluguel : nossaImobiliaria.getAlugueis()){
+            if(aluguel.getImovel().getEndereco().equals(EndAluguel)){
+                aluguel.setPago(true);
+            }
+        }
     }//GEN-LAST:event_buttonPagarActionPerformed
 
     private void buttonResetarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonResetarActionPerformed
@@ -176,7 +185,12 @@ public class StatusPagamento extends javax.swing.JDialog {
     }//GEN-LAST:event_buttonResetarActionPerformed
 
     private void buttonAtrasoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAtrasoActionPerformed
-        // TODO add your handling code here:
+        String EndAluguel = (String) jComboBoxContratoAluguel.getSelectedItem();
+        for(Aluguel_EduardoGiovanniLuan aluguel : nossaImobiliaria.getAlugueis()){
+            if(aluguel.getImovel().getEndereco().equals(EndAluguel)){
+                aluguel.setPago(false);
+            }
+        }
     }//GEN-LAST:event_buttonAtrasoActionPerformed
 
     /**
@@ -241,6 +255,18 @@ public class StatusPagamento extends javax.swing.JDialog {
         };
         
         jComboBoxContratoAluguel.addItemListener(comboListener);
+    }
+    
+    private void preencherComboBox(){
+        DefaultComboBoxModel<String> modeloAluguel = new DefaultComboBoxModel<>(); // Modelo que substituirá o combobox cliente
+        modeloAluguel.addElement("---");
+        
+        for(Aluguel_EduardoGiovanniLuan aluguel : nossaImobiliaria.getAlugueis()){
+            modeloAluguel.addElement(aluguel.getImovel().getEndereco());
+        }
+        
+        jComboBoxContratoAluguel.setModel(modeloAluguel);
+        jComboBoxContratoAluguel.setSelectedIndex(0);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

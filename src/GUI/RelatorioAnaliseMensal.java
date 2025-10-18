@@ -4,6 +4,9 @@
  */
 package GUI;
 
+import Classes.Venda_EduardoGiovanniLuan;
+import static GUI.Principal.nossaImobiliaria;
+
 /**
  *
  * @author Portu
@@ -80,6 +83,11 @@ public class RelatorioAnaliseMensal extends javax.swing.JDialog {
         jLabel3.setText("Selecione a data:");
 
         jComboBoxData.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Janeiro", "Fevereiro", "Marco", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro" }));
+        jComboBoxData.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxDataActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -131,6 +139,10 @@ public class RelatorioAnaliseMensal extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jComboBoxDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxDataActionPerformed
+        preencherRelatorio();
+    }//GEN-LAST:event_jComboBoxDataActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -171,6 +183,30 @@ public class RelatorioAnaliseMensal extends javax.swing.JDialog {
                 dialog.setVisible(true);
             }
         });
+    }
+    
+    private void preencherRelatorio(){
+        int mes = jComboBoxData.getSelectedIndex();
+        mes++;
+        StringBuilder texto = new StringBuilder();
+        
+        float ganhos = 0;
+        for(Venda_EduardoGiovanniLuan venda : nossaImobiliaria.getVendas()){
+            if(venda instanceof Venda_EduardoGiovanniLuan && venda.getDataVenda().getMonthValue() == mes){
+                texto.append(venda.toString());
+                texto.append("\n -=-=-=-=-=- \n");
+                ganhos = ganhos + venda.getValorTotalVenda();
+            }
+        }
+        texto.append("Ganhos do mes selecionado: ");
+        texto.append(ganhos);
+        texto.append("\n");
+        
+        if(texto.length() == 0){
+            texto.append("Nenhum aluguel finalizado cadastrado!\n");
+        }
+        
+        outputAnaliseMensal.setText(texto.toString());
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

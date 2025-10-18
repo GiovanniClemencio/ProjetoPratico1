@@ -4,6 +4,10 @@
  */
 package GUI;
 
+import Classes.Imovel_EduardoGiovanniLuan;
+import Classes.PredioResidencial_EduardoGiovanniLuan;
+import static GUI.Principal.nossaImobiliaria;
+
 /**
  *
  * @author Portu
@@ -16,6 +20,8 @@ public class RelatorioPredioResidencial extends javax.swing.JDialog {
     public RelatorioPredioResidencial(java.awt.Dialog parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        
+        preencherRelatorio();
     }
 
     /**
@@ -153,6 +159,23 @@ public class RelatorioPredioResidencial extends javax.swing.JDialog {
                 dialog.setVisible(true);
             }
         });
+    }
+    
+    private void preencherRelatorio(){
+        StringBuilder texto = new StringBuilder();
+        
+        for(Imovel_EduardoGiovanniLuan imovel : nossaImobiliaria.getImoveis()){
+            if(imovel instanceof PredioResidencial_EduardoGiovanniLuan){
+                texto.append(imovel.toString());
+                texto.append("\n -=-=-=-=-=- \n");
+            }
+        }
+        
+        if(texto.length() == 0){
+            texto.append("Nenhum Predio residencial cadastrado!\n");
+        }
+        
+        outputPredioResidencial.setText(texto.toString());
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

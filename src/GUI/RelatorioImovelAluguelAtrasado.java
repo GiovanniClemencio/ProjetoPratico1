@@ -4,6 +4,9 @@
  */
 package GUI;
 
+import Classes.Aluguel_EduardoGiovanniLuan;
+import static GUI.Principal.nossaImobiliaria;
+
 /**
  *
  * @author Portu
@@ -16,6 +19,8 @@ public class RelatorioImovelAluguelAtrasado extends javax.swing.JDialog {
     public RelatorioImovelAluguelAtrasado(java.awt.Dialog parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        
+        preencherRelatorio();
     }
 
     /**
@@ -155,7 +160,24 @@ public class RelatorioImovelAluguelAtrasado extends javax.swing.JDialog {
             }
         });
     }
-
+    
+    private void preencherRelatorio(){
+        StringBuilder texto = new StringBuilder();
+        
+        for(Aluguel_EduardoGiovanniLuan aluguel : nossaImobiliaria.getAlugueis()){
+            if(aluguel instanceof Aluguel_EduardoGiovanniLuan && !aluguel.getPago()){
+                texto.append(aluguel.toString());
+                texto.append("\n -=-=-=-=-=- \n");
+            }
+        }
+        
+        if(texto.length() == 0){
+            texto.append("Nenhum imovel com aluguel atrasado cadastrado!\n");
+        }
+        
+        outputImovelAluguelAtrasado.setText(texto.toString());
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

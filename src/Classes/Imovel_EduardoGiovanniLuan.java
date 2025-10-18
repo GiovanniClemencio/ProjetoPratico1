@@ -14,7 +14,7 @@ import java.time.LocalDate;
 public abstract class Imovel_EduardoGiovanniLuan implements Serializable{
 
     protected int codigoImovel;
-    protected String endereço;
+    protected String endereco;
     protected LocalDate dataConstrucao;
     protected float areaTotal;
     protected float areaConstruida;
@@ -25,9 +25,9 @@ public abstract class Imovel_EduardoGiovanniLuan implements Serializable{
     protected float valorVenda;
     protected float valorAluguel;
 
-    public Imovel_EduardoGiovanniLuan(int codigoImovel, String endereço, LocalDate dataConstrucao, float areaTotal, float areaConstruida, int qtdDormitorios, int qtdBanheiros, int qtdVagasGaragem, float valorIPTU, float valorVenda, float valorAluguel) {
+    public Imovel_EduardoGiovanniLuan(int codigoImovel, String endereco, LocalDate dataConstrucao, float areaTotal, float areaConstruida, int qtdDormitorios, int qtdBanheiros, int qtdVagasGaragem, float valorIPTU, float valorVenda, float valorAluguel) {
         this.codigoImovel = codigoImovel;
-        this.endereço = endereço;
+        this.endereco = endereco;
         this.dataConstrucao = dataConstrucao;
         this.areaTotal = areaTotal;
         this.areaConstruida = areaConstruida;
@@ -47,12 +47,12 @@ public abstract class Imovel_EduardoGiovanniLuan implements Serializable{
         this.codigoImovel = codigoImovel;
     }
 
-    public String getEndereço() {
-        return endereço;
+    public String getEndereco() {
+        return endereco;
     }
 
     public void setEndereço(String endereço) {
-        this.endereço = endereço;
+        this.endereco = endereço;
     }
 
     public LocalDate getDataConstrucao() {
@@ -131,7 +131,7 @@ public abstract class Imovel_EduardoGiovanniLuan implements Serializable{
     public String toString(){
         return new StringBuilder()
             .append("Código do Imóvel: ").append(codigoImovel)
-            .append("Endereço: ").append(endereço)
+            .append("Endereco: ").append(endereco)
             .append("Data de Construção: ").append(dataConstrucao)
             .append("Área Total: ").append(areaTotal)
             .append("Área Construída: ").append(areaConstruida)

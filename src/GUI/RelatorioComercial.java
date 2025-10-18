@@ -4,6 +4,10 @@
  */
 package GUI;
 
+import Classes.Comercial_EduardoGiovanniLuan;
+import Classes.Imovel_EduardoGiovanniLuan;
+import static GUI.Principal.nossaImobiliaria;
+
 /**
  *
  * @author Portu
@@ -16,6 +20,8 @@ public class RelatorioComercial extends javax.swing.JDialog {
     public RelatorioComercial(java.awt.Dialog parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        
+        preencherRelatorio();
     }
 
     /**
@@ -153,6 +159,23 @@ public class RelatorioComercial extends javax.swing.JDialog {
                 dialog.setVisible(true);
             }
         });
+    }
+    
+    private void preencherRelatorio(){
+        StringBuilder texto = new StringBuilder();
+        
+        for(Imovel_EduardoGiovanniLuan imovel : nossaImobiliaria.getImoveis()){
+            if(imovel instanceof Comercial_EduardoGiovanniLuan){
+                texto.append(imovel.toString());
+                texto.append("\n -=-=-=-=-=- \n");
+            }
+        }
+        
+        if(texto.length() == 0){
+            texto.append("Nenhum Imovel comercial cadastrado!\n");
+        }
+        
+        outputComercial.setText(texto.toString());
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

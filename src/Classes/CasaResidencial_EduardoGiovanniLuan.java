@@ -21,7 +21,7 @@ public class CasaResidencial_EduardoGiovanniLuan extends Imovel_EduardoGiovanniL
     public String toString(){
         return new StringBuilder()
             .append("Código do Imóvel: ").append(codigoImovel)
-            .append("Endereço: ").append(endereço)
+            .append("Endereço: ").append(endereco)
             .append("Data de Construção: ").append(dataConstrucao)
             .append("Área Total: ").append(areaTotal)
             .append("Área Construída: ").append(areaConstruida)

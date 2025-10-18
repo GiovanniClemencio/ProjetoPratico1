@@ -4,6 +4,8 @@
  */
 package GUI;
 
+import Classes.Aluguel_EduardoGiovanniLuan;
+import static GUI.Principal.nossaImobiliaria;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 
@@ -40,10 +42,6 @@ public class FinalizarAluguel extends javax.swing.JDialog {
         jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         buttonFinalizar = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
-        jComboBoxCliente = new javax.swing.JComboBox<>();
-        jLabel3 = new javax.swing.JLabel();
-        jComboBoxCorretor = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
         jComboBoxImovel = new javax.swing.JComboBox<>();
         buttonResetar = new javax.swing.JButton();
@@ -88,16 +86,6 @@ public class FinalizarAluguel extends javax.swing.JDialog {
             }
         });
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel2.setText("Cliente: ");
-
-        jComboBoxCliente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "---", " " }));
-
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel3.setText("Corretor: ");
-
-        jComboBoxCorretor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "---", " " }));
-
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel4.setText("Imóvel: ");
 
@@ -114,49 +102,33 @@ public class FinalizarAluguel extends javax.swing.JDialog {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jComboBoxCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jComboBoxCorretor, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jComboBoxImovel, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jComboBoxImovel, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(64, 64, 64)
+                        .addGap(45, 45, 45)
                         .addComponent(buttonResetar, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(buttonFinalizar, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(38, 38, 38)))
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addGap(18, 18, 18))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBoxCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBoxCorretor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(21, 21, 21)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jComboBoxImovel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(buttonFinalizar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(buttonResetar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20))
+                .addGap(52, 52, 52))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -178,12 +150,20 @@ public class FinalizarAluguel extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonFinalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonFinalizarActionPerformed
-        // TODO add your handling code here:
+        String EndImovel = (String) jComboBoxImovel.getSelectedItem();
+        Aluguel_EduardoGiovanniLuan aluguelFinalizado = null;
+        for(Aluguel_EduardoGiovanniLuan aluguel: nossaImobiliaria.getAlugueis()){
+            if(aluguel.getImovel().getEndereco().equals(EndImovel)){
+                aluguelFinalizado = aluguel;
+                break;
+            }
+        }
+        
+        aluguelFinalizado.setFinalizado(true);
+        aluguelFinalizado.setPago(true);
     }//GEN-LAST:event_buttonFinalizarActionPerformed
 
     private void buttonResetarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonResetarActionPerformed
-        jComboBoxCliente.setSelectedIndex(0);
-        jComboBoxCorretor.setSelectedIndex(0);
         jComboBoxImovel.setSelectedIndex(0);
 
         buttonFinalizar.setEnabled(false);
@@ -233,11 +213,7 @@ public class FinalizarAluguel extends javax.swing.JDialog {
     
     private void verificarCampos(){
         boolean todosPreenchidos = 
-                jComboBoxCliente.getSelectedItem() != null
-                && !jComboBoxCliente.getSelectedItem().toString().equals("---")
-                && jComboBoxCorretor.getSelectedItem() != null
-                && !jComboBoxCorretor.getSelectedItem().toString().equals("---")
-                && jComboBoxImovel.getSelectedItem() != null
+                jComboBoxImovel.getSelectedItem() != null
                 && !jComboBoxImovel.getSelectedItem().toString().equals("---");
         
         buttonFinalizar.setEnabled(todosPreenchidos);
@@ -253,20 +229,14 @@ public class FinalizarAluguel extends javax.swing.JDialog {
             }
         };
         
-        jComboBoxCliente.addItemListener(comboListener);
-        jComboBoxCorretor.addItemListener(comboListener);
         jComboBoxImovel.addItemListener(comboListener);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonFinalizar;
     private javax.swing.JButton buttonResetar;
-    private javax.swing.JComboBox<String> jComboBoxCliente;
-    private javax.swing.JComboBox<String> jComboBoxCorretor;
     private javax.swing.JComboBox<String> jComboBoxImovel;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;

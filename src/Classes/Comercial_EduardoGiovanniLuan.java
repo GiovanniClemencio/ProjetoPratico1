@@ -14,8 +14,8 @@ import java.time.LocalDate;
 public class Comercial_EduardoGiovanniLuan extends Imovel_EduardoGiovanniLuan implements Serializable{
     protected float taxaImpostoFederal;
 
-    public Comercial_EduardoGiovanniLuan(float taxaImpostoFederal, int codigoImovel, String endereço, LocalDate dataConstrucao, float areaTotal, float areaConstruida, int qtdDormitorios, int qtdBanheiros, int qtdVagasGaragem, float valorIPTU, float valorVenda, float valorAluguel) {
-        super(codigoImovel, endereço, dataConstrucao, areaTotal, areaConstruida, qtdDormitorios, qtdBanheiros, qtdVagasGaragem, valorIPTU, valorVenda, valorAluguel);
+    public Comercial_EduardoGiovanniLuan(float taxaImpostoFederal, int codigoImovel, String endereco, LocalDate dataConstrucao, float areaTotal, float areaConstruida, int qtdDormitorios, int qtdBanheiros, int qtdVagasGaragem, float valorIPTU, float valorVenda, float valorAluguel) {
+        super(codigoImovel, endereco, dataConstrucao, areaTotal, areaConstruida, qtdDormitorios, qtdBanheiros, qtdVagasGaragem, valorIPTU, valorVenda, valorAluguel);
         this.taxaImpostoFederal = taxaImpostoFederal;
     }
 
@@ -36,7 +36,7 @@ public class Comercial_EduardoGiovanniLuan extends Imovel_EduardoGiovanniLuan im
     public String toString(){
         return new StringBuilder()
             .append("Código do Imóvel: ").append(codigoImovel)
-            .append("Endereço: ").append(endereço)
+            .append("Endereço: ").append(endereco)
             .append("Data de Construção: ").append(dataConstrucao)
             .append("Área Total: ").append(areaTotal)
             .append("Área Construída: ").append(areaConstruida)

@@ -4,8 +4,25 @@
  */
 package GUI;
 
+import Classes.Cartao_EduardoGiovanniLuan;
+import Classes.Cliente_EduardoGiovanniLuan;
+import Classes.Comercial_EduardoGiovanniLuan;
+import static Classes.Contadores_EduardoGiovanniLuan.getCodigoVenda;
+import Classes.Corretor_EduardoGiovanniLuan;
+import Classes.Dinheiro_EduardoGiovanniLuan;
+import Classes.Imovel_EduardoGiovanniLuan;
+import Classes.Pagamento_EduardoGiovanniLuan;
+import Classes.PredioResidencial_EduardoGiovanniLuan;
+import Classes.Usuario_EduardoGiovanniLuan;
+import Classes.Venda_EduardoGiovanniLuan;
+import static GUI.Principal.nossaImobiliaria;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
@@ -21,6 +38,8 @@ public class Compra extends javax.swing.JDialog {
     public Compra(java.awt.Dialog parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        
+        preencherComboBox();
         
         buttonEnviar.setEnabled(false);
         
@@ -61,6 +80,9 @@ public class Compra extends javax.swing.JDialog {
         jLabel9 = new javax.swing.JLabel();
         inputNumeroCartao = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
+        inputDataVenda = new javax.swing.JTextField();
+        jLabel11 = new javax.swing.JLabel();
+        jCheckBoxFinalizada = new javax.swing.JCheckBox();
 
         jLabel6.setText("jLabel6");
 
@@ -84,7 +106,7 @@ public class Compra extends javax.swing.JDialog {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(44, 44, 44)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(51, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -115,6 +137,11 @@ public class Compra extends javax.swing.JDialog {
         jLabel2.setText("Cliente: ");
 
         jComboBoxCliente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "---", " " }));
+        jComboBoxCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxClienteActionPerformed(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel3.setText("Corretor: ");
@@ -128,6 +155,13 @@ public class Compra extends javax.swing.JDialog {
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel5.setText("Valor da compra: ");
+
+        inputValor.setEditable(false);
+        inputValor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                inputValorActionPerformed(evt);
+            }
+        });
 
         jComboBoxTipoPagamento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Dinheiro", "Cartao" }));
         jComboBoxTipoPagamento.addActionListener(new java.awt.event.ActionListener() {
@@ -144,6 +178,11 @@ public class Compra extends javax.swing.JDialog {
 
         inputNomeDoTitular.setText("---");
         inputNomeDoTitular.setEnabled(false);
+        inputNomeDoTitular.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                inputNomeDoTitularActionPerformed(evt);
+            }
+        });
 
         inputBandeira.setText("---");
         inputBandeira.setEnabled(false);
@@ -157,58 +196,84 @@ public class Compra extends javax.swing.JDialog {
         jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel10.setText("Número:");
 
+        inputDataVenda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                inputDataVendaActionPerformed(evt);
+            }
+        });
+
+        jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel11.setText("Data de venda:");
+
+        jCheckBoxFinalizada.setText("Compra Finalizada?");
+        jCheckBoxFinalizada.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBoxFinalizadaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(51, 51, 51)
-                .addComponent(buttonResetar, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(buttonEnviar, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(57, 57, 57))
             .addComponent(jSeparator1)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(inputNomeDoTitular, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(51, 51, 51)
+                        .addComponent(buttonResetar, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(buttonEnviar, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(57, 57, 57))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(15, 15, 15)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(jLabel7)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(jComboBoxTipoPagamento, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(jLabel9)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(inputBandeira, javax.swing.GroupLayout.DEFAULT_SIZE, 287, Short.MAX_VALUE))
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(jLabel10)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(inputNumeroCartao)))
+                            .addComponent(jLabel8)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(19, 19, 19)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel5)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(inputValor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel11)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(inputDataVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jComboBoxCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(jLabel3)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jComboBoxCorretor, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(jComboBoxCorretor, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(27, 27, 27)
                                 .addComponent(jLabel4)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jComboBoxImovel, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(inputValor, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(73, 73, 73))))
+                                .addComponent(jComboBoxImovel, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(15, 15, 15)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel8)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(inputNomeDoTitular, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel7)
-                                .addGap(18, 18, 18)
-                                .addComponent(jComboBoxTipoPagamento, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel9)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(inputBandeira))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel10)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(inputNumeroCartao)))))
+                        .addGap(142, 142, 142)
+                        .addComponent(jCheckBoxFinalizada, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -227,8 +292,10 @@ public class Compra extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(inputValor, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(2, 2, 2)
+                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(inputDataVenda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(inputValor, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -242,11 +309,13 @@ public class Compra extends javax.swing.JDialog {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(inputBandeira, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(inputNumeroCartao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jCheckBoxFinalizada, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(buttonResetar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(buttonEnviar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -276,6 +345,7 @@ public class Compra extends javax.swing.JDialog {
         jComboBoxCorretor.setSelectedIndex(0);
         jComboBoxImovel.setSelectedIndex(0);
         inputValor.setText("");
+        inputDataVenda.setText("");
         
         jComboBoxTipoPagamento.setSelectedIndex(0);
         inputNomeDoTitular.setText("");
@@ -286,7 +356,77 @@ public class Compra extends javax.swing.JDialog {
     }//GEN-LAST:event_buttonResetarActionPerformed
 
     private void buttonEnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEnviarActionPerformed
-        // TODO add your handling code here:
+        int codigoVenda = getCodigoVenda();
+        String clienteNome = (String) jComboBoxCliente.getSelectedItem();
+        Cliente_EduardoGiovanniLuan clienteComprador = null;
+        for(Usuario_EduardoGiovanniLuan usuario: nossaImobiliaria.getClientes()){
+            if(usuario instanceof Cliente_EduardoGiovanniLuan){
+                Cliente_EduardoGiovanniLuan cliente = (Cliente_EduardoGiovanniLuan) usuario;
+                if(cliente.getNome().equals(clienteNome)){
+                    clienteComprador = cliente;
+                    break;
+                }
+            }
+            
+            
+        }
+        
+        String corretorNome = (String) jComboBoxCorretor.getSelectedItem();
+        Corretor_EduardoGiovanniLuan vendedor = null;
+        for(Usuario_EduardoGiovanniLuan usuario: nossaImobiliaria.getCorretores()){
+            if(usuario instanceof Corretor_EduardoGiovanniLuan){
+                Corretor_EduardoGiovanniLuan corretor = (Corretor_EduardoGiovanniLuan) usuario;
+                if(corretor.getNome().equals(corretorNome)){
+                    vendedor = corretor;
+                    break;
+                }
+            }
+        }
+        
+        String imovelEndereco = (String) jComboBoxImovel.getSelectedItem();
+        Imovel_EduardoGiovanniLuan imovelVendido = null;
+        for(Imovel_EduardoGiovanniLuan imovel: nossaImobiliaria.getImoveis()){
+            if(imovel.getEndereco().equals(imovelEndereco)){
+                imovelVendido = imovel;
+                break;
+            }
+        }
+        
+        LocalDate dataVenda;
+        try {
+            String texto = inputDataVenda.getText();
+            DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+            dataVenda = LocalDate.parse(texto, formato);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null,
+                    "Formato de data inválido! Use o formato dd/MM/yyyy.",
+                    "Erro",
+                    JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        float valor = Float.parseFloat(inputValor.getText());
+        String tipoPagamento = (String) jComboBoxTipoPagamento.getSelectedItem();
+        Pagamento_EduardoGiovanniLuan metodoPagamento = null;
+        if(tipoPagamento.equals("Dinheiro")){
+            metodoPagamento = new Dinheiro_EduardoGiovanniLuan();
+        }else{
+            String nomeCartao = inputNomeDoTitular.getText();
+            String bandeiraCartao = inputBandeira.getText();
+            String numeroCartao = inputNumeroCartao.getText();
+            
+            metodoPagamento = new Cartao_EduardoGiovanniLuan(nomeCartao, bandeiraCartao, numeroCartao);
+        }
+            
+        Boolean finalizada = jCheckBoxFinalizada.isSelected();
+        
+        Venda_EduardoGiovanniLuan novaVenda = new Venda_EduardoGiovanniLuan(codigoVenda, clienteComprador, vendedor, imovelVendido, dataVenda, valor, metodoPagamento, finalizada);
+        nossaImobiliaria.getVendas().add(novaVenda);
+        JOptionPane.showMessageDialog(null,
+                    "CADASTRO EFETUADO COM SUCESSO!",
+                    "",
+                    JOptionPane.PLAIN_MESSAGE);
+        
+        dispose();
     }//GEN-LAST:event_buttonEnviarActionPerformed
 
     private void jComboBoxTipoPagamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxTipoPagamentoActionPerformed
@@ -312,6 +452,26 @@ public class Compra extends javax.swing.JDialog {
         
         verificarCampos();
     }//GEN-LAST:event_jComboBoxTipoPagamentoActionPerformed
+
+    private void inputValorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputValorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_inputValorActionPerformed
+
+    private void inputDataVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputDataVendaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_inputDataVendaActionPerformed
+
+    private void jCheckBoxFinalizadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxFinalizadaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCheckBoxFinalizadaActionPerformed
+
+    private void jComboBoxClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxClienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBoxClienteActionPerformed
+
+    private void inputNomeDoTitularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputNomeDoTitularActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_inputNomeDoTitularActionPerformed
 
     /**
      * @param args the command line arguments
@@ -364,8 +524,39 @@ public class Compra extends javax.swing.JDialog {
                 && jComboBoxImovel.getSelectedItem() != null
                 && !jComboBoxImovel.getSelectedItem().toString().equals("---");
         
+        String imovelSelecionado = (String) jComboBoxImovel.getSelectedItem();
+        float valorFinal;
+        if(imovelSelecionado.equals("---")){
+            // Fazer nada
+        }else{
+            ArrayList<Imovel_EduardoGiovanniLuan> listaImoveis = nossaImobiliaria.getImoveis();
+            Imovel_EduardoGiovanniLuan imovelEncontrado = null;
+            
+            for(Imovel_EduardoGiovanniLuan imovel : listaImoveis){
+                if(imovel.getEndereco().equals(imovelSelecionado)){
+                    imovelEncontrado = imovel;
+                    break;
+                }
+            }
+            
+            if(imovelEncontrado != null){
+                valorFinal = imovelEncontrado.getValorVenda();
+                if(imovelEncontrado instanceof PredioResidencial_EduardoGiovanniLuan){
+                    PredioResidencial_EduardoGiovanniLuan predio = (PredioResidencial_EduardoGiovanniLuan) imovelEncontrado;
+                    valorFinal = valorFinal + predio.getValorCondominio();
+                }
+                
+                if(imovelEncontrado instanceof Comercial_EduardoGiovanniLuan){
+                    Comercial_EduardoGiovanniLuan comercial = (Comercial_EduardoGiovanniLuan) imovelEncontrado;
+                    valorFinal = valorFinal + (valorFinal * comercial.getTaxaImpostoFederal());
+                }
+                inputValor.setText(String.valueOf(valorFinal));
+            }
+        }
+        
         boolean valoresSelecionados = 
                 !inputValor.getText().trim().isEmpty() &&
+                !inputDataVenda.getText().trim().isEmpty() &&
                 !inputNomeDoTitular.getText().trim().isEmpty() &&
                 !inputBandeira.getText().trim().isEmpty() &&
                 !inputNumeroCartao.getText().trim().isEmpty();
@@ -410,19 +601,54 @@ public class Compra extends javax.swing.JDialog {
         jComboBoxImovel.addItemListener(comboListener);
     }
     
+    private void preencherComboBox(){
+        DefaultComboBoxModel<String> modeloCliente = new DefaultComboBoxModel<>(); // Modelo que substituirá o combobox cliente
+        modeloCliente.addElement("---");
+        
+        for(Usuario_EduardoGiovanniLuan cliente : nossaImobiliaria.getClientes()){
+            modeloCliente.addElement(cliente.getNome());
+        }
+        
+        jComboBoxCliente.setModel(modeloCliente);
+        jComboBoxCliente.setSelectedIndex(0);
+        
+        DefaultComboBoxModel<String> modeloCorretor = new DefaultComboBoxModel<>(); // Modelo que substituirá o combobox corretor
+        modeloCorretor.addElement("---");
+        
+        for(Usuario_EduardoGiovanniLuan corretor : nossaImobiliaria.getCorretores()){
+            modeloCorretor.addElement(corretor.getNome());
+        }
+        
+        jComboBoxCorretor.setModel(modeloCorretor);
+        jComboBoxCorretor.setSelectedIndex(0);
+        
+        DefaultComboBoxModel<String> modeloImovel = new DefaultComboBoxModel<>(); // Modelo que substituirá o combobox imovel
+        modeloImovel.addElement("---");
+        
+        for(Imovel_EduardoGiovanniLuan imovel : nossaImobiliaria.getImoveis()){
+            modeloImovel.addElement(imovel.getEndereco());
+        }
+        
+        jComboBoxImovel.setModel(modeloImovel);
+        jComboBoxImovel.setSelectedIndex(0);
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonEnviar;
     private javax.swing.JButton buttonResetar;
     private javax.swing.JTextField inputBandeira;
+    private javax.swing.JTextField inputDataVenda;
     private javax.swing.JTextField inputNomeDoTitular;
     private javax.swing.JTextField inputNumeroCartao;
     private javax.swing.JTextField inputValor;
+    private javax.swing.JCheckBox jCheckBoxFinalizada;
     private javax.swing.JComboBox<String> jComboBoxCliente;
     private javax.swing.JComboBox<String> jComboBoxCorretor;
     private javax.swing.JComboBox<String> jComboBoxImovel;
     private javax.swing.JComboBox<String> jComboBoxTipoPagamento;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

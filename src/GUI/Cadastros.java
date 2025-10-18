@@ -82,12 +82,32 @@ public class Cadastros extends javax.swing.JDialog {
         });
 
         cadastroClienteButton.setText("Cadastro de Cliente");
+        cadastroClienteButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cadastroClienteButtonActionPerformed(evt);
+            }
+        });
 
         cadastroCasaButton.setText("Cadastro de Casa Residencial");
+        cadastroCasaButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cadastroCasaButtonActionPerformed(evt);
+            }
+        });
 
         cadastroPredioButton.setText("Cadastro de Prédio Residencial");
+        cadastroPredioButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cadastroPredioButtonActionPerformed(evt);
+            }
+        });
 
         cadastroComercialButton.setText("Cadastro de Imóvel Comercial");
+        cadastroComercialButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cadastroComercialButtonActionPerformed(evt);
+            }
+        });
 
         cadastroSeguro.setText("Cadastro de Pacote de Seguro");
         cadastroSeguro.addActionListener(new java.awt.event.ActionListener() {
@@ -172,6 +192,30 @@ public class Cadastros extends javax.swing.JDialog {
         dialog.setLocationRelativeTo(this);
         dialog.setVisible(true);
     }//GEN-LAST:event_cadastroSeguroActionPerformed
+
+    private void cadastroClienteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastroClienteButtonActionPerformed
+        CadastroCliente dialog = new CadastroCliente(this, true);
+        dialog.setLocationRelativeTo(this);
+        dialog.setVisible(true);
+    }//GEN-LAST:event_cadastroClienteButtonActionPerformed
+
+    private void cadastroCasaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastroCasaButtonActionPerformed
+        CadastroCasa dialog = new CadastroCasa(this, true);
+        dialog.setLocationRelativeTo(this);
+        dialog.setVisible(true);
+    }//GEN-LAST:event_cadastroCasaButtonActionPerformed
+
+    private void cadastroPredioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastroPredioButtonActionPerformed
+        CadastroPredio dialog = new CadastroPredio(this, true);
+        dialog.setLocationRelativeTo(this);
+        dialog.setVisible(true);
+    }//GEN-LAST:event_cadastroPredioButtonActionPerformed
+
+    private void cadastroComercialButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastroComercialButtonActionPerformed
+        CadastroComercial dialog = new CadastroComercial(this, true);
+        dialog.setLocationRelativeTo(this);
+        dialog.setVisible(true);
+    }//GEN-LAST:event_cadastroComercialButtonActionPerformed
 
     /**
      * @param args the command line arguments

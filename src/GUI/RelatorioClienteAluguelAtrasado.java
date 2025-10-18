@@ -4,6 +4,10 @@
  */
 package GUI;
 
+import Classes.Aluguel_EduardoGiovanniLuan;
+import Classes.Cliente_EduardoGiovanniLuan;
+import static GUI.Principal.nossaImobiliaria;
+
 /**
  *
  * @author Portu
@@ -16,6 +20,8 @@ public class RelatorioClienteAluguelAtrasado extends javax.swing.JDialog {
     public RelatorioClienteAluguelAtrasado(java.awt.Dialog parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        
+        preencherRelatorio();
     }
 
     /**
@@ -153,6 +159,26 @@ public class RelatorioClienteAluguelAtrasado extends javax.swing.JDialog {
                 dialog.setVisible(true);
             }
         });
+    }
+    
+    private void preencherRelatorio(){
+        StringBuilder texto = new StringBuilder();
+        
+        for(Aluguel_EduardoGiovanniLuan aluguel : nossaImobiliaria.getAlugueis()){
+            if(!aluguel.getPago()){
+                Cliente_EduardoGiovanniLuan cliente = aluguel.getCliente();
+                if(cliente instanceof Cliente_EduardoGiovanniLuan){
+                    texto.append(cliente.toString());
+                    texto.append("\n -=-=-=-=-=- \n");
+                }
+            }
+        }
+        
+        if(texto.length() == 0){
+            texto.append("Nenhum cliente com aluguel atrasado cadastrado!\n");
+        }
+        
+        outputClienteAluguelAtrasado.setText(texto.toString());
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -4,6 +4,9 @@
  */
 package GUI;
 
+import Classes.Aluguel_EduardoGiovanniLuan;
+import static GUI.Principal.nossaImobiliaria;
+
 /**
  *
  * @author Portu
@@ -16,6 +19,8 @@ public class RelatorioImoveisAlugados extends javax.swing.JDialog {
     public RelatorioImoveisAlugados(java.awt.Dialog parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        
+        preencherRelatorio();
     }
 
     /**
@@ -154,6 +159,23 @@ public class RelatorioImoveisAlugados extends javax.swing.JDialog {
                 dialog.setVisible(true);
             }
         });
+    }
+    
+    private void preencherRelatorio(){
+        StringBuilder texto = new StringBuilder();
+        
+        for(Aluguel_EduardoGiovanniLuan aluguel : nossaImobiliaria.getAlugueis()){
+            if(aluguel instanceof Aluguel_EduardoGiovanniLuan && !aluguel.getFinalizado()){
+                texto.append(aluguel.toString());
+                texto.append("\n -=-=-=-=-=- \n");
+            }
+        }
+        
+        if(texto.length() == 0){
+            texto.append("Nenhum imovel alugado cadastrado!\n");
+        }
+        
+        outputImoveisAlugados.setText(texto.toString());
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

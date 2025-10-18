@@ -4,8 +4,28 @@
  */
 package GUI;
 
+import Classes.Aluguel_EduardoGiovanniLuan;
+import Classes.Cartao_EduardoGiovanniLuan;
+import Classes.Cliente_EduardoGiovanniLuan;
+import Classes.Comercial_EduardoGiovanniLuan;
+import static Classes.Contadores_EduardoGiovanniLuan.getCodigoAluguel;
+import Classes.Corretor_EduardoGiovanniLuan;
+import Classes.Dinheiro_EduardoGiovanniLuan;
+import Classes.Imovel_EduardoGiovanniLuan;
+import Classes.Pagamento_EduardoGiovanniLuan;
+import Classes.PredioResidencial_EduardoGiovanniLuan;
+import Classes.Seguro_EduardoGiovanniLuan;
+import Classes.Usuario_EduardoGiovanniLuan;
+import static GUI.Principal.nossaImobiliaria;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
@@ -21,6 +41,10 @@ public class RealizarAluguel extends javax.swing.JDialog {
     public RealizarAluguel(java.awt.Dialog parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        
+        inputValor.setText("0");
+        preencherComboBox();
+        preencherListSeguros();
         
         buttonEnviar.setEnabled(false);
         
@@ -64,6 +88,10 @@ public class RealizarAluguel extends javax.swing.JDialog {
         jScrollPane1 = new javax.swing.JScrollPane();
         jListSeguros = new javax.swing.JList<>();
         jLabel11 = new javax.swing.JLabel();
+        inputDataAluguel = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        inputDataPagamento = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -130,6 +158,7 @@ public class RealizarAluguel extends javax.swing.JDialog {
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel5.setText("Valor do aluguél: ");
 
+        inputValor.setEditable(false);
         inputValor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 inputValorActionPerformed(evt);
@@ -169,55 +198,63 @@ public class RealizarAluguel extends javax.swing.JDialog {
         jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel11.setText("Selecione os pacotes de seguro desejados:");
 
+        inputDataAluguel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                inputDataAluguelActionPerformed(evt);
+            }
+        });
+
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel6.setText("Data do aluguel: ");
+
+        jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel12.setText("Data de pagamento mensal: ");
+
+        inputDataPagamento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                inputDataPagamentoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jSeparator1)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(15, 15, 15)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jSeparator1)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(inputValor, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                            .addComponent(jLabel2)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(jComboBoxCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGap(18, 18, 18)
-                                            .addComponent(jLabel3)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(jComboBoxCorretor, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                            .addComponent(jLabel4)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                            .addComponent(jComboBoxImovel, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                            .addComponent(jLabel8)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(inputNomeDoTitular, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                            .addComponent(jLabel7)
-                                            .addGap(18, 18, 18)
-                                            .addComponent(jComboBoxTipoPagamento, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                            .addComponent(jLabel9)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(inputBandeira))
-                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                            .addComponent(jLabel10)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(inputNumeroCartao, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                .addGap(13, 13, 13))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(15, 15, 15)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addComponent(jLabel8)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(inputNomeDoTitular, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addComponent(jLabel7)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(jComboBoxTipoPagamento, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addComponent(jLabel9)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(inputBandeira))
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addComponent(jLabel10)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(inputNumeroCartao, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addGap(1, 1, 1)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                            .addComponent(jSeparator2)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
@@ -225,9 +262,35 @@ public class RealizarAluguel extends javax.swing.JDialog {
                                         .addComponent(buttonResetar, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(buttonEnviar, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(23, 23, 23)))))
+                                .addGap(22, 22, 22))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(jLabel2)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jComboBoxCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(jLabel3)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jComboBoxCorretor, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(jLabel4)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(jComboBoxImovel, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(inputValor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(inputDataPagamento, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(inputDataAluguel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 6, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addComponent(jSeparator2)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -245,8 +308,14 @@ public class RealizarAluguel extends javax.swing.JDialog {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(inputValor, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(inputValor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(inputDataAluguel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(19, 19, 19)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(inputDataPagamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -296,14 +365,111 @@ public class RealizarAluguel extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonEnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEnviarActionPerformed
-        // TODO add your handling code here:
+        int codigoAluguel = getCodigoAluguel();
+        String clienteNome = (String) jComboBoxCliente.getSelectedItem();
+        Cliente_EduardoGiovanniLuan clienteAlugador = null;
+        for(Usuario_EduardoGiovanniLuan usuario: nossaImobiliaria.getClientes()){
+            if(usuario instanceof Cliente_EduardoGiovanniLuan){
+                Cliente_EduardoGiovanniLuan cliente = (Cliente_EduardoGiovanniLuan) usuario;
+                if(cliente.getNome().equals(clienteNome)){
+                    clienteAlugador = cliente;
+                    break;
+                }
+            }   
+        }
+        
+        String corretorNome = (String) jComboBoxCorretor.getSelectedItem();
+        Corretor_EduardoGiovanniLuan vendedor = null;
+        for(Usuario_EduardoGiovanniLuan usuario: nossaImobiliaria.getCorretores()){
+            if(usuario instanceof Corretor_EduardoGiovanniLuan){
+                Corretor_EduardoGiovanniLuan corretor = (Corretor_EduardoGiovanniLuan) usuario;
+                if(corretor.getNome().equals(corretorNome)){
+                    vendedor = corretor;
+                    break;
+                }
+            }
+        }
+        
+        String imovelEndereco = (String) jComboBoxImovel.getSelectedItem();
+        Imovel_EduardoGiovanniLuan imovelAlugado = null;
+        for(Imovel_EduardoGiovanniLuan imovel: nossaImobiliaria.getImoveis()){
+            if(imovel.getEndereco().equals(imovelEndereco)){
+                imovelAlugado = imovel;
+                break;
+            }
+        }
+        
+        LocalDate dataAlugado;
+        try {
+            String texto = inputDataAluguel.getText();
+            DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+            dataAlugado = LocalDate.parse(texto, formato);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null,
+                    "Formato de data inválido! Use o formato dd/MM/yyyy.",
+                    "Erro",
+                    JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
+        LocalDate dataDevolucao = null;
+        
+        LocalDate dataVencimento;
+        try {
+            String texto = inputDataPagamento.getText();
+            DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+            dataVencimento = LocalDate.parse(texto, formato);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null,
+                    "Formato de data inválido! Use o formato dd/MM/yyyy.",
+                    "Erro",
+                    JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
+        float valor = Float.parseFloat(inputValor.getText());
+        String tipoPagamento = (String) jComboBoxTipoPagamento.getSelectedItem();
+        Pagamento_EduardoGiovanniLuan metodoPagamento = null;
+        if(tipoPagamento.equals("Dinheiro")){
+            metodoPagamento = new Dinheiro_EduardoGiovanniLuan();
+        }else{
+            String nomeCartao = inputNomeDoTitular.getText();
+            String bandeiraCartao = inputBandeira.getText();
+            String numeroCartao = inputNumeroCartao.getText();
+            
+            metodoPagamento = new Cartao_EduardoGiovanniLuan(nomeCartao, bandeiraCartao, numeroCartao);
+        }
+        
+        List<String> segurosSelecionados = jListSeguros.getSelectedValuesList();
+        ArrayList<Seguro_EduardoGiovanniLuan> segurosContratados = new ArrayList<>();
+        for(String tipoSeguro: segurosSelecionados){
+            for(Seguro_EduardoGiovanniLuan seguro: nossaImobiliaria.getSeguros()){
+                if(seguro.getTipo().equals(tipoSeguro)){
+                    segurosContratados.add(seguro);
+                }
+            }
+        }
+        
+        Boolean finalizado = false;
+        Boolean pago = true;
+        
+        Aluguel_EduardoGiovanniLuan novoAluguel = new Aluguel_EduardoGiovanniLuan(codigoAluguel, clienteAlugador, vendedor, imovelAlugado, dataAlugado, dataDevolucao, dataVencimento,valor, metodoPagamento, segurosContratados, finalizado, pago);
+        nossaImobiliaria.getAlugueis().add(novoAluguel);
+        JOptionPane.showMessageDialog(null,
+                    "CADASTRO EFETUADO COM SUCESSO!",
+                    "",
+                    JOptionPane.PLAIN_MESSAGE);
+        
+        dispose();
     }//GEN-LAST:event_buttonEnviarActionPerformed
 
     private void buttonResetarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonResetarActionPerformed
         jComboBoxCliente.setSelectedIndex(0);
         jComboBoxCorretor.setSelectedIndex(0);
         jComboBoxImovel.setSelectedIndex(0);
-        inputValor.setText("");
+        inputValor.setText("0");
+        inputDataAluguel.setText("");
+        inputDataPagamento.setText("");
         
         jComboBoxTipoPagamento.setSelectedIndex(0);
         inputNomeDoTitular.setText("");
@@ -340,6 +506,14 @@ public class RealizarAluguel extends javax.swing.JDialog {
 
         verificarCampos();
     }//GEN-LAST:event_jComboBoxTipoPagamentoActionPerformed
+
+    private void inputDataAluguelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputDataAluguelActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_inputDataAluguelActionPerformed
+
+    private void inputDataPagamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputDataPagamentoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_inputDataPagamentoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -393,8 +567,53 @@ public class RealizarAluguel extends javax.swing.JDialog {
                 && jComboBoxImovel.getSelectedItem() != null
                 && !jComboBoxImovel.getSelectedItem().toString().equals("---");
         
+        String imovelSelecionado = (String) jComboBoxImovel.getSelectedItem();
+        float valorFinal = Float.parseFloat(inputValor.getText());
+        if(imovelSelecionado.equals("---")){
+            // Fazer nada
+        }else{
+            ArrayList<Imovel_EduardoGiovanniLuan> listaImoveis = nossaImobiliaria.getImoveis();
+            Imovel_EduardoGiovanniLuan imovelEncontrado = null;
+            
+            for(Imovel_EduardoGiovanniLuan imovel : listaImoveis){
+                if(imovel.getEndereco().equals(imovelSelecionado)){
+                    imovelEncontrado = imovel;
+                    break;
+                }
+            }
+            
+            if(imovelEncontrado != null){
+                valorFinal = imovelEncontrado.getValorAluguel();
+                if(imovelEncontrado instanceof PredioResidencial_EduardoGiovanniLuan){
+                    PredioResidencial_EduardoGiovanniLuan predio = (PredioResidencial_EduardoGiovanniLuan) imovelEncontrado;
+                    valorFinal = valorFinal + predio.getValorCondominio();
+                }
+                
+                if(imovelEncontrado instanceof Comercial_EduardoGiovanniLuan){
+                    Comercial_EduardoGiovanniLuan comercial = (Comercial_EduardoGiovanniLuan) imovelEncontrado;
+                    valorFinal = valorFinal + (valorFinal * comercial.getTaxaImpostoFederal());
+                }
+                inputValor.setText(String.valueOf(valorFinal));
+            }
+        }
+        
+        List<String> segurosSelecionados = jListSeguros.getSelectedValuesList();
+        float custoSeguros = 0;
+        for(String tipoSeguro: segurosSelecionados){
+            for(Seguro_EduardoGiovanniLuan seguro: nossaImobiliaria.getSeguros()){
+                if(seguro.getTipo().equals(tipoSeguro)){
+                    custoSeguros = custoSeguros + seguro.getValor();
+                }
+            }
+        }
+        float valorTotal = valorFinal + custoSeguros;
+        inputValor.setText(String.valueOf(valorTotal));
+        
+        
         boolean valoresSelecionados = 
                 !inputValor.getText().trim().isEmpty() &&
+                !inputDataAluguel.getText().trim().isEmpty() &&
+                !inputDataPagamento.getText().trim().isEmpty() &&
                 !inputNomeDoTitular.getText().trim().isEmpty() &&
                 !inputBandeira.getText().trim().isEmpty() &&
                 !inputNumeroCartao.getText().trim().isEmpty();
@@ -424,6 +643,8 @@ public class RealizarAluguel extends javax.swing.JDialog {
         inputBandeira.getDocument().addDocumentListener(docListener);
         inputNumeroCartao.getDocument().addDocumentListener(docListener);
         inputValor.getDocument().addDocumentListener(docListener);
+        inputDataAluguel.getDocument().addDocumentListener(docListener);
+        inputDataPagamento.getDocument().addDocumentListener(docListener);
         
         ItemListener comboListener = new ItemListener(){
             @Override
@@ -439,10 +660,54 @@ public class RealizarAluguel extends javax.swing.JDialog {
         jComboBoxImovel.addItemListener(comboListener);
     }
     
+    private void preencherComboBox(){
+        DefaultComboBoxModel<String> modeloCliente = new DefaultComboBoxModel<>(); // Modelo que substituirá o combobox cliente
+        modeloCliente.addElement("---");
+        
+        for(Usuario_EduardoGiovanniLuan cliente : nossaImobiliaria.getClientes()){
+            modeloCliente.addElement(cliente.getNome());
+        }
+        
+        jComboBoxCliente.setModel(modeloCliente);
+        jComboBoxCliente.setSelectedIndex(0);
+        
+        DefaultComboBoxModel<String> modeloCorretor = new DefaultComboBoxModel<>(); // Modelo que substituirá o combobox corretor
+        modeloCorretor.addElement("---");
+        
+        for(Usuario_EduardoGiovanniLuan corretor : nossaImobiliaria.getCorretores()){
+            modeloCorretor.addElement(corretor.getNome());
+        }
+        
+        jComboBoxCorretor.setModel(modeloCorretor);
+        jComboBoxCorretor.setSelectedIndex(0);
+        
+        DefaultComboBoxModel<String> modeloImovel = new DefaultComboBoxModel<>(); // Modelo que substituirá o combobox imovel
+        modeloImovel.addElement("---");
+        
+        for(Imovel_EduardoGiovanniLuan imovel : nossaImobiliaria.getImoveis()){
+            modeloImovel.addElement(imovel.getEndereco());
+        }
+        
+        jComboBoxImovel.setModel(modeloImovel);
+        jComboBoxImovel.setSelectedIndex(0);
+    }
+    
+    private void preencherListSeguros(){
+        DefaultListModel<String> modeloLista = new DefaultListModel<>();
+        
+        for(Seguro_EduardoGiovanniLuan seguro : nossaImobiliaria.getSeguros()){
+            modeloLista.addElement(seguro.getTipo());
+        }
+        
+        jListSeguros.setModel(modeloLista);
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonEnviar;
     private javax.swing.JButton buttonResetar;
     private javax.swing.JTextField inputBandeira;
+    private javax.swing.JTextField inputDataAluguel;
+    private javax.swing.JTextField inputDataPagamento;
     private javax.swing.JTextField inputNomeDoTitular;
     private javax.swing.JTextField inputNumeroCartao;
     private javax.swing.JTextField inputValor;
@@ -453,10 +718,12 @@ public class RealizarAluguel extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
