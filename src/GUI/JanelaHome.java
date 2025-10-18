@@ -18,6 +18,15 @@ public class JanelaHome extends javax.swing.JFrame {
      */
     public JanelaHome() {
         initComponents();
+
+        // Adicione este bloco:
+        this.addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent e) {
+                // Chama a mesma lógica do seu botão 'Fechar'
+                btn_FecharActionPerformed(null);
+            }
+        });
     }
 
     /**
@@ -38,7 +47,7 @@ public class JanelaHome extends javax.swing.JFrame {
         relatoriosButton = new javax.swing.JButton();
         btn_Fechar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
         jPanel3.setBackground(new java.awt.Color(220, 10, 45));
 
@@ -188,7 +197,7 @@ public class JanelaHome extends javax.swing.JFrame {
         salvarObjetos(nossaImobiliaria.getVendas(), nossaImobiliaria.getConfiguracoes().getArquivoVendas());
         salvarObjetos(nossaImobiliaria.getAlugueis(), nossaImobiliaria.getConfiguracoes().getArquivoAlugueis());
         salvarObjetos(nossaImobiliaria.getSeguros(), nossaImobiliaria.getConfiguracoes().getArquivoSeguros());
-        
+
         dispose();
     }//GEN-LAST:event_btn_FecharActionPerformed
 
