@@ -11,12 +11,12 @@ import Classes.Comercial_EduardoGiovanniLuan;
 import static Classes.Contadores_EduardoGiovanniLuan.getCodigoAluguel;
 import Classes.Corretor_EduardoGiovanniLuan;
 import Classes.Dinheiro_EduardoGiovanniLuan;
+import Classes.Imobiliaria_EduardoGiovanniLuan;
 import Classes.Imovel_EduardoGiovanniLuan;
 import Classes.Pagamento_EduardoGiovanniLuan;
 import Classes.PredioResidencial_EduardoGiovanniLuan;
 import Classes.Seguro_EduardoGiovanniLuan;
 import Classes.Usuario_EduardoGiovanniLuan;
-import static GUI.Principal.nossaImobiliaria;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.time.LocalDate;
@@ -361,6 +361,7 @@ public class RealizarAluguel extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonEnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEnviarActionPerformed
+        Imobiliaria_EduardoGiovanniLuan nossaImobiliaria = Imobiliaria_EduardoGiovanniLuan.getInstancia();
         int codigoAluguel = getCodigoAluguel();
         String clienteNome = (String) jComboBoxCliente.getSelectedItem();
         Cliente_EduardoGiovanniLuan clienteAlugador = null;
@@ -555,6 +556,7 @@ public class RealizarAluguel extends javax.swing.JDialog {
     }
 
     private void verificarCampos(){
+        Imobiliaria_EduardoGiovanniLuan nossaImobiliaria = Imobiliaria_EduardoGiovanniLuan.getInstancia();
         boolean combosSelecionados = 
                 jComboBoxCliente.getSelectedItem() != null
                 && !jComboBoxCliente.getSelectedItem().toString().equals("---")
@@ -665,6 +667,7 @@ public class RealizarAluguel extends javax.swing.JDialog {
     }
     
     private void preencherComboBox(){
+        Imobiliaria_EduardoGiovanniLuan nossaImobiliaria = Imobiliaria_EduardoGiovanniLuan.getInstancia();
         DefaultComboBoxModel<String> modeloCliente = new DefaultComboBoxModel<>(); // Modelo que substituirá o combobox cliente
         modeloCliente.addElement("---");
         
@@ -697,6 +700,7 @@ public class RealizarAluguel extends javax.swing.JDialog {
     }
     
     private void preencherListSeguros(){
+        Imobiliaria_EduardoGiovanniLuan nossaImobiliaria = Imobiliaria_EduardoGiovanniLuan.getInstancia();
         DefaultListModel<String> modeloLista = new DefaultListModel<>();
         
         for(Seguro_EduardoGiovanniLuan seguro : nossaImobiliaria.getSeguros()){

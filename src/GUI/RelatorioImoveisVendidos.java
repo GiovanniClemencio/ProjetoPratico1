@@ -4,9 +4,9 @@
  */
 package GUI;
 
+import Classes.Imobiliaria_EduardoGiovanniLuan;
 import Classes.Imovel_EduardoGiovanniLuan;
 import Classes.Venda_EduardoGiovanniLuan;
-import static GUI.Principal.nossaImobiliaria;
 
 /**
  *
@@ -162,6 +162,7 @@ public class RelatorioImoveisVendidos extends javax.swing.JDialog {
     }
     
     private void preencherRelatorio(){
+        Imobiliaria_EduardoGiovanniLuan nossaImobiliaria = Imobiliaria_EduardoGiovanniLuan.getInstancia();
         StringBuilder texto = new StringBuilder();
         
         for(Venda_EduardoGiovanniLuan venda : nossaImobiliaria.getVendas()){

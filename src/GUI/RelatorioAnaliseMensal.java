@@ -4,8 +4,8 @@
  */
 package GUI;
 
+import Classes.Imobiliaria_EduardoGiovanniLuan;
 import Classes.Venda_EduardoGiovanniLuan;
-import static GUI.Principal.nossaImobiliaria;
 
 /**
  *
@@ -186,6 +186,7 @@ public class RelatorioAnaliseMensal extends javax.swing.JDialog {
     }
     
     private void preencherRelatorio(){
+        Imobiliaria_EduardoGiovanniLuan nossaImobiliaria = Imobiliaria_EduardoGiovanniLuan.getInstancia();
         int mes = jComboBoxData.getSelectedIndex();
         mes++;
         StringBuilder texto = new StringBuilder();

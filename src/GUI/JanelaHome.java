@@ -5,7 +5,7 @@
 package GUI;
 
 import static Classes.Fechar_EduardoGiovanniLuan.salvarObjetos;
-import static GUI.Principal.nossaImobiliaria;
+import Classes.Imobiliaria_EduardoGiovanniLuan;
 
 /**
  *
@@ -191,6 +191,7 @@ public class JanelaHome extends javax.swing.JFrame {
     }//GEN-LAST:event_VendasAluguelButtonActionPerformed
 
     private void btn_FecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_FecharActionPerformed
+        Imobiliaria_EduardoGiovanniLuan nossaImobiliaria = Imobiliaria_EduardoGiovanniLuan.getInstancia();
         salvarObjetos(nossaImobiliaria.getClientes(), nossaImobiliaria.getConfiguracoes().getArquivoClientes());
         salvarObjetos(nossaImobiliaria.getCorretores(), nossaImobiliaria.getConfiguracoes().getArquivoCorretores());
         salvarObjetos(nossaImobiliaria.getImoveis(), nossaImobiliaria.getConfiguracoes().getArquivoImoveis());

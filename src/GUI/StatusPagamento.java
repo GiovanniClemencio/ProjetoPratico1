@@ -5,7 +5,7 @@
 package GUI;
 
 import Classes.Aluguel_EduardoGiovanniLuan;
-import static GUI.Principal.nossaImobiliaria;
+import Classes.Imobiliaria_EduardoGiovanniLuan;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import javax.swing.DefaultComboBoxModel;
@@ -175,6 +175,7 @@ public class StatusPagamento extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonPagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonPagarActionPerformed
+        Imobiliaria_EduardoGiovanniLuan nossaImobiliaria = Imobiliaria_EduardoGiovanniLuan.getInstancia();
         String EndAluguel = (String) jComboBoxContratoAluguel.getSelectedItem();
         for(Aluguel_EduardoGiovanniLuan aluguel : nossaImobiliaria.getAlugueis()){
             if(aluguel.getImovel().getEndereco().equals(EndAluguel)){
@@ -197,6 +198,7 @@ public class StatusPagamento extends javax.swing.JDialog {
     }//GEN-LAST:event_buttonResetarActionPerformed
 
     private void buttonAtrasoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAtrasoActionPerformed
+        Imobiliaria_EduardoGiovanniLuan nossaImobiliaria = Imobiliaria_EduardoGiovanniLuan.getInstancia();
         String EndAluguel = (String) jComboBoxContratoAluguel.getSelectedItem();
         for(Aluguel_EduardoGiovanniLuan aluguel : nossaImobiliaria.getAlugueis()){
             if(aluguel.getImovel().getEndereco().equals(EndAluguel)){
@@ -280,6 +282,7 @@ public class StatusPagamento extends javax.swing.JDialog {
     }
     
     private void preencherComboBox(){
+        Imobiliaria_EduardoGiovanniLuan nossaImobiliaria = Imobiliaria_EduardoGiovanniLuan.getInstancia();
         DefaultComboBoxModel<String> modeloAluguel = new DefaultComboBoxModel<>(); // Modelo que substituirá o combobox cliente
         modeloAluguel.addElement("---");
         

@@ -6,7 +6,7 @@ package GUI;
 
 import Classes.Cliente_EduardoGiovanniLuan;
 import static Classes.Contadores_EduardoGiovanniLuan.getCodigoUsuario;
-import static GUI.Principal.nossaImobiliaria;
+import Classes.Imobiliaria_EduardoGiovanniLuan;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import javax.swing.JOptionPane;
@@ -432,6 +432,7 @@ public class CadastroCliente extends javax.swing.JDialog {
         LocalDate dataCadastro = LocalDate.now();
 
         Cliente_EduardoGiovanniLuan novoCliente = new Cliente_EduardoGiovanniLuan(codigoUsuario, nome, cpf, rg, dataNascimento, endereco, cep, telefone, email, dataCadastro);
+        Imobiliaria_EduardoGiovanniLuan nossaImobiliaria = Imobiliaria_EduardoGiovanniLuan.getInstancia();
         nossaImobiliaria.getClientes().add(novoCliente);
         JOptionPane.showMessageDialog(null,
             "CADASTRO EFETUADO COM SUCESSO!",

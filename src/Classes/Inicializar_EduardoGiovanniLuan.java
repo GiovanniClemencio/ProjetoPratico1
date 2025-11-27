@@ -15,8 +15,9 @@ import java.io.ObjectInputStream;
 import java.util.ArrayList;
 
 public class Inicializar_EduardoGiovanniLuan {
-
-    private static Configuracao_EduardoGiovanniLuan config = new Configuracao_EduardoGiovanniLuan();
+    
+    private Imobiliaria_EduardoGiovanniLuan nossaImobiliaria = Imobiliaria_EduardoGiovanniLuan.getInstancia();
+    private Configuracao_EduardoGiovanniLuan config = nossaImobiliaria.getConfiguracoes();
 
     // Método genérico para carregar uma lista de objetos de um arquivo
     @SuppressWarnings("unchecked")

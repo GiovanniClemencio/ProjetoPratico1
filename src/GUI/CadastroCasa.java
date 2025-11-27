@@ -6,7 +6,7 @@ package GUI;
 
 import Classes.CasaResidencial_EduardoGiovanniLuan;
 import static Classes.Contadores_EduardoGiovanniLuan.getCodigoImovel;
-import static GUI.Principal.nossaImobiliaria;
+import Classes.Imobiliaria_EduardoGiovanniLuan;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import javax.swing.JOptionPane;
@@ -433,6 +433,7 @@ public class CadastroCasa extends javax.swing.JDialog {
         float aluguel = Float.parseFloat(inputAluguel.getText());
         
         CasaResidencial_EduardoGiovanniLuan novaCasa = new CasaResidencial_EduardoGiovanniLuan(codigoImovel, endereco, dataConstrucao, areaTotal, areaConstruida, qtdDormitorios, qtdBanheiros, qtdVagas, IPTU, venda, aluguel);
+        Imobiliaria_EduardoGiovanniLuan nossaImobiliaria = Imobiliaria_EduardoGiovanniLuan.getInstancia();
         nossaImobiliaria.getImoveis().add(novaCasa);
         JOptionPane.showMessageDialog(null,
             "CADASTRO EFETUADO COM SUCESSO!",

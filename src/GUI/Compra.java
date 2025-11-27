@@ -10,12 +10,12 @@ import Classes.Comercial_EduardoGiovanniLuan;
 import static Classes.Contadores_EduardoGiovanniLuan.getCodigoVenda;
 import Classes.Corretor_EduardoGiovanniLuan;
 import Classes.Dinheiro_EduardoGiovanniLuan;
+import Classes.Imobiliaria_EduardoGiovanniLuan;
 import Classes.Imovel_EduardoGiovanniLuan;
 import Classes.Pagamento_EduardoGiovanniLuan;
 import Classes.PredioResidencial_EduardoGiovanniLuan;
 import Classes.Usuario_EduardoGiovanniLuan;
 import Classes.Venda_EduardoGiovanniLuan;
-import static GUI.Principal.nossaImobiliaria;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.time.LocalDate;
@@ -357,6 +357,7 @@ public class Compra extends javax.swing.JDialog {
 
     private void buttonEnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEnviarActionPerformed
         int codigoVenda = getCodigoVenda();
+        Imobiliaria_EduardoGiovanniLuan nossaImobiliaria = Imobiliaria_EduardoGiovanniLuan.getInstancia();
         String clienteNome = (String) jComboBoxCliente.getSelectedItem();
         Cliente_EduardoGiovanniLuan clienteComprador = null;
         for(Usuario_EduardoGiovanniLuan usuario: nossaImobiliaria.getClientes()){
@@ -499,7 +500,7 @@ public class Compra extends javax.swing.JDialog {
             java.util.logging.Logger.getLogger(Compra.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
+        
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -516,6 +517,7 @@ public class Compra extends javax.swing.JDialog {
     }
     
     private void verificarCampos(){
+        Imobiliaria_EduardoGiovanniLuan nossaImobiliaria = Imobiliaria_EduardoGiovanniLuan.getInstancia();
         boolean combosSelecionados = 
                 jComboBoxCliente.getSelectedItem() != null
                 && !jComboBoxCliente.getSelectedItem().toString().equals("---")
@@ -602,6 +604,7 @@ public class Compra extends javax.swing.JDialog {
     }
     
     private void preencherComboBox(){
+        Imobiliaria_EduardoGiovanniLuan nossaImobiliaria = Imobiliaria_EduardoGiovanniLuan.getInstancia();
         DefaultComboBoxModel<String> modeloCliente = new DefaultComboBoxModel<>(); // Modelo que substituirá o combobox cliente
         modeloCliente.addElement("---");
         

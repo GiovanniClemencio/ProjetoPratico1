@@ -5,8 +5,8 @@
 package GUI;
 
 import Classes.Corretor_EduardoGiovanniLuan;
+import Classes.Imobiliaria_EduardoGiovanniLuan;
 import Classes.Usuario_EduardoGiovanniLuan;
-import static GUI.Principal.nossaImobiliaria;
 
 /**
  *
@@ -162,6 +162,7 @@ public class RelatorioCorretor extends javax.swing.JDialog {
     }
     
     private void preencherRelatorio(){
+        Imobiliaria_EduardoGiovanniLuan nossaImobiliaria = Imobiliaria_EduardoGiovanniLuan.getInstancia();
         StringBuilder texto = new StringBuilder();
         
         for(Usuario_EduardoGiovanniLuan usuario : nossaImobiliaria.getCorretores()){

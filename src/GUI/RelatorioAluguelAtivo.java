@@ -5,7 +5,7 @@
 package GUI;
 
 import Classes.Aluguel_EduardoGiovanniLuan;
-import static GUI.Principal.nossaImobiliaria;
+import Classes.Imobiliaria_EduardoGiovanniLuan;
 
 /**
  *
@@ -161,6 +161,7 @@ public class RelatorioAluguelAtivo extends javax.swing.JDialog {
     }
     
     private void preencherRelatorio(){
+        Imobiliaria_EduardoGiovanniLuan nossaImobiliaria = Imobiliaria_EduardoGiovanniLuan.getInstancia();
         StringBuilder texto = new StringBuilder();
         
         for(Aluguel_EduardoGiovanniLuan aluguel : nossaImobiliaria.getAlugueis()){

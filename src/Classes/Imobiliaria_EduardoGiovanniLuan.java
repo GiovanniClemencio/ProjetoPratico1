@@ -12,6 +12,7 @@ import java.util.ArrayList;
 
 public class Imobiliaria_EduardoGiovanniLuan
 {
+    private static Imobiliaria_EduardoGiovanniLuan instancia = null;
     private String nome;
     private String endereco;
     private ArrayList<Aluguel_EduardoGiovanniLuan> alugueis;
@@ -22,7 +23,7 @@ public class Imobiliaria_EduardoGiovanniLuan
     private ArrayList<Seguro_EduardoGiovanniLuan> seguros;
     private Configuracao_EduardoGiovanniLuan configuracoes;
 
-    public Imobiliaria_EduardoGiovanniLuan(String nome, String endereco,Configuracao_EduardoGiovanniLuan configuracoes)
+    private Imobiliaria_EduardoGiovanniLuan(String nome, String endereco,Configuracao_EduardoGiovanniLuan configuracoes)
     {
         this.nome = nome;
         this.endereco = endereco;
@@ -61,7 +62,17 @@ public class Imobiliaria_EduardoGiovanniLuan
 
     public Configuracao_EduardoGiovanniLuan getConfiguracoes() { return configuracoes; }
     public void setConfiguracoes(Configuracao_EduardoGiovanniLuan configuracoes) { this.configuracoes = configuracoes; }
-
+    
+    public static Imobiliaria_EduardoGiovanniLuan getInstancia(){
+        if(instancia == null){
+            Configuracao_EduardoGiovanniLuan caminhosArquivo = Configuracao_EduardoGiovanniLuan.getInstancia();
+            String nomeImo = "Imobiliaria Digital";
+            String endereco = "Rua Barramento, 10, Parque Eletrico";
+            instancia = new Imobiliaria_EduardoGiovanniLuan(nomeImo, endereco, caminhosArquivo);
+        }
+        return instancia;
+    }
+    
     @Override
     public String toString()
     {

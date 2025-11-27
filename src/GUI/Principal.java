@@ -9,7 +9,7 @@ import Classes.Configuracao_EduardoGiovanniLuan;
 import Classes.Corretor_EduardoGiovanniLuan;
 import Classes.Imobiliaria_EduardoGiovanniLuan;
 import Classes.Imovel_EduardoGiovanniLuan;
-import static Classes.Inicializar_EduardoGiovanniLuan.carregarObjetos;
+import Classes.Inicializar_EduardoGiovanniLuan;
 import Classes.Seguro_EduardoGiovanniLuan;
 import Classes.Usuario_EduardoGiovanniLuan;
 import Classes.Venda_EduardoGiovanniLuan;
@@ -24,24 +24,20 @@ public class Principal {
     /**
      * @param args the command line arguments
      */
-    public static Imobiliaria_EduardoGiovanniLuan nossaImobiliaria;
-    private static Configuracao_EduardoGiovanniLuan config = new Configuracao_EduardoGiovanniLuan();
 
     public static void inicializar() {
 
+        Imobiliaria_EduardoGiovanniLuan nossaImobiliaria = Imobiliaria_EduardoGiovanniLuan.getInstancia();
+        Configuracao_EduardoGiovanniLuan config = nossaImobiliaria.getConfiguracoes();
         
+        System.out.println(config.getArquivoClientes());
         
-        String nomeImo = "Imobiliaria Digital";
-        String endereco = "Rua Barramento, 10, Parque Eletrico";
-        Configuracao_EduardoGiovanniLuan caminhosArquivo = new Configuracao_EduardoGiovanniLuan();
-        nossaImobiliaria = new Imobiliaria_EduardoGiovanniLuan(nomeImo, endereco, caminhosArquivo);
-        
-        ArrayList<Usuario_EduardoGiovanniLuan> clientes = carregarObjetos(config.getArquivoClientes());
-        ArrayList<Usuario_EduardoGiovanniLuan> corretores = carregarObjetos(config.getArquivoCorretores());
-        ArrayList<Imovel_EduardoGiovanniLuan> imoveis = carregarObjetos(config.getArquivoImoveis());
-        ArrayList<Venda_EduardoGiovanniLuan> vendas = carregarObjetos(config.getArquivoVendas());
-        ArrayList<Aluguel_EduardoGiovanniLuan> alugueis = carregarObjetos(config.getArquivoAlugueis());
-        ArrayList<Seguro_EduardoGiovanniLuan> seguros = carregarObjetos(config.getArquivoSeguros());
+        ArrayList<Usuario_EduardoGiovanniLuan> clientes = Inicializar_EduardoGiovanniLuan.carregarObjetos(config.getArquivoClientes());
+        ArrayList<Usuario_EduardoGiovanniLuan> corretores = Inicializar_EduardoGiovanniLuan.carregarObjetos(config.getArquivoCorretores());
+        ArrayList<Imovel_EduardoGiovanniLuan> imoveis = Inicializar_EduardoGiovanniLuan.carregarObjetos(config.getArquivoImoveis());
+        ArrayList<Venda_EduardoGiovanniLuan> vendas = Inicializar_EduardoGiovanniLuan.carregarObjetos(config.getArquivoVendas());
+        ArrayList<Aluguel_EduardoGiovanniLuan> alugueis = Inicializar_EduardoGiovanniLuan.carregarObjetos(config.getArquivoAlugueis());
+        ArrayList<Seguro_EduardoGiovanniLuan> seguros = Inicializar_EduardoGiovanniLuan.carregarObjetos(config.getArquivoSeguros());
         
         nossaImobiliaria.setClientes(clientes);
         nossaImobiliaria.setCorretores(corretores);

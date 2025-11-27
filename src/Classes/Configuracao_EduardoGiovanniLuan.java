@@ -10,6 +10,7 @@ package Classes;
  */
 public class Configuracao_EduardoGiovanniLuan
 {
+    private static Configuracao_EduardoGiovanniLuan instancia = new Configuracao_EduardoGiovanniLuan();
     private String arquivoAlugueis;
     private String arquivoVendas;
     private String arquivoImoveis;
@@ -17,7 +18,7 @@ public class Configuracao_EduardoGiovanniLuan
     private String arquivoCorretores;
     private String arquivoSeguros;
 
-    public Configuracao_EduardoGiovanniLuan()
+    private Configuracao_EduardoGiovanniLuan()
     {
         this.arquivoAlugueis = "./armazenamento/arquivoAluguel.dat";
         this.arquivoVendas = "./armazenamento/arquivoVendas.dat";
@@ -45,6 +46,10 @@ public class Configuracao_EduardoGiovanniLuan
     public String getArquivoSeguros() { return arquivoSeguros; }
     public void setArquivoSeguros(String arquivoSeguros) { this.arquivoSeguros = arquivoSeguros; }
 
+    public static Configuracao_EduardoGiovanniLuan getInstancia() {
+        return instancia;
+    }
+    
     @Override
     public String toString()
     {

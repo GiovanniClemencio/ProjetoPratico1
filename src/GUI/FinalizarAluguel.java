@@ -5,7 +5,7 @@
 package GUI;
 
 import Classes.Aluguel_EduardoGiovanniLuan;
-import static GUI.Principal.nossaImobiliaria;
+import Classes.Imobiliaria_EduardoGiovanniLuan;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import javax.swing.DefaultComboBoxModel;
@@ -153,6 +153,7 @@ public class FinalizarAluguel extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonFinalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonFinalizarActionPerformed
+        Imobiliaria_EduardoGiovanniLuan nossaImobiliaria = Imobiliaria_EduardoGiovanniLuan.getInstancia();
         String EndImovel = (String) jComboBoxImovel.getSelectedItem();
         Aluguel_EduardoGiovanniLuan aluguelFinalizado = null;
         for(Aluguel_EduardoGiovanniLuan aluguel: nossaImobiliaria.getAlugueis()){
@@ -242,6 +243,7 @@ public class FinalizarAluguel extends javax.swing.JDialog {
     }
     
     private void preencherComboBox(){
+        Imobiliaria_EduardoGiovanniLuan nossaImobiliaria = Imobiliaria_EduardoGiovanniLuan.getInstancia();
         DefaultComboBoxModel<String> modeloAluguel = new DefaultComboBoxModel<>(); // Modelo que substituirá o combobox cliente
         modeloAluguel.addElement("---");
         

@@ -6,7 +6,7 @@ package GUI;
 
 import static Classes.Contadores_EduardoGiovanniLuan.getCodigoUsuario;
 import Classes.Corretor_EduardoGiovanniLuan;
-import static GUI.Principal.nossaImobiliaria;
+import Classes.Imobiliaria_EduardoGiovanniLuan;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import javax.swing.JOptionPane;
@@ -518,6 +518,7 @@ public class CadastroCorretor extends javax.swing.JDialog {
         LocalDate dataAdmissao = LocalDate.now();
         
         Corretor_EduardoGiovanniLuan novoCorretor = new Corretor_EduardoGiovanniLuan(codigoUsuario, nome, cpf, rg, dataNascimento, endereco, cep, telefone, email, creci, salario, pis, dataAdmissao);
+        Imobiliaria_EduardoGiovanniLuan nossaImobiliaria = Imobiliaria_EduardoGiovanniLuan.getInstancia();
         nossaImobiliaria.getCorretores().add(novoCorretor);
         JOptionPane.showMessageDialog(null,
                     "CADASTRO EFETUADO COM SUCESSO!",

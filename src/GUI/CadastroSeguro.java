@@ -7,8 +7,8 @@ package GUI;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import Classes.Contadores_EduardoGiovanniLuan;
+import Classes.Imobiliaria_EduardoGiovanniLuan;
 import Classes.Seguro_EduardoGiovanniLuan;
-import static GUI.Principal.nossaImobiliaria;
 import javax.swing.JOptionPane;
 /**
  *
@@ -265,6 +265,7 @@ public class CadastroSeguro extends javax.swing.JDialog {
         float valorSeguro = Float.parseFloat(inputValor.getText());
         
         Seguro_EduardoGiovanniLuan novoSeguro = new Seguro_EduardoGiovanniLuan(codigoSeguro, nomeSeguradora, tipoSeguro, descricaoSeguro, valorSeguro);
+        Imobiliaria_EduardoGiovanniLuan nossaImobiliaria = Imobiliaria_EduardoGiovanniLuan.getInstancia();
         nossaImobiliaria.getSeguros().add(novoSeguro);
         JOptionPane.showMessageDialog(null,
                     "CADASTRO EFETUADO COM SUCESSO!",
