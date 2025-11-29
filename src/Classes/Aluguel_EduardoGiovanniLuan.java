@@ -64,6 +64,10 @@ public class Aluguel_EduardoGiovanniLuan implements Serializable{
     public Cliente_EduardoGiovanniLuan getCliente() {
         return cliente;
     }
+
+    public LocalDate getDataAluguel() {
+        return dataAluguel;
+    }
     
     public float calcularValorTotal() {
         float total = imovel.getValorAluguel();

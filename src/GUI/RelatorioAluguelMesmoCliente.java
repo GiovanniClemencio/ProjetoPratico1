@@ -7,6 +7,8 @@ package GUI;
 import Classes.Aluguel_EduardoGiovanniLuan;
 import Classes.Imobiliaria_EduardoGiovanniLuan;
 import Classes.Imovel_EduardoGiovanniLuan;
+import Classes.RelatorioAluguelMesmoClienteMetodo_EduardoGiovanniLuan;
+import Classes.RelatorioTemplate_EduardoGiovanniLuan;
 
 /**
  *
@@ -199,29 +201,15 @@ public class RelatorioAluguelMesmoCliente extends javax.swing.JDialog {
             }
         });
     }
-    
-    private void preencherRelatorio(){
-        Imobiliaria_EduardoGiovanniLuan nossaImobiliaria = Imobiliaria_EduardoGiovanniLuan.getInstancia();
-        StringBuilder texto = new StringBuilder();
-        Imovel_EduardoGiovanniLuan imovel;
-        for(Aluguel_EduardoGiovanniLuan aluguel : nossaImobiliaria.getAlugueis()){
-            if(aluguel.getCliente().getNome().equalsIgnoreCase(inputNomeDoCliente.getText())){
-                imovel = aluguel.getImovel();
-            }else{
-                imovel = null;
-            }
-            
-            if(imovel instanceof Imovel_EduardoGiovanniLuan){
-                texto.append(imovel.toString());
-                texto.append("\n -=-=-=-=-=- \n");
-            }
-        }
-        
-        if(texto.length() == 0){
-            texto.append("Nenhum aluguel desse cliente cadastrado!\n");
-        }
-        
-        outputAlugueisMesmoCliente.setText(texto.toString());
+
+    private void preencherRelatorio() {
+        String nomeDigitado = inputNomeDoCliente.getText().trim();
+
+        RelatorioTemplate_EduardoGiovanniLuan rel = new RelatorioAluguelMesmoClienteMetodo_EduardoGiovanniLuan(nomeDigitado);
+
+        String texto = rel.gerar();
+
+        outputAlugueisMesmoCliente.setText(texto);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

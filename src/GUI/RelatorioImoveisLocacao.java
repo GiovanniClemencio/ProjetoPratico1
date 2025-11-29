@@ -7,6 +7,8 @@ package GUI;
 import Classes.Aluguel_EduardoGiovanniLuan;
 import Classes.Imobiliaria_EduardoGiovanniLuan;
 import Classes.Imovel_EduardoGiovanniLuan;
+import Classes.RelatorioImoveisLocacao_EduardoGiovanniLuan;
+import Classes.RelatorioTemplate_EduardoGiovanniLuan;
 import java.util.ArrayList;
 
 /**
@@ -21,7 +23,7 @@ public class RelatorioImoveisLocacao extends javax.swing.JDialog {
     public RelatorioImoveisLocacao(java.awt.Dialog parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        
+
         preencherRelatorio();
     }
 
@@ -161,37 +163,14 @@ public class RelatorioImoveisLocacao extends javax.swing.JDialog {
             }
         });
     }
-    
-    private void preencherRelatorio(){
-        Imobiliaria_EduardoGiovanniLuan nossaImobiliaria = Imobiliaria_EduardoGiovanniLuan.getInstancia();
-        StringBuilder texto = new StringBuilder();
-        
-        for(Imovel_EduardoGiovanniLuan imovel : nossaImobiliaria.getImoveis()){
-            for(Aluguel_EduardoGiovanniLuan aluguel: nossaImobiliaria.getAlugueis()){
-                if(aluguel.getImovel() == imovel && !aluguel.getFinalizado()){
-                    // Fazer nada
-                    
-                }else{
-                    if(imovel instanceof Imovel_EduardoGiovanniLuan){
-                        texto.append(imovel.toString());
-                        texto.append("\n -=-=-=-=-=- \n");
-                    }
-                }
-            }
-            ArrayList<Aluguel_EduardoGiovanniLuan> tdsAlugueis = nossaImobiliaria.getAlugueis();
-            if(tdsAlugueis.isEmpty()){
-                texto.append(imovel.toString());
-                texto.append("\n -=-=-=-=-=- \n");
-            }
-        }
-        
-        if(texto.length() == 0){
-            texto.append("Nenhum Imovel para locacao cadastrado!\n");
-        }
-        
-        outputLocacao.setText(texto.toString());
+
+    private void preencherRelatorio() {
+        RelatorioTemplate_EduardoGiovanniLuan rel = new RelatorioImoveisLocacao_EduardoGiovanniLuan();
+
+        String texto = rel.gerar();
+        outputLocacao.setText(texto);
     }
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

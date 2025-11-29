@@ -7,6 +7,8 @@ package GUI;
 import Classes.Comercial_EduardoGiovanniLuan;
 import Classes.Imobiliaria_EduardoGiovanniLuan;
 import Classes.Imovel_EduardoGiovanniLuan;
+import Classes.RelatorioComercial_EduardoGiovanniLuan;
+import Classes.RelatorioTemplate_EduardoGiovanniLuan;
 
 /**
  *
@@ -20,7 +22,7 @@ public class RelatorioComercial extends javax.swing.JDialog {
     public RelatorioComercial(java.awt.Dialog parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        
+
         preencherRelatorio();
     }
 
@@ -160,23 +162,13 @@ public class RelatorioComercial extends javax.swing.JDialog {
             }
         });
     }
-    
-    private void preencherRelatorio(){
-        Imobiliaria_EduardoGiovanniLuan nossaImobiliaria = Imobiliaria_EduardoGiovanniLuan.getInstancia();
-        StringBuilder texto = new StringBuilder();
-        
-        for(Imovel_EduardoGiovanniLuan imovel : nossaImobiliaria.getImoveis()){
-            if(imovel instanceof Comercial_EduardoGiovanniLuan){
-                texto.append(imovel.toString());
-                texto.append("\n -=-=-=-=-=- \n");
-            }
-        }
-        
-        if(texto.length() == 0){
-            texto.append("Nenhum Imovel comercial cadastrado!\n");
-        }
-        
-        outputComercial.setText(texto.toString());
+
+    private void preencherRelatorio() {
+        RelatorioTemplate_EduardoGiovanniLuan rel = new RelatorioComercial_EduardoGiovanniLuan();
+
+        String texto = rel.gerar();
+
+        outputComercial.setText(texto);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

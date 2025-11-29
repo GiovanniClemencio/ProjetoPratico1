@@ -6,6 +6,8 @@ package GUI;
 
 import Classes.Imobiliaria_EduardoGiovanniLuan;
 import Classes.Imovel_EduardoGiovanniLuan;
+import Classes.RelatorioCompradoMesmoCliente_EduardoGiovanniLuan;
+import Classes.RelatorioTemplate_EduardoGiovanniLuan;
 import Classes.Venda_EduardoGiovanniLuan;
 
 /**
@@ -201,29 +203,15 @@ public class RelatorioCompradoMesmoCliente extends javax.swing.JDialog {
             }
         });
     }
-    
-    private void preencherRelatorio(){
-        Imobiliaria_EduardoGiovanniLuan nossaImobiliaria = Imobiliaria_EduardoGiovanniLuan.getInstancia();
-        StringBuilder texto = new StringBuilder();
-        Imovel_EduardoGiovanniLuan imovel;
-        for(Venda_EduardoGiovanniLuan venda : nossaImobiliaria.getVendas()){
-            if(venda.getCliente().getNome().equalsIgnoreCase(inputNomeDoCliente.getText())){
-                imovel = venda.getImovel();
-            }else{
-                imovel = null;
-            }
-            
-            if(imovel instanceof Imovel_EduardoGiovanniLuan){
-                texto.append(imovel.toString());
-                texto.append("\n -=-=-=-=-=- \n");
-            }
-        }
-        
-        if(texto.length() == 0){
-            texto.append("Nenhuma compra desse cliente cadastrado!\n");
-        }
-        
-        outputImoveisCompradoMesmoCliente.setText(texto.toString());
+
+    private void preencherRelatorio() {
+        String nomeDigitado = inputNomeDoCliente.getText().trim();
+
+        RelatorioTemplate_EduardoGiovanniLuan rel = new RelatorioCompradoMesmoCliente_EduardoGiovanniLuan(nomeDigitado);
+
+        String texto = rel.gerar();
+
+        outputImoveisCompradoMesmoCliente.setText(texto);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

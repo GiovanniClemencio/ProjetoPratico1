@@ -7,6 +7,8 @@ package GUI;
 import Classes.Aluguel_EduardoGiovanniLuan;
 import Classes.Cliente_EduardoGiovanniLuan;
 import Classes.Imobiliaria_EduardoGiovanniLuan;
+import Classes.RelatorioClienteAluguelAtrasado_EduardoGiovanniLuan;
+import Classes.RelatorioTemplate_EduardoGiovanniLuan;
 
 /**
  *
@@ -20,7 +22,7 @@ public class RelatorioClienteAluguelAtrasado extends javax.swing.JDialog {
     public RelatorioClienteAluguelAtrasado(java.awt.Dialog parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        
+
         preencherRelatorio();
     }
 
@@ -160,26 +162,11 @@ public class RelatorioClienteAluguelAtrasado extends javax.swing.JDialog {
             }
         });
     }
-    
-    private void preencherRelatorio(){
-        Imobiliaria_EduardoGiovanniLuan nossaImobiliaria = Imobiliaria_EduardoGiovanniLuan.getInstancia();
-        StringBuilder texto = new StringBuilder();
-        
-        for(Aluguel_EduardoGiovanniLuan aluguel : nossaImobiliaria.getAlugueis()){
-            if(!aluguel.getPago()){
-                Cliente_EduardoGiovanniLuan cliente = aluguel.getCliente();
-                if(cliente instanceof Cliente_EduardoGiovanniLuan){
-                    texto.append(cliente.toString());
-                    texto.append("\n -=-=-=-=-=- \n");
-                }
-            }
-        }
-        
-        if(texto.length() == 0){
-            texto.append("Nenhum cliente com aluguel atrasado cadastrado!\n");
-        }
-        
-        outputClienteAluguelAtrasado.setText(texto.toString());
+
+    private void preencherRelatorio() {
+        RelatorioTemplate_EduardoGiovanniLuan rel = new RelatorioClienteAluguelAtrasado_EduardoGiovanniLuan();
+        String texto = rel.gerar();
+        outputClienteAluguelAtrasado.setText(texto);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

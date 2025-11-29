@@ -5,6 +5,8 @@
 package GUI;
 
 import Classes.Imobiliaria_EduardoGiovanniLuan;
+import Classes.RelatorioAnaliseMensalMetodo_EduardoGiovanniLuan;
+import Classes.RelatorioTemplate_EduardoGiovanniLuan;
 import Classes.Venda_EduardoGiovanniLuan;
 
 /**
@@ -184,30 +186,15 @@ public class RelatorioAnaliseMensal extends javax.swing.JDialog {
             }
         });
     }
-    
-    private void preencherRelatorio(){
-        Imobiliaria_EduardoGiovanniLuan nossaImobiliaria = Imobiliaria_EduardoGiovanniLuan.getInstancia();
-        int mes = jComboBoxData.getSelectedIndex();
-        mes++;
-        StringBuilder texto = new StringBuilder();
-        
-        float ganhos = 0;
-        for(Venda_EduardoGiovanniLuan venda : nossaImobiliaria.getVendas()){
-            if(venda instanceof Venda_EduardoGiovanniLuan && venda.getDataVenda().getMonthValue() == mes){
-                texto.append(venda.toString());
-                texto.append("\n -=-=-=-=-=- \n");
-                ganhos = ganhos + venda.getValorTotalVenda();
-            }
-        }
-        texto.append("Ganhos do mes selecionado: ");
-        texto.append(ganhos);
-        texto.append("\n");
-        
-        if(texto.length() == 0){
-            texto.append("Nenhum aluguel finalizado cadastrado!\n");
-        }
-        
-        outputAnaliseMensal.setText(texto.toString());
+
+    private void preencherRelatorio() {
+        int mes = jComboBoxData.getSelectedIndex() + 1;
+
+        RelatorioTemplate_EduardoGiovanniLuan rel = new RelatorioAnaliseMensalMetodo_EduardoGiovanniLuan(mes);
+
+        String texto = rel.gerar();
+
+        outputAnaliseMensal.setText(texto);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
