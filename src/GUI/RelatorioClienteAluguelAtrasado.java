@@ -7,6 +7,8 @@ package GUI;
 import Classes.Aluguel_EduardoGiovanniLuan;
 import Classes.Cliente_EduardoGiovanniLuan;
 import Classes.Imobiliaria_EduardoGiovanniLuan;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 /**
  *
@@ -164,16 +166,18 @@ public class RelatorioClienteAluguelAtrasado extends javax.swing.JDialog {
     private void preencherRelatorio(){
         Imobiliaria_EduardoGiovanniLuan nossaImobiliaria = Imobiliaria_EduardoGiovanniLuan.getInstancia();
         StringBuilder texto = new StringBuilder();
+        ArrayList<Aluguel_EduardoGiovanniLuan> alugueis = nossaImobiliaria.getAlugueis();
+        Iterator<Aluguel_EduardoGiovanniLuan> iterator = alugueis.iterator();
         
-        for(Aluguel_EduardoGiovanniLuan aluguel : nossaImobiliaria.getAlugueis()){
-            if(!aluguel.getPago()){
-                Cliente_EduardoGiovanniLuan cliente = aluguel.getCliente();
-                if(cliente instanceof Cliente_EduardoGiovanniLuan){
-                    texto.append(cliente.toString());
-                    texto.append("\n -=-=-=-=-=- \n");
-                }
+        Aluguel_EduardoGiovanniLuan leitor;
+        while(iterator.hasNext()){
+            leitor = iterator.next();
+            if(!leitor.getPago()){
+                texto.append(leitor.getCliente().toString());
+                texto.append("\n -=-=-=-=-=- \n");
             }
         }
+        
         
         if(texto.length() == 0){
             texto.append("Nenhum cliente com aluguel atrasado cadastrado!\n");

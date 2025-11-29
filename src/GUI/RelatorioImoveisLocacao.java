@@ -8,6 +8,7 @@ import Classes.Aluguel_EduardoGiovanniLuan;
 import Classes.Imobiliaria_EduardoGiovanniLuan;
 import Classes.Imovel_EduardoGiovanniLuan;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 /**
  *
@@ -165,22 +166,30 @@ public class RelatorioImoveisLocacao extends javax.swing.JDialog {
     private void preencherRelatorio(){
         Imobiliaria_EduardoGiovanniLuan nossaImobiliaria = Imobiliaria_EduardoGiovanniLuan.getInstancia();
         StringBuilder texto = new StringBuilder();
+        ArrayList<Imovel_EduardoGiovanniLuan> imoveis = nossaImobiliaria.getImoveis();
+        Iterator<Imovel_EduardoGiovanniLuan> iterator = imoveis.iterator();
+        ArrayList<Aluguel_EduardoGiovanniLuan> alugueis = nossaImobiliaria.getAlugueis();
         
-        for(Imovel_EduardoGiovanniLuan imovel : nossaImobiliaria.getImoveis()){
-            for(Aluguel_EduardoGiovanniLuan aluguel: nossaImobiliaria.getAlugueis()){
-                if(aluguel.getImovel() == imovel && !aluguel.getFinalizado()){
+        Imovel_EduardoGiovanniLuan leitorImovel;
+        while(iterator.hasNext()){
+            leitorImovel = iterator.next();
+            
+            Iterator<Aluguel_EduardoGiovanniLuan> iteratorAluguel = alugueis.iterator();
+            
+            Aluguel_EduardoGiovanniLuan leitorAluguel;
+            while(iteratorAluguel.hasNext()){
+                leitorAluguel = iteratorAluguel.next();
+                if(leitorAluguel.getImovel() == leitorImovel && !leitorAluguel.getFinalizado()){
                     // Fazer nada
-                    
                 }else{
-                    if(imovel instanceof Imovel_EduardoGiovanniLuan){
-                        texto.append(imovel.toString());
+                    if(leitorImovel instanceof Imovel_EduardoGiovanniLuan){
+                        texto.append(leitorImovel.toString());
                         texto.append("\n -=-=-=-=-=- \n");
                     }
                 }
             }
-            ArrayList<Aluguel_EduardoGiovanniLuan> tdsAlugueis = nossaImobiliaria.getAlugueis();
-            if(tdsAlugueis.isEmpty()){
-                texto.append(imovel.toString());
+            if(alugueis.isEmpty() && leitorImovel instanceof Imovel_EduardoGiovanniLuan){
+                texto.append(leitorImovel.toString());
                 texto.append("\n -=-=-=-=-=- \n");
             }
         }

@@ -7,6 +7,8 @@ package GUI;
 import Classes.Aluguel_EduardoGiovanniLuan;
 import Classes.Imobiliaria_EduardoGiovanniLuan;
 import Classes.Imovel_EduardoGiovanniLuan;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 /**
  *
@@ -203,16 +205,14 @@ public class RelatorioAluguelMesmoCliente extends javax.swing.JDialog {
     private void preencherRelatorio(){
         Imobiliaria_EduardoGiovanniLuan nossaImobiliaria = Imobiliaria_EduardoGiovanniLuan.getInstancia();
         StringBuilder texto = new StringBuilder();
-        Imovel_EduardoGiovanniLuan imovel;
-        for(Aluguel_EduardoGiovanniLuan aluguel : nossaImobiliaria.getAlugueis()){
-            if(aluguel.getCliente().getNome().equalsIgnoreCase(inputNomeDoCliente.getText())){
-                imovel = aluguel.getImovel();
-            }else{
-                imovel = null;
-            }
-            
-            if(imovel instanceof Imovel_EduardoGiovanniLuan){
-                texto.append(imovel.toString());
+        ArrayList<Aluguel_EduardoGiovanniLuan> alugueis = nossaImobiliaria.getAlugueis();
+        Iterator<Aluguel_EduardoGiovanniLuan> iterator = alugueis.iterator();
+        
+        Aluguel_EduardoGiovanniLuan leitor;
+        while(iterator.hasNext()){
+            leitor = iterator.next();
+            if(leitor.getCliente().getNome().equalsIgnoreCase(inputNomeDoCliente.getText())){
+                texto.append(leitor.getImovel().toString());
                 texto.append("\n -=-=-=-=-=- \n");
             }
         }

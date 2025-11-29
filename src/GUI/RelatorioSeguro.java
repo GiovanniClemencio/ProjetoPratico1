@@ -6,6 +6,8 @@ package GUI;
 
 import Classes.Imobiliaria_EduardoGiovanniLuan;
 import Classes.Seguro_EduardoGiovanniLuan;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 /**
  *
@@ -163,10 +165,14 @@ public class RelatorioSeguro extends javax.swing.JDialog {
     private void preencherRelatorio(){
         Imobiliaria_EduardoGiovanniLuan nossaImobiliaria = Imobiliaria_EduardoGiovanniLuan.getInstancia();
         StringBuilder texto = new StringBuilder();
+        ArrayList<Seguro_EduardoGiovanniLuan> seguros = nossaImobiliaria.getSeguros();
+        Iterator<Seguro_EduardoGiovanniLuan> iterator = seguros.iterator();
         
-        for(Seguro_EduardoGiovanniLuan seguro : nossaImobiliaria.getSeguros()){
-            if(seguro instanceof Seguro_EduardoGiovanniLuan){
-                texto.append(seguro.toString());
+        Seguro_EduardoGiovanniLuan leitor;
+        while(iterator.hasNext()){
+            leitor = iterator.next();
+            if(leitor instanceof Seguro_EduardoGiovanniLuan){
+                texto.append(leitor.toString());
                 texto.append("\n -=-=-=-=-=- \n");
             }
         }
