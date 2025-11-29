@@ -10,7 +10,7 @@ package Classes;
  */
 public class Configuracao_EduardoGiovanniLuan
 {
-    private static Configuracao_EduardoGiovanniLuan instancia = new Configuracao_EduardoGiovanniLuan();
+    private static Configuracao_EduardoGiovanniLuan instancia = null;
     private String arquivoAlugueis;
     private String arquivoVendas;
     private String arquivoImoveis;
@@ -46,7 +46,8 @@ public class Configuracao_EduardoGiovanniLuan
     public String getArquivoSeguros() { return arquivoSeguros; }
     public void setArquivoSeguros(String arquivoSeguros) { this.arquivoSeguros = arquivoSeguros; }
 
-    public static Configuracao_EduardoGiovanniLuan getInstancia() {
+    public static Configuracao_EduardoGiovanniLuan getInstancia(){
+        if(instancia == null) new Configuracao_EduardoGiovanniLuan();
         return instancia;
     }
     

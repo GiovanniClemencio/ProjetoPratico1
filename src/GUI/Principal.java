@@ -6,7 +6,6 @@ package GUI;
 
 import Classes.Aluguel_EduardoGiovanniLuan;
 import Classes.Configuracao_EduardoGiovanniLuan;
-import Classes.Corretor_EduardoGiovanniLuan;
 import Classes.Imobiliaria_EduardoGiovanniLuan;
 import Classes.Imovel_EduardoGiovanniLuan;
 import Classes.Inicializar_EduardoGiovanniLuan;

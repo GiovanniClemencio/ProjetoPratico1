@@ -248,7 +248,9 @@ public class FinalizarAluguel extends javax.swing.JDialog {
         modeloAluguel.addElement("---");
         
         for(Aluguel_EduardoGiovanniLuan aluguel : nossaImobiliaria.getAlugueis()){
-            modeloAluguel.addElement(aluguel.getImovel().getEndereco());
+            if(!aluguel.getFinalizado()){
+                modeloAluguel.addElement(aluguel.getImovel().getEndereco());
+            }
         }
         
         jComboBoxImovel.setModel(modeloAluguel);
