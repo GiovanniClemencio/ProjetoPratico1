@@ -7,6 +7,8 @@ package GUI;
 import Classes.Imobiliaria_EduardoGiovanniLuan;
 import Classes.Imovel_EduardoGiovanniLuan;
 import Classes.Venda_EduardoGiovanniLuan;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 /**
  *
@@ -164,11 +166,14 @@ public class RelatorioImoveisVendidos extends javax.swing.JDialog {
     private void preencherRelatorio(){
         Imobiliaria_EduardoGiovanniLuan nossaImobiliaria = Imobiliaria_EduardoGiovanniLuan.getInstancia();
         StringBuilder texto = new StringBuilder();
+        ArrayList<Venda_EduardoGiovanniLuan> vendas = nossaImobiliaria.getVendas();
+        Iterator<Venda_EduardoGiovanniLuan> iterator = vendas.iterator();
         
-        for(Venda_EduardoGiovanniLuan venda : nossaImobiliaria.getVendas()){
-            Imovel_EduardoGiovanniLuan imovel = venda.getImovel();
-            if(imovel instanceof Imovel_EduardoGiovanniLuan){
-                texto.append(imovel.toString());
+        Venda_EduardoGiovanniLuan leitor;
+        while(iterator.hasNext()){
+            leitor = iterator.next();
+            if(leitor.getImovel() instanceof Imovel_EduardoGiovanniLuan){
+                texto.append(leitor.getImovel().toString());
                 texto.append("\n -=-=-=-=-=- \n");
             }
         }

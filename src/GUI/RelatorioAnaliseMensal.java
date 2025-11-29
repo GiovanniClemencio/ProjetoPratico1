@@ -6,6 +6,8 @@ package GUI;
 
 import Classes.Imobiliaria_EduardoGiovanniLuan;
 import Classes.Venda_EduardoGiovanniLuan;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 /**
  *
@@ -190,22 +192,23 @@ public class RelatorioAnaliseMensal extends javax.swing.JDialog {
         int mes = jComboBoxData.getSelectedIndex();
         mes++;
         StringBuilder texto = new StringBuilder();
+        ArrayList<Venda_EduardoGiovanniLuan> vendas = nossaImobiliaria.getVendas();
+        Iterator<Venda_EduardoGiovanniLuan> iterator = vendas.iterator();
+        
         
         float ganhos = 0;
-        for(Venda_EduardoGiovanniLuan venda : nossaImobiliaria.getVendas()){
-            if(venda instanceof Venda_EduardoGiovanniLuan && venda.getDataVenda().getMonthValue() == mes){
-                texto.append(venda.toString());
+        Venda_EduardoGiovanniLuan leitor;
+        while(iterator.hasNext()){
+            leitor = iterator.next();
+            if(leitor.getDataVenda().getMonthValue() == mes){
+                texto.append(leitor.toString());
                 texto.append("\n -=-=-=-=-=- \n");
-                ganhos = ganhos + venda.getValorTotalVenda();
+                ganhos = ganhos + leitor.getValorTotalVenda();
             }
         }
         texto.append("Ganhos do mes selecionado: ");
         texto.append(ganhos);
         texto.append("\n");
-        
-        if(texto.length() == 0){
-            texto.append("Nenhum aluguel finalizado cadastrado!\n");
-        }
         
         outputAnaliseMensal.setText(texto.toString());
     }

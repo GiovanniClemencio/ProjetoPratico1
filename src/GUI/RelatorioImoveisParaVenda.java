@@ -8,6 +8,7 @@ import Classes.Imobiliaria_EduardoGiovanniLuan;
 import Classes.Imovel_EduardoGiovanniLuan;
 import Classes.Venda_EduardoGiovanniLuan;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 /**
  *
@@ -165,22 +166,30 @@ public class RelatorioImoveisParaVenda extends javax.swing.JDialog {
     private void preencherRelatorio(){
         Imobiliaria_EduardoGiovanniLuan nossaImobiliaria = Imobiliaria_EduardoGiovanniLuan.getInstancia();
         StringBuilder texto = new StringBuilder();
+        ArrayList<Imovel_EduardoGiovanniLuan> imoveis = nossaImobiliaria.getImoveis();
+        ArrayList<Venda_EduardoGiovanniLuan> vendas = nossaImobiliaria.getVendas();
+        Iterator<Imovel_EduardoGiovanniLuan> iteratorImovel = imoveis.iterator();
         
-        for(Imovel_EduardoGiovanniLuan imovel : nossaImobiliaria.getImoveis()){
-            for(Venda_EduardoGiovanniLuan venda: nossaImobiliaria.getVendas()){
-                if(venda.getImovel().getEndereco().equals(imovel.getEndereco())){
-                    //fazer nada
+        Imovel_EduardoGiovanniLuan leitorImoveis;
+        while(iteratorImovel.hasNext()){
+            leitorImoveis = iteratorImovel.next();
+            
+            Venda_EduardoGiovanniLuan leitorVendas;
+            Iterator<Venda_EduardoGiovanniLuan> iteratorVenda = vendas.iterator();
+            while(iteratorVenda.hasNext()){
+                leitorVendas = iteratorVenda.next();
+                if(leitorVendas.getImovel().getEndereco().equals(leitorImoveis.getEndereco())){
+                    // Fazer nada
                 }else{
-                    if(imovel instanceof Imovel_EduardoGiovanniLuan){
-                        texto.append(imovel.toString());
+                    if(leitorImoveis instanceof Imovel_EduardoGiovanniLuan){
+                        texto.append(leitorImoveis.toString());
                         texto.append("\n -=-=-=-=-=- \n");
                     }
                 }
             }
             
-            ArrayList<Venda_EduardoGiovanniLuan> tdsVendas = nossaImobiliaria.getVendas();
-            if(tdsVendas.isEmpty()){
-                texto.append(imovel.toString());
+            if(vendas.isEmpty()){
+                texto.append(leitorImoveis.toString());
                 texto.append("\n -=-=-=-=-=- \n");
             }
         }
