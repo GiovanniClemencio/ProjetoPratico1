@@ -7,6 +7,7 @@ package GUI;
 import Classes.Cliente_EduardoGiovanniLuan;
 import static Classes.Contadores_EduardoGiovanniLuan.getCodigoUsuario;
 import Classes.Imobiliaria_EduardoGiovanniLuan;
+import Classes.PessoaFactory;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import javax.swing.JOptionPane;
@@ -431,7 +432,10 @@ public class CadastroCliente extends javax.swing.JDialog {
         String email = inputEmail.getText();
         LocalDate dataCadastro = LocalDate.now();
 
-        Cliente_EduardoGiovanniLuan novoCliente = new Cliente_EduardoGiovanniLuan(codigoUsuario, nome, cpf, rg, dataNascimento, endereco, cep, telefone, email, dataCadastro);
+        //alteração factory method
+        Cliente_EduardoGiovanniLuan novoCliente = (Cliente_EduardoGiovanniLuan) PessoaFactory.criarPessoa(
+            "cliente", codigoUsuario, nome, cpf, rg, dataNascimento, endereco, cep, telefone, email);
+        
         Imobiliaria_EduardoGiovanniLuan nossaImobiliaria = Imobiliaria_EduardoGiovanniLuan.getInstancia();
         nossaImobiliaria.getClientes().add(novoCliente);
         JOptionPane.showMessageDialog(null,

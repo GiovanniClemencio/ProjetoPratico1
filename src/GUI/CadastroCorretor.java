@@ -7,6 +7,7 @@ package GUI;
 import static Classes.Contadores_EduardoGiovanniLuan.getCodigoUsuario;
 import Classes.Corretor_EduardoGiovanniLuan;
 import Classes.Imobiliaria_EduardoGiovanniLuan;
+import Classes.PessoaFactory;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import javax.swing.JOptionPane;
@@ -517,7 +518,10 @@ public class CadastroCorretor extends javax.swing.JDialog {
         String pis = inputPIS.getText();
         LocalDate dataAdmissao = LocalDate.now();
         
-        Corretor_EduardoGiovanniLuan novoCorretor = new Corretor_EduardoGiovanniLuan(codigoUsuario, nome, cpf, rg, dataNascimento, endereco, cep, telefone, email, creci, salario, pis, dataAdmissao);
+        //alteração factory method
+        Corretor_EduardoGiovanniLuan novoCorretor = (Corretor_EduardoGiovanniLuan) PessoaFactory.criarPessoa(
+            "corretor", codigoUsuario, nome, cpf, rg, dataNascimento, endereco, cep, telefone, email, creci, salario, pis);
+        
         Imobiliaria_EduardoGiovanniLuan nossaImobiliaria = Imobiliaria_EduardoGiovanniLuan.getInstancia();
         nossaImobiliaria.getCorretores().add(novoCorretor);
         JOptionPane.showMessageDialog(null,
