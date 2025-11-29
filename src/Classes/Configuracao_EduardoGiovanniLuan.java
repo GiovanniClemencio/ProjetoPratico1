@@ -47,7 +47,7 @@ public class Configuracao_EduardoGiovanniLuan
     public void setArquivoSeguros(String arquivoSeguros) { this.arquivoSeguros = arquivoSeguros; }
 
     public static Configuracao_EduardoGiovanniLuan getInstancia(){
-        if(instancia == null) new Configuracao_EduardoGiovanniLuan();
+        if(instancia == null) instancia = new Configuracao_EduardoGiovanniLuan();
         return instancia;
     }
     
