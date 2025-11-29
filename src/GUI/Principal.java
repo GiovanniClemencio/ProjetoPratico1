@@ -30,8 +30,6 @@ public class Principal {
         Imobiliaria_EduardoGiovanniLuan nossaImobiliaria = Imobiliaria_EduardoGiovanniLuan.getInstancia();
         Configuracao_EduardoGiovanniLuan config = nossaImobiliaria.getConfiguracoes();
         
-        System.out.println(config.getArquivoClientes());
-        
         ArrayList<Usuario_EduardoGiovanniLuan> clientes = Inicializar_EduardoGiovanniLuan.carregarObjetos(config.getArquivoClientes());
         ArrayList<Usuario_EduardoGiovanniLuan> corretores = Inicializar_EduardoGiovanniLuan.carregarObjetos(config.getArquivoCorretores());
         ArrayList<Imovel_EduardoGiovanniLuan> imoveis = Inicializar_EduardoGiovanniLuan.carregarObjetos(config.getArquivoImoveis());
