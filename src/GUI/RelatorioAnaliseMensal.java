@@ -5,6 +5,8 @@
 package GUI;
 
 import Classes.Imobiliaria_EduardoGiovanniLuan;
+import Classes.RelatorioAnaliseMensalMetodo_EduardoGiovanniLuan;
+import Classes.RelatorioTemplate_EduardoGiovanniLuan;
 import Classes.Venda_EduardoGiovanniLuan;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -186,31 +188,15 @@ public class RelatorioAnaliseMensal extends javax.swing.JDialog {
             }
         });
     }
-    
-    private void preencherRelatorio(){
-        Imobiliaria_EduardoGiovanniLuan nossaImobiliaria = Imobiliaria_EduardoGiovanniLuan.getInstancia();
-        int mes = jComboBoxData.getSelectedIndex();
-        mes++;
-        StringBuilder texto = new StringBuilder();
-        ArrayList<Venda_EduardoGiovanniLuan> vendas = nossaImobiliaria.getVendas();
-        Iterator<Venda_EduardoGiovanniLuan> iterator = vendas.iterator();
-        
-        
-        float ganhos = 0;
-        Venda_EduardoGiovanniLuan leitor;
-        while(iterator.hasNext()){
-            leitor = iterator.next();
-            if(leitor.getDataVenda().getMonthValue() == mes){
-                texto.append(leitor.toString());
-                texto.append("\n -=-=-=-=-=- \n");
-                ganhos = ganhos + leitor.getValorTotalVenda();
-            }
-        }
-        texto.append("Ganhos do mes selecionado: ");
-        texto.append(ganhos);
-        texto.append("\n");
-        
-        outputAnaliseMensal.setText(texto.toString());
+
+    private void preencherRelatorio() {
+        int mes = jComboBoxData.getSelectedIndex() + 1;
+
+        RelatorioTemplate_EduardoGiovanniLuan rel = new RelatorioAnaliseMensalMetodo_EduardoGiovanniLuan(mes);
+
+        String texto = rel.gerar();
+
+        outputAnaliseMensal.setText(texto);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

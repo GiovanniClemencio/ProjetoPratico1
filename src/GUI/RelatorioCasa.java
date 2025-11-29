@@ -7,8 +7,8 @@ package GUI;
 import Classes.CasaResidencial_EduardoGiovanniLuan;
 import Classes.Imobiliaria_EduardoGiovanniLuan;
 import Classes.Imovel_EduardoGiovanniLuan;
-import java.util.ArrayList;
-import java.util.Iterator;
+import Classes.RelatorioCasaResidencialMetodo_EduardoGiovanniLuan;
+import Classes.RelatorioTemplate_EduardoGiovanniLuan;
 
 /**
  *
@@ -22,7 +22,7 @@ public class RelatorioCasa extends javax.swing.JDialog {
     public RelatorioCasa(java.awt.Dialog parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        
+
         preencherRelatorio();
     }
 
@@ -162,27 +162,11 @@ public class RelatorioCasa extends javax.swing.JDialog {
             }
         });
     }
-    
-    private void preencherRelatorio(){
-        Imobiliaria_EduardoGiovanniLuan nossaImobiliaria = Imobiliaria_EduardoGiovanniLuan.getInstancia();
-        StringBuilder texto = new StringBuilder();
-        ArrayList<Imovel_EduardoGiovanniLuan> imoveis = nossaImobiliaria.getImoveis();
-        Iterator<Imovel_EduardoGiovanniLuan> iterator = imoveis.iterator();
-        
-        Imovel_EduardoGiovanniLuan leitor;
-        while(iterator.hasNext()){
-            leitor = iterator.next();
-            if(leitor instanceof CasaResidencial_EduardoGiovanniLuan){
-                texto.append(leitor.toString());
-                texto.append("\n -=-=-=-=-=- \n");
-            }
-        }
-        
-        if(texto.length() == 0){
-            texto.append("Nenhum Predio residencial cadastrado!\n");
-        }
-        
-        outputCasaResidencial.setText(texto.toString());
+
+    private void preencherRelatorio() {
+        RelatorioTemplate_EduardoGiovanniLuan rel = new RelatorioCasaResidencialMetodo_EduardoGiovanniLuan();
+        String texto = rel.gerar();
+        outputCasaResidencial.setText(texto);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

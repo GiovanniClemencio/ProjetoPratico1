@@ -5,6 +5,8 @@
 package GUI;
 
 import Classes.Imobiliaria_EduardoGiovanniLuan;
+import Classes.RelatorioHistoricoVendas_EduardoGiovanniLuan;
+import Classes.RelatorioTemplate_EduardoGiovanniLuan;
 import Classes.Venda_EduardoGiovanniLuan;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -21,7 +23,7 @@ public class RelatorioHistoricoVendas extends javax.swing.JDialog {
     public RelatorioHistoricoVendas(java.awt.Dialog parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        
+
         preencherRelatorio();
     }
 
@@ -161,27 +163,13 @@ public class RelatorioHistoricoVendas extends javax.swing.JDialog {
             }
         });
     }
-    
-    private void preencherRelatorio(){
-        Imobiliaria_EduardoGiovanniLuan nossaImobiliaria = Imobiliaria_EduardoGiovanniLuan.getInstancia();
-        StringBuilder texto = new StringBuilder();
-        ArrayList<Venda_EduardoGiovanniLuan> vendas = nossaImobiliaria.getVendas();
-        Iterator<Venda_EduardoGiovanniLuan> iterator = vendas.iterator();
-        
-        Venda_EduardoGiovanniLuan leitor;
-        while(iterator.hasNext()){
-            leitor = iterator.next();
-            if(leitor instanceof Venda_EduardoGiovanniLuan){
-                texto.append(leitor.toString());
-                texto.append("\n -=-=-=-=-=- \n");
-            }
-        }
-        
-        if(texto.length() == 0){
-            texto.append("Nenhuma venda cadastrada!\n");
-        }
-        
-        outputHistoricoVendas.setText(texto.toString());
+
+    private void preencherRelatorio() {
+        RelatorioTemplate_EduardoGiovanniLuan rel = new RelatorioHistoricoVendas_EduardoGiovanniLuan();
+
+        String texto = rel.gerar();
+
+        outputHistoricoVendas.setText(texto);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

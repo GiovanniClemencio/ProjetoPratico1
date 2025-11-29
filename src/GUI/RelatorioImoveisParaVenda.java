@@ -6,6 +6,8 @@ package GUI;
 
 import Classes.Imobiliaria_EduardoGiovanniLuan;
 import Classes.Imovel_EduardoGiovanniLuan;
+import Classes.RelatorioImoveisParaVenda_EduardoGiovanniLuan;
+import Classes.RelatorioTemplate_EduardoGiovanniLuan;
 import Classes.Venda_EduardoGiovanniLuan;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -22,7 +24,7 @@ public class RelatorioImoveisParaVenda extends javax.swing.JDialog {
     public RelatorioImoveisParaVenda(java.awt.Dialog parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        
+
         preencherRelatorio();
     }
 
@@ -162,45 +164,14 @@ public class RelatorioImoveisParaVenda extends javax.swing.JDialog {
             }
         });
     }
-    
-    private void preencherRelatorio(){
-        Imobiliaria_EduardoGiovanniLuan nossaImobiliaria = Imobiliaria_EduardoGiovanniLuan.getInstancia();
-        StringBuilder texto = new StringBuilder();
-        ArrayList<Imovel_EduardoGiovanniLuan> imoveis = nossaImobiliaria.getImoveis();
-        ArrayList<Venda_EduardoGiovanniLuan> vendas = nossaImobiliaria.getVendas();
-        Iterator<Imovel_EduardoGiovanniLuan> iteratorImovel = imoveis.iterator();
-        
-        Imovel_EduardoGiovanniLuan leitorImoveis;
-        while(iteratorImovel.hasNext()){
-            leitorImoveis = iteratorImovel.next();
-            
-            Venda_EduardoGiovanniLuan leitorVendas;
-            Iterator<Venda_EduardoGiovanniLuan> iteratorVenda = vendas.iterator();
-            while(iteratorVenda.hasNext()){
-                leitorVendas = iteratorVenda.next();
-                if(leitorVendas.getImovel().getEndereco().equals(leitorImoveis.getEndereco())){
-                    // Fazer nada
-                }else{
-                    if(leitorImoveis instanceof Imovel_EduardoGiovanniLuan){
-                        texto.append(leitorImoveis.toString());
-                        texto.append("\n -=-=-=-=-=- \n");
-                    }
-                }
-            }
-            
-            if(vendas.isEmpty()){
-                texto.append(leitorImoveis.toString());
-                texto.append("\n -=-=-=-=-=- \n");
-            }
-        }
-        
-        if(texto.length() == 0){
-            texto.append("Nenhum Imovel disponivel para venda cadastrado!\n");
-        }
-        
-        outputImoveisParaVenda.setText(texto.toString());
+
+    private void preencherRelatorio() {
+        RelatorioTemplate_EduardoGiovanniLuan rel = new RelatorioImoveisParaVenda_EduardoGiovanniLuan();
+
+        String texto = rel.gerar();
+        outputImoveisParaVenda.setText(texto);
     }
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

@@ -6,6 +6,8 @@ package GUI;
 
 import Classes.Aluguel_EduardoGiovanniLuan;
 import Classes.Imobiliaria_EduardoGiovanniLuan;
+import Classes.RelatorioAluguelAtivoMetodo_EduardoGiovanniLuan;
+import Classes.RelatorioTemplate_EduardoGiovanniLuan;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -21,7 +23,7 @@ public class RelatorioAluguelAtivo extends javax.swing.JDialog {
     public RelatorioAluguelAtivo(java.awt.Dialog parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        
+
         preencherRelatorio();
     }
 
@@ -161,27 +163,11 @@ public class RelatorioAluguelAtivo extends javax.swing.JDialog {
             }
         });
     }
-    
-    private void preencherRelatorio(){
-        Imobiliaria_EduardoGiovanniLuan nossaImobiliaria = Imobiliaria_EduardoGiovanniLuan.getInstancia();
-        StringBuilder texto = new StringBuilder();
-        ArrayList<Aluguel_EduardoGiovanniLuan> alugueis = nossaImobiliaria.getAlugueis();
-        
-        Iterator<Aluguel_EduardoGiovanniLuan> iterator = alugueis.iterator();
-        Aluguel_EduardoGiovanniLuan leitor;
-        while(iterator.hasNext()){
-            leitor = iterator.next();
-            if(!leitor.getFinalizado()){
-                texto.append(leitor.toString());
-                texto.append("\n -=-=-=-=-=- \n");
-            }
-        }
-        
-        if(texto.length() == 0){
-            texto.append("Nenhum aluguel ativo cadastrado!\n");
-        }
-        
-        outputAluguelAtivo.setText(texto.toString());
+
+    private void preencherRelatorio() {
+        RelatorioTemplate_EduardoGiovanniLuan rel = new RelatorioAluguelAtivoMetodo_EduardoGiovanniLuan();
+        String texto = rel.gerar();
+        outputAluguelAtivo.setText(texto);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
