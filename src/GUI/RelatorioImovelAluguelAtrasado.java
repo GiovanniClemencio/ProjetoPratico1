@@ -6,8 +6,8 @@ package GUI;
 
 import Classes.Aluguel_EduardoGiovanniLuan;
 import Classes.Imobiliaria_EduardoGiovanniLuan;
-import java.util.ArrayList;
-import java.util.Iterator;
+import Classes.RelatorioImovelAluguelAtrasado_EduardoGiovanniLuan;
+import Classes.RelatorioTemplate_EduardoGiovanniLuan;
 
 /**
  *
@@ -21,7 +21,7 @@ public class RelatorioImovelAluguelAtrasado extends javax.swing.JDialog {
     public RelatorioImovelAluguelAtrasado(java.awt.Dialog parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        
+
         preencherRelatorio();
     }
 
@@ -162,29 +162,13 @@ public class RelatorioImovelAluguelAtrasado extends javax.swing.JDialog {
             }
         });
     }
-    
-    private void preencherRelatorio(){
-        Imobiliaria_EduardoGiovanniLuan nossaImobiliaria = Imobiliaria_EduardoGiovanniLuan.getInstancia();
-        StringBuilder texto = new StringBuilder();
-        ArrayList<Aluguel_EduardoGiovanniLuan> alugueis = nossaImobiliaria.getAlugueis();
-        Iterator<Aluguel_EduardoGiovanniLuan> iterator = alugueis.iterator();
-        
-        Aluguel_EduardoGiovanniLuan leitor;
-        while(iterator.hasNext()){
-            leitor = iterator.next();
-            if(leitor instanceof Aluguel_EduardoGiovanniLuan && !leitor.getPago()){
-                texto.append(leitor.toString());
-                texto.append("\n -=-=-=-=-=- \n");
-            }
-        }
-        
-        if(texto.length() == 0){
-            texto.append("Nenhum imovel com aluguel atrasado cadastrado!\n");
-        }
-        
-        outputImovelAluguelAtrasado.setText(texto.toString());
+
+    private void preencherRelatorio() {
+        RelatorioTemplate_EduardoGiovanniLuan rel = new RelatorioImovelAluguelAtrasado_EduardoGiovanniLuan();
+
+        outputImovelAluguelAtrasado.setText(rel.gerar());
     }
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

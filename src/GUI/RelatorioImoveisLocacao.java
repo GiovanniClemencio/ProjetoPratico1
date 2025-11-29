@@ -7,6 +7,8 @@ package GUI;
 import Classes.Aluguel_EduardoGiovanniLuan;
 import Classes.Imobiliaria_EduardoGiovanniLuan;
 import Classes.Imovel_EduardoGiovanniLuan;
+import Classes.RelatorioImoveisLocacao_EduardoGiovanniLuan;
+import Classes.RelatorioTemplate_EduardoGiovanniLuan;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -22,7 +24,7 @@ public class RelatorioImoveisLocacao extends javax.swing.JDialog {
     public RelatorioImoveisLocacao(java.awt.Dialog parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        
+
         preencherRelatorio();
     }
 
@@ -162,45 +164,14 @@ public class RelatorioImoveisLocacao extends javax.swing.JDialog {
             }
         });
     }
-    
-    private void preencherRelatorio(){
-        Imobiliaria_EduardoGiovanniLuan nossaImobiliaria = Imobiliaria_EduardoGiovanniLuan.getInstancia();
-        StringBuilder texto = new StringBuilder();
-        ArrayList<Imovel_EduardoGiovanniLuan> imoveis = nossaImobiliaria.getImoveis();
-        Iterator<Imovel_EduardoGiovanniLuan> iterator = imoveis.iterator();
-        ArrayList<Aluguel_EduardoGiovanniLuan> alugueis = nossaImobiliaria.getAlugueis();
-        
-        Imovel_EduardoGiovanniLuan leitorImovel;
-        while(iterator.hasNext()){
-            leitorImovel = iterator.next();
-            
-            Iterator<Aluguel_EduardoGiovanniLuan> iteratorAluguel = alugueis.iterator();
-            
-            Aluguel_EduardoGiovanniLuan leitorAluguel;
-            while(iteratorAluguel.hasNext()){
-                leitorAluguel = iteratorAluguel.next();
-                if(leitorAluguel.getImovel() == leitorImovel && !leitorAluguel.getFinalizado()){
-                    // Fazer nada
-                }else{
-                    if(leitorImovel instanceof Imovel_EduardoGiovanniLuan){
-                        texto.append(leitorImovel.toString());
-                        texto.append("\n -=-=-=-=-=- \n");
-                    }
-                }
-            }
-            if(alugueis.isEmpty() && leitorImovel instanceof Imovel_EduardoGiovanniLuan){
-                texto.append(leitorImovel.toString());
-                texto.append("\n -=-=-=-=-=- \n");
-            }
-        }
-        
-        if(texto.length() == 0){
-            texto.append("Nenhum Imovel para locacao cadastrado!\n");
-        }
-        
-        outputLocacao.setText(texto.toString());
+
+    private void preencherRelatorio() {
+        RelatorioTemplate_EduardoGiovanniLuan rel = new RelatorioImoveisLocacao_EduardoGiovanniLuan();
+
+        String texto = rel.gerar();
+        outputLocacao.setText(texto);
     }
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
