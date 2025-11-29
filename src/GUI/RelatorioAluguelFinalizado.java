@@ -8,6 +8,8 @@ import Classes.Aluguel_EduardoGiovanniLuan;
 import Classes.Imobiliaria_EduardoGiovanniLuan;
 import Classes.RelatorioAluguelFinalizadoMetodo_EduardoGiovanniLuan;
 import Classes.RelatorioTemplate_EduardoGiovanniLuan;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 /**
  *

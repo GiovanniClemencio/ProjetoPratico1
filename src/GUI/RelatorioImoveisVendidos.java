@@ -9,6 +9,8 @@ import Classes.Imovel_EduardoGiovanniLuan;
 import Classes.RelatorioImoveisVendidos_EduardoGiovanniLuan;
 import Classes.RelatorioTemplate_EduardoGiovanniLuan;
 import Classes.Venda_EduardoGiovanniLuan;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 /**
  *

@@ -10,6 +10,7 @@ import Classes.Imovel_EduardoGiovanniLuan;
 import Classes.RelatorioImoveisLocacao_EduardoGiovanniLuan;
 import Classes.RelatorioTemplate_EduardoGiovanniLuan;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 /**
  *
