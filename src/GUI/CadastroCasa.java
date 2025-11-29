@@ -4,6 +4,7 @@
  */
 package GUI;
 
+import Classes.CasaResidencialBuilder_EduardoGiovanniLuan;
 import Classes.CasaResidencial_EduardoGiovanniLuan;
 import static Classes.Contadores_EduardoGiovanniLuan.getCodigoImovel;
 import Classes.Imobiliaria_EduardoGiovanniLuan;
@@ -25,10 +26,16 @@ public class CadastroCasa extends javax.swing.JDialog {
     public CadastroCasa(java.awt.Dialog parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        
+
         buttonEnviar.setEnabled(false);
         addTextFieldListeners();
         verificarCampos();
+
+        comboModelo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboModeloActionPerformed(evt);
+            }
+        });
     }
 
     /**
@@ -71,6 +78,7 @@ public class CadastroCasa extends javax.swing.JDialog {
         jLabel17 = new javax.swing.JLabel();
         inputAluguel = new javax.swing.JTextField();
         jLabel18 = new javax.swing.JLabel();
+        comboModelo = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -223,6 +231,13 @@ public class CadastroCasa extends javax.swing.JDialog {
 
         jLabel18.setText("Valor de aluguél:");
 
+        comboModelo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecionar", "Simples", "Luxo", "Padrão" }));
+        comboModelo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboModeloActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -248,8 +263,8 @@ public class CadastroCasa extends javax.swing.JDialog {
                             .addComponent(inputDataConstrucao)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(inputRua, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(inputRua, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -293,7 +308,8 @@ public class CadastroCasa extends javax.swing.JDialog {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(inputQtdVagas, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                            .addComponent(inputQtdVagas, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                            .addComponent(comboModelo, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 19, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -301,6 +317,8 @@ public class CadastroCasa extends javax.swing.JDialog {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
+                .addComponent(comboModelo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(jLabel7)
@@ -365,7 +383,7 @@ public class CadastroCasa extends javax.swing.JDialog {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(buttonResetar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(buttonEnviar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -405,12 +423,14 @@ public class CadastroCasa extends javax.swing.JDialog {
     }//GEN-LAST:event_buttonResetarActionPerformed
 
     private void buttonEnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEnviarActionPerformed
+        CasaResidencialBuilder_EduardoGiovanniLuan builder = new CasaResidencialBuilder_EduardoGiovanniLuan();
+
         int codigoImovel = getCodigoImovel();
         String rua = inputRua.getText();
         String numero = inputNumero.getText();
         String bairro = inputBairro.getText();
         String cidade = inputCidade.getText();
-        String endereco = rua + ", numero " + numero + ", "+ bairro + ", " + cidade;
+        String endereco = rua + ", numero " + numero + ", " + bairro + ", " + cidade;
         LocalDate dataConstrucao;
         try {
             String texto = inputDataConstrucao.getText();
@@ -431,14 +451,27 @@ public class CadastroCasa extends javax.swing.JDialog {
         float IPTU = Float.parseFloat(inputIPTU.getText());
         float venda = Float.parseFloat(inputVenda.getText());
         float aluguel = Float.parseFloat(inputAluguel.getText());
-        
-        CasaResidencial_EduardoGiovanniLuan novaCasa = new CasaResidencial_EduardoGiovanniLuan(codigoImovel, endereco, dataConstrucao, areaTotal, areaConstruida, qtdDormitorios, qtdBanheiros, qtdVagas, IPTU, venda, aluguel);
+
+        CasaResidencial_EduardoGiovanniLuan novaCasa = builder
+                .codigo(codigoImovel)
+                .endereco(endereco)
+                .dataConstrucao(dataConstrucao)
+                .areaTotal(areaTotal)
+                .construida(areaConstruida)
+                .dormitorios(qtdDormitorios)
+                .banheiros(qtdBanheiros)
+                .vagas(qtdVagas)
+                .iptu(IPTU)
+                .venda(venda)
+                .aluguel(aluguel)
+                .build();
+
         Imobiliaria_EduardoGiovanniLuan nossaImobiliaria = Imobiliaria_EduardoGiovanniLuan.getInstancia();
         nossaImobiliaria.getImoveis().add(novaCasa);
         JOptionPane.showMessageDialog(null,
-            "CADASTRO EFETUADO COM SUCESSO!",
-            "",
-            JOptionPane.PLAIN_MESSAGE);
+                "CADASTRO EFETUADO COM SUCESSO!",
+                "",
+                JOptionPane.PLAIN_MESSAGE);
 
         dispose();
     }//GEN-LAST:event_buttonEnviarActionPerformed
@@ -495,6 +528,32 @@ public class CadastroCasa extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_inputAluguelActionPerformed
 
+    private void comboModeloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboModeloActionPerformed
+        String modeloSelecionado = (String) comboModelo.getSelectedItem();
+
+        // builder temporário
+        CasaResidencialBuilder_EduardoGiovanniLuan builder = new CasaResidencialBuilder_EduardoGiovanniLuan();
+
+        // Aplica o modelo, o que define os valores internos do Builder
+        if ("Simples".equals(modeloSelecionado)) {
+            builder.modeloSimples();
+        } else if ("Luxo".equals(modeloSelecionado)) {
+            builder.modeloLuxo();
+        } else if ("Padrão".equals(modeloSelecionado)){ // Padrão
+            builder.modeloPadrao();
+        }
+
+        inputQtdDormitorios.setText(String.valueOf(builder.getQtdDormitorios()));
+        inputQtdBanheiros.setText(String.valueOf(builder.getQtdBanheiros()));
+        inputQtdVagas.setText(String.valueOf(builder.getQtdVagasGaragem()));
+        inputAreaTotal.setText(String.valueOf(builder.getAreaTotal()));
+        inputAreaConstruida.setText(String.valueOf(builder.getAreaConstruida()));
+        inputIPTU.setText(String.valueOf(builder.getValorIPTU()));
+        inputAluguel.setText(String.valueOf(builder.getValorAluguel()));
+        inputVenda.setText(String.valueOf(builder.getValorVenda()));
+        verificarCampos();
+    }//GEN-LAST:event_comboModeloActionPerformed
+
     private void verificarCampos() {
         boolean todosPreenchidos
                 = !inputRua.getText().trim().isEmpty()
@@ -531,7 +590,6 @@ public class CadastroCasa extends javax.swing.JDialog {
             }
         };
 
-        
         inputRua.getDocument().addDocumentListener(listener);
         inputNumero.getDocument().addDocumentListener(listener);
         inputBairro.getDocument().addDocumentListener(listener);
@@ -546,7 +604,7 @@ public class CadastroCasa extends javax.swing.JDialog {
         inputVenda.getDocument().addDocumentListener(listener);
         inputAluguel.getDocument().addDocumentListener(listener);
     }
-    
+
     /**
      * @param args the command line arguments
      */
@@ -592,6 +650,7 @@ public class CadastroCasa extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonEnviar;
     private javax.swing.JButton buttonResetar;
+    private javax.swing.JComboBox<String> comboModelo;
     private javax.swing.JTextField inputAluguel;
     private javax.swing.JTextField inputAreaConstruida;
     private javax.swing.JTextField inputAreaTotal;

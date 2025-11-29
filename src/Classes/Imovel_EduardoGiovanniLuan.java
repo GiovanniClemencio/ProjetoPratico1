@@ -25,7 +25,7 @@ public abstract class Imovel_EduardoGiovanniLuan implements Serializable{
     protected float valorVenda;
     protected float valorAluguel;
 
-    public Imovel_EduardoGiovanniLuan(int codigoImovel, String endereco, LocalDate dataConstrucao, float areaTotal, float areaConstruida, int qtdDormitorios, int qtdBanheiros, int qtdVagasGaragem, float valorIPTU, float valorVenda, float valorAluguel) {
+    protected Imovel_EduardoGiovanniLuan(int codigoImovel, String endereco, LocalDate dataConstrucao, float areaTotal, float areaConstruida, int qtdDormitorios, int qtdBanheiros, int qtdVagasGaragem, float valorIPTU, float valorVenda, float valorAluguel) {
         this.codigoImovel = codigoImovel;
         this.endereco = endereco;
         this.dataConstrucao = dataConstrucao;

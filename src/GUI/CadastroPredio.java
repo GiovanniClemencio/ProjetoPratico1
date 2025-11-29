@@ -6,6 +6,7 @@ package GUI;
 
 import static Classes.Contadores_EduardoGiovanniLuan.getCodigoImovel;
 import Classes.Imobiliaria_EduardoGiovanniLuan;
+import Classes.PredioResidencialBuilder_EduardoGiovanniLuan;
 import Classes.PredioResidencial_EduardoGiovanniLuan;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -25,10 +26,16 @@ public class CadastroPredio extends javax.swing.JDialog {
     public CadastroPredio(java.awt.Dialog parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        
+
         buttonEnviar.setEnabled(false);
         addTextFieldListeners();
         verificarCampos();
+
+        comboModelo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboModeloActionPerformed(evt);
+            }
+        });
     }
 
     /**
@@ -75,6 +82,7 @@ public class CadastroPredio extends javax.swing.JDialog {
         jLabel19 = new javax.swing.JLabel();
         inputCondominio = new javax.swing.JTextField();
         jLabel20 = new javax.swing.JLabel();
+        comboModelo = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -243,6 +251,13 @@ public class CadastroPredio extends javax.swing.JDialog {
 
         jLabel20.setText("Valor do condomínio:");
 
+        comboModelo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecionar", "Modelo Studio", "Modelo Médio", "Modelo Cobertura" }));
+        comboModelo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboModeloActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -329,11 +344,17 @@ public class CadastroPredio extends javax.swing.JDialog {
                                     .addComponent(inputCondominio, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(comboModelo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
+                .addComponent(comboModelo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(jLabel7)
@@ -404,7 +425,7 @@ public class CadastroPredio extends javax.swing.JDialog {
                         .addComponent(jLabel20)
                         .addGap(5, 5, 5)
                         .addComponent(inputCondominio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(buttonResetar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(buttonEnviar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -455,7 +476,7 @@ public class CadastroPredio extends javax.swing.JDialog {
         String numero = inputNumero.getText();
         String bairro = inputBairro.getText();
         String cidade = inputCidade.getText();
-        String endereco = rua + ", numero " + numero + ", "+ bairro + ", " + cidade;
+        String endereco = rua + ", numero " + numero + ", " + bairro + ", " + cidade;
         LocalDate dataConstrucao;
         try {
             String texto = inputDataConstrucao.getText();
@@ -463,9 +484,9 @@ public class CadastroPredio extends javax.swing.JDialog {
             dataConstrucao = LocalDate.parse(texto, formato);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null,
-                "Formato de data inválido! Use o formato dd/MM/yyyy.",
-                "Erro",
-                JOptionPane.ERROR_MESSAGE);
+                    "Formato de data inválido! Use o formato dd/MM/yyyy.",
+                    "Erro",
+                    JOptionPane.ERROR_MESSAGE);
             return;
         }
         float areaTotal = Float.parseFloat(inputAreaTotal.getText());
@@ -479,13 +500,30 @@ public class CadastroPredio extends javax.swing.JDialog {
         int andar = Integer.parseInt(inputAndar.getText());
         float condominio = Float.parseFloat(inputCondominio.getText());
 
-        PredioResidencial_EduardoGiovanniLuan novoPredio = new PredioResidencial_EduardoGiovanniLuan(andar, condominio, codigoImovel, endereco, dataConstrucao, areaTotal, areaConstruida, qtdDormitorios, qtdBanheiros, qtdVagas, IPTU, venda, aluguel);
+        PredioResidencialBuilder_EduardoGiovanniLuan builder = new PredioResidencialBuilder_EduardoGiovanniLuan();
+
+        PredioResidencial_EduardoGiovanniLuan novoPredio = builder
+                .codigo(codigoImovel)
+                .endereco(endereco)
+                .dataConstrucao(dataConstrucao)
+                .areaTotal(areaTotal)
+                .areaConstruida(areaConstruida)
+                .dormitorios(qtdDormitorios)
+                .banheiros(qtdBanheiros)
+                .vagas(qtdVagas)
+                .iptu(IPTU)
+                .venda(venda)
+                .aluguel(aluguel)
+                .andar(andar)
+                .condominio(condominio)
+                .build();
+
         Imobiliaria_EduardoGiovanniLuan nossaImobiliaria = Imobiliaria_EduardoGiovanniLuan.getInstancia();
         nossaImobiliaria.getImoveis().add(novoPredio);
         JOptionPane.showMessageDialog(null,
-            "CADASTRO EFETUADO COM SUCESSO!",
-            "",
-            JOptionPane.PLAIN_MESSAGE);
+                "CADASTRO EFETUADO COM SUCESSO!",
+                "",
+                JOptionPane.PLAIN_MESSAGE);
 
         dispose();
     }//GEN-LAST:event_buttonEnviarActionPerformed
@@ -550,6 +588,34 @@ public class CadastroPredio extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_inputCondominioActionPerformed
 
+    private void comboModeloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboModeloActionPerformed
+        String modeloSelecionado = (String) comboModelo.getSelectedItem();
+
+        // builder temporário
+        PredioResidencialBuilder_EduardoGiovanniLuan builder = new PredioResidencialBuilder_EduardoGiovanniLuan();
+
+        // Aplica o modelo, o que define os valores internos do Builder
+        if ("Modelo Studio".equals(modeloSelecionado)) {
+            builder.modeloStudio();
+        } else if ("Modelo Médio".equals(modeloSelecionado)) {
+            builder.modeloMedio();
+        } else if ("Modelo Cobertura".equals(modeloSelecionado)) { // Padrão
+            builder.modeloCobertura();
+        }
+
+        inputQtdDormitorios.setText(String.valueOf(builder.getQtdDormitorios()));
+        inputQtdBanheiros.setText(String.valueOf(builder.getQtdBanheiros()));
+        inputQtdVagas.setText(String.valueOf(builder.getQtdVagasGaragem()));
+        inputAreaTotal.setText(String.valueOf(builder.getAreaTotal()));
+        inputAreaConstruida.setText(String.valueOf(builder.getAreaConstruida()));
+        inputIPTU.setText(String.valueOf(builder.getValorIPTU()));
+        inputAluguel.setText(String.valueOf(builder.getValorAluguel()));
+        inputVenda.setText(String.valueOf(builder.getValorVenda()));
+        inputAndar.setText(String.valueOf(builder.getAndar()));
+        inputCondominio.setText(String.valueOf(builder.getValorCondominio()));
+        verificarCampos();
+    }//GEN-LAST:event_comboModeloActionPerformed
+
     private void verificarCampos() {
         boolean todosPreenchidos
                 = !inputRua.getText().trim().isEmpty()
@@ -588,7 +654,6 @@ public class CadastroPredio extends javax.swing.JDialog {
             }
         };
 
-        
         inputRua.getDocument().addDocumentListener(listener);
         inputNumero.getDocument().addDocumentListener(listener);
         inputBairro.getDocument().addDocumentListener(listener);
@@ -605,7 +670,7 @@ public class CadastroPredio extends javax.swing.JDialog {
         inputAndar.getDocument().addDocumentListener(listener);
         inputCondominio.getDocument().addDocumentListener(listener);
     }
-    
+
     /**
      * @param args the command line arguments
      */
@@ -651,6 +716,7 @@ public class CadastroPredio extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonEnviar;
     private javax.swing.JButton buttonResetar;
+    private javax.swing.JComboBox<String> comboModelo;
     private javax.swing.JTextField inputAluguel;
     private javax.swing.JTextField inputAndar;
     private javax.swing.JTextField inputAreaConstruida;

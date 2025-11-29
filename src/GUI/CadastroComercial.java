@@ -4,6 +4,7 @@
  */
 package GUI;
 
+import Classes.ComercialBuilder_EduardoGiovanniLuan;
 import Classes.Comercial_EduardoGiovanniLuan;
 import static Classes.Contadores_EduardoGiovanniLuan.getCodigoImovel;
 import Classes.Imobiliaria_EduardoGiovanniLuan;
@@ -25,10 +26,16 @@ public class CadastroComercial extends javax.swing.JDialog {
     public CadastroComercial(java.awt.Dialog parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        
+
         buttonEnviar.setEnabled(false);
         addTextFieldListeners();
         verificarCampos();
+
+        comboModelo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboModeloActionPerformed(evt);
+            }
+        });
     }
 
     /**
@@ -73,6 +80,7 @@ public class CadastroComercial extends javax.swing.JDialog {
         jLabel18 = new javax.swing.JLabel();
         inputImposto = new javax.swing.JTextField();
         jLabel19 = new javax.swing.JLabel();
+        comboModelo = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -302,18 +310,15 @@ public class CadastroComercial extends javax.swing.JDialog {
                                                     .addComponent(inputQtdVagas, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                                 .addGap(0, 6, Short.MAX_VALUE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(81, 81, 81)
+                        .addComponent(buttonResetar, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(101, 101, 101)
+                        .addComponent(buttonEnviar, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(81, 81, 81)
-                                .addComponent(buttonResetar, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(101, 101, 101)
-                                .addComponent(buttonEnviar, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel19)
-                                    .addComponent(inputImposto, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(jLabel19)
+                            .addComponent(inputImposto, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -380,7 +385,7 @@ public class CadastroComercial extends javax.swing.JDialog {
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(inputAluguel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(inputVenda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel19)
                 .addGap(5, 5, 5)
                 .addComponent(inputImposto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -391,17 +396,30 @@ public class CadastroComercial extends javax.swing.JDialog {
                 .addGap(15, 15, 15))
         );
 
+        comboModelo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecionar", "Loja Pequena", "Loja Media", "Loja Grande" }));
+        comboModelo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboModeloActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(comboModelo, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(comboModelo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -434,7 +452,7 @@ public class CadastroComercial extends javax.swing.JDialog {
         String numero = inputNumero.getText();
         String bairro = inputBairro.getText();
         String cidade = inputCidade.getText();
-        String endereco = rua + ", numero " + numero + ", "+ bairro + ", " + cidade;
+        String endereco = rua + ", numero " + numero + ", " + bairro + ", " + cidade;
         LocalDate dataConstrucao;
         try {
             String texto = inputDataConstrucao.getText();
@@ -442,9 +460,9 @@ public class CadastroComercial extends javax.swing.JDialog {
             dataConstrucao = LocalDate.parse(texto, formato);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null,
-                "Formato de data inválido! Use o formato dd/MM/yyyy.",
-                "Erro",
-                JOptionPane.ERROR_MESSAGE);
+                    "Formato de data inválido! Use o formato dd/MM/yyyy.",
+                    "Erro",
+                    JOptionPane.ERROR_MESSAGE);
             return;
         }
         float areaTotal = Float.parseFloat(inputAreaTotal.getText());
@@ -457,13 +475,26 @@ public class CadastroComercial extends javax.swing.JDialog {
         float aluguel = Float.parseFloat(inputAluguel.getText());
         float imposto = Float.parseFloat(inputImposto.getText());
 
-        Comercial_EduardoGiovanniLuan novoComercial = new Comercial_EduardoGiovanniLuan(imposto, codigoImovel, endereco, dataConstrucao, areaTotal, areaConstruida, qtdDormitorios, qtdBanheiros, qtdVagas, IPTU, venda, aluguel);
+        ComercialBuilder_EduardoGiovanniLuan builder = new ComercialBuilder_EduardoGiovanniLuan();
+
+        Comercial_EduardoGiovanniLuan novoComercial = builder
+                .codigo(codigoImovel)
+                .endereco(endereco)
+                .dataConstrucao(dataConstrucao)
+                .areaTotal(areaTotal)
+                .iptu(IPTU)
+                .venda(venda)
+                .aluguel(aluguel)
+                .banheiros(qtdBanheiros)
+                .vagas(qtdVagas)
+                .build();
+        
         Imobiliaria_EduardoGiovanniLuan nossaImobiliaria = Imobiliaria_EduardoGiovanniLuan.getInstancia();
         nossaImobiliaria.getImoveis().add(novoComercial);
         JOptionPane.showMessageDialog(null,
-            "CADASTRO EFETUADO COM SUCESSO!",
-            "",
-            JOptionPane.PLAIN_MESSAGE);
+                "CADASTRO EFETUADO COM SUCESSO!",
+                "",
+                JOptionPane.PLAIN_MESSAGE);
 
         dispose();
     }//GEN-LAST:event_buttonEnviarActionPerformed
@@ -523,7 +554,34 @@ public class CadastroComercial extends javax.swing.JDialog {
     private void inputImpostoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputImpostoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_inputImpostoActionPerformed
-    
+
+    private void comboModeloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboModeloActionPerformed
+        String modeloSelecionado = (String) comboModelo.getSelectedItem();
+
+        // builder temporário
+        ComercialBuilder_EduardoGiovanniLuan builder = new ComercialBuilder_EduardoGiovanniLuan();
+
+        // Aplica o modelo, o que define os valores internos do Builder
+        if ("Loja Pequena".equals(modeloSelecionado)) {
+            builder.lojaPequena();
+        } else if ("Loja Media".equals(modeloSelecionado)) {
+            builder.lojaMedia();
+        } else if ("Loja Grande".equals(modeloSelecionado)) { // Padrão
+            builder.lojaGrande();
+        }
+
+        inputQtdDormitorios.setText(String.valueOf(builder.getQtdDormitorios()));
+        inputQtdBanheiros.setText(String.valueOf(builder.getQtdBanheiros()));
+        inputQtdVagas.setText(String.valueOf(builder.getQtdVagasGaragem()));
+        inputAreaTotal.setText(String.valueOf(builder.getAreaTotal()));
+        inputAreaConstruida.setText(String.valueOf(builder.getAreaConstruida()));
+        inputIPTU.setText(String.valueOf(builder.getValorIPTU()));
+        inputAluguel.setText(String.valueOf(builder.getValorAluguel()));
+        inputVenda.setText(String.valueOf(builder.getValorVenda()));
+        inputImposto.setText(String.valueOf(builder.getTaxaImpostoFederal()));
+        verificarCampos();
+    }//GEN-LAST:event_comboModeloActionPerformed
+
     private void verificarCampos() {
         boolean todosPreenchidos
                 = !inputRua.getText().trim().isEmpty()
@@ -561,7 +619,6 @@ public class CadastroComercial extends javax.swing.JDialog {
             }
         };
 
-        
         inputRua.getDocument().addDocumentListener(listener);
         inputNumero.getDocument().addDocumentListener(listener);
         inputBairro.getDocument().addDocumentListener(listener);
@@ -577,7 +634,7 @@ public class CadastroComercial extends javax.swing.JDialog {
         inputAluguel.getDocument().addDocumentListener(listener);
         inputImposto.getDocument().addDocumentListener(listener);
     }
-    
+
     /**
      * @param args the command line arguments
      */
@@ -623,6 +680,7 @@ public class CadastroComercial extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonEnviar;
     private javax.swing.JButton buttonResetar;
+    private javax.swing.JComboBox<String> comboModelo;
     private javax.swing.JTextField inputAluguel;
     private javax.swing.JTextField inputAreaConstruida;
     private javax.swing.JTextField inputAreaTotal;
